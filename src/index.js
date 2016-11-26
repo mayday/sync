@@ -4,10 +4,12 @@ import { Provider } from 'react-redux'
 import { BrowserRouter } from 'react-router'
 import { configureStore } from 'sync-store'
 
+import App from './App'
+
 render(
   <Provider store={ configureStore() }>
     <BrowserRouter>
-      <div>Sync</div>
+      <App />
     </BrowserRouter>
   </Provider>,
   document.getElementById('root'),
