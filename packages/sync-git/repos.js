@@ -1,4 +1,4 @@
-// import Git from 'nodegit'
+import git from 'simple-git/promise'
 
 export const OPEN_REPO_REQUEST = 'GIT/OPEN_REPO_REQUEST'
 export const OPEN_REPO = 'GIT/OPEN_REPO'
@@ -9,14 +9,14 @@ export const actions = {
     return (dispatch) => {
       dispatch({ type: OPEN_REPO_REQUEST, path })
 
-      // Git.Repository
-      //   .open(path)
-      //   .then((repo) => {
-      //     dispatch({ type: OPEN_REPO, repo })
-      //   })
-      //   .catch((error) => {
-      //     dispatch({ type: OPEN_REPO_FAILURE, error })
-      //   })
+      git(path)
+        .status()
+        .then((status) => {
+          dispatch({ type: OPEN_REPO, status })
+        })
+        .catch((error) => {
+          dispatch({ type: OPEN_REPO_FAILURE, error })
+        })
     }
   },
 }

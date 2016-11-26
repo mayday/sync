@@ -9,6 +9,6 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "nodegit": "^0.16.0"
+    "simple-git": "^1.63.0"
   }
 }

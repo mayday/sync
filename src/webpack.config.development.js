@@ -25,4 +25,5 @@ export default validate(merge(baseConfig, {
       'process.env.NODE_ENV': JSON.stringify('development'),
     }),
   ],
+  target: 'electron-renderer',
 }))
