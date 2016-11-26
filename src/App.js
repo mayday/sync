@@ -4,7 +4,9 @@ import { actions } from 'sync-git'
 
 export class App extends React.Component {
   componentDidMount() {
-    this.props.openRepo('/Users/case/Github/sync')
+    this.props.openRepo('/Users/case/Github/sync').then((repo) => {
+      console.log(repo.path)
+    })
   }
   render() {
     return (
