@@ -1,5 +1,7 @@
 import { scopeStateToSelectors } from 'redux-selector'
 
-export default scopeStateToSelectors({
+import { selectors as settings } from 'sync-settings'
 
+export default scopeStateToSelectors({
+  settings,
 })

@@ -1,21 +1,32 @@
 import React from 'react'
+import _ from 'lodash'
 import { connect } from 'react-redux'
-import { actions } from 'sync-git'
+import { actions as gitActions } from 'sync-git'
+import { actions as settingsActions } from 'sync-settings'
+import { store } from 'sync-store'
+
 
 export class App extends React.Component {
   componentDidMount() {
     this.props.openRepo('/Users/case/Github/sync').then((repo) => {
-      console.log(repo.path)
+      this.props.saveRepo(repo.path)
     })
   }
   render() {
     return (
-      <div>Sync</div>
+      <div>
+        Sync
+        { _.map(this.props.repos, (path, name) => (
+          <div key={ path }>{ name }</div>
+        )) }
+      </div>
     )
   }
 }
 
 export default connect(
-  () => ({}),
-  actions,
+  state => ({
+    repos: store.getRepos(state),
+  }),
+  { ...gitActions, ...settingsActions },
 )(App)

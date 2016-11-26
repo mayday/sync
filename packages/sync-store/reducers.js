@@ -1,5 +1,7 @@
 import { combineReducers } from 'redux'
 
+import settings from 'sync-settings'
+
 export default combineReducers({
-  foo: (state = {}) => state,
+  settings,
 })
