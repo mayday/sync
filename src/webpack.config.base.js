@@ -21,6 +21,13 @@ export default validate({
   },
 
   resolve: {
+    root: path.join(__dirname, '..'),
+    alias: {
+      'redux-git-middleware': 'packages/redux-git-middleware',
+      'sync-git': 'packages/sync-git',
+      'sync-settings': 'packages/sync-settings',
+      'sync-store': 'packages/sync-store',
+    },
     extensions: ['', '.js'],
   },
 })

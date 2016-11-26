@@ -35,5 +35,13 @@ module.exports = {
     'react/require-extension': OFF,
     'no-return-assign': IGNORE,
     'import/prefer-default-export': IGNORE,
+  },
+  'settings': {
+    'import/core-modules': [
+      'redux-git-middleware',
+      'sync-git',
+      'sync-settings',
+      'sync-store',
+    ]
   }
 }
