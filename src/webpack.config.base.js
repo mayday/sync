@@ -24,6 +24,7 @@ export default validate({
     root: path.join(__dirname, '..'),
     alias: {
       'redux-git-middleware': 'packages/redux-git-middleware',
+      'sync-components': 'packages/sync-components',
       'sync-git': 'packages/sync-git',
       'sync-settings': 'packages/sync-settings',
       'sync-store': 'packages/sync-store',

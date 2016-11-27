@@ -39,6 +39,7 @@ module.exports = {
   'settings': {
     'import/core-modules': [
       'redux-git-middleware',
+      'sync-components',
       'sync-git',
       'sync-settings',
       'sync-store',

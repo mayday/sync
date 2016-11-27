@@ -4,12 +4,16 @@ import reactCSS from 'reactcss'
 export const Header = () => {
   const styles = reactCSS({
     'default': {
+      header: {
 
+      },
     },
   })
 
   return (
-    <div>Header</div>
+    <div style={ styles.header }>
+      Header
+    </div>
   )
 }
 
