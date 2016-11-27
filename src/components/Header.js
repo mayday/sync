@@ -12,6 +12,7 @@ export const Header = () => {
         flex: 1,
         display: 'flex',
         alignItems: 'center',
+        WebkitAppRegion: 'drag',
       },
       left: {
         width: 180,

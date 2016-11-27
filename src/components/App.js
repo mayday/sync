@@ -20,6 +20,7 @@ export class App extends React.Component { // eslint-disable-line
           fontFamily: 'Roboto',
           WebkitFontSmoothing: 'antialiased',
           fontSize: 16,
+          userSelect: 'none',
         },
         header: {
           display: 'flex',
