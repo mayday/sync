@@ -7,6 +7,7 @@ export const Icon = ({ name, size = 24 }) => {
   const styles = reactCSS({
     'default': {
       svg: {
+        display: 'block',
         width: size,
         height: size,
       },

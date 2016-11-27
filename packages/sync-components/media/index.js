@@ -1,7 +1,7 @@
 import React from 'react'
 import reactCSS from 'reactcss'
 
-export const Media = ({ left, children, right, size = 72 }) => {
+export const Media = ({ left, children, right, spacing = 72, center }) => {
   const styles = reactCSS({
     'default': {
       media: {
@@ -11,7 +11,7 @@ export const Media = ({ left, children, right, size = 72 }) => {
         paddingRight: 15,
       },
       left: {
-        width: size - 15,
+        width: spacing - 15,
       },
       center: {
         flex: 1,
@@ -20,7 +20,12 @@ export const Media = ({ left, children, right, size = 72 }) => {
         paddingLeft: 15,
       },
     },
-  })
+    'center': {
+      media: {
+        alignItems: 'center',
+      },
+    },
+  }, { center })
 
   return (
     <div style={ styles.media }>
@@ -37,4 +42,4 @@ export const Media = ({ left, children, right, size = 72 }) => {
 
 export default Media
 
-export const CompactMedia = props => <Media { ...props } size={ 40 } />
+export const CompactMedia = props => <Media { ...props } spacing={ 40 } />

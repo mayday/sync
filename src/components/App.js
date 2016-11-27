@@ -17,6 +17,9 @@ export class App extends React.Component { // eslint-disable-line
           bottom: 0,
           left: 0,
           backgroundColor: 'rgba(39, 36, 42, 1)',
+          fontFamily: 'Roboto',
+          WebkitFontSmoothing: 'antialiased',
+          fontSize: 16,
         },
         header: {
           display: 'flex',

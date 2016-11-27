@@ -1,6 +1,7 @@
 import React from 'react'
 import reactCSS from 'reactcss'
 
+import { RepoHeader } from 'sync-components'
 import TrafficLights from './TrafficLights'
 
 export const Header = () => {
@@ -19,7 +20,6 @@ export const Header = () => {
       },
       right: {
         flex: 1,
-        paddingRight: 15,
       },
       divider: {
         position: 'absolute',
@@ -39,7 +39,7 @@ export const Header = () => {
         <TrafficLights />
       </div>
       <div style={ styles.right }>
-        header
+        <RepoHeader name="lightning-desktop" currentBranch="master" />
       </div>
       <div style={ styles.divider } />
     </div>

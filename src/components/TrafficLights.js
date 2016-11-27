@@ -15,7 +15,7 @@ export const TrafficLights = ({ hover }) => {
         height: 12,
         marginRight: 7,
         borderRadius: 6,
-        backgroundColor: '#777',
+        backgroundColor: '#666',
         cursor: 'pointer',
 
         transition: '100ms background-color ease-out',
