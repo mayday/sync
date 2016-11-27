@@ -11,4 +11,5 @@ export default {
     ui,
   }),
   getCurrentRepo: state => git.getRepoByPath(state.git, ui.getActiveRepo(state.ui)),
+  getCurrentCommits: state => git.getCommitsByRepo(state.git, ui.getActiveRepo(state.ui)),
 }

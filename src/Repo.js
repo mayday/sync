@@ -10,12 +10,18 @@ export class Repo extends React.Component {
     this.props.gitStatus()
     this.props.gitDiff()
     this.props.gitDiffSummary()
+    this.props.gitCommits()
   }
   render() {
     return (
       <div>
         Repo
         <div>{ this.props.path } - { this.props.current }</div>
+
+        { this.props.commits ? _.map(this.props.commits, commit => (
+          <div key={ commit.hash }>{ commit.message }</div>
+        )) : null }
+
         { this.props.diffSummary ? _.map(this.props.diffSummary.files, file => (
           <div key={ file.file }>
             <div>name: { file.file }</div>
@@ -34,6 +40,7 @@ export class Repo extends React.Component {
 export default connect(
   state => ({
     ...store.getCurrentRepo(state),
+    commits: store.getCurrentCommits(state),
   }),
   { ...gitActions },
 )(Repo)
