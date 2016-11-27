@@ -33,6 +33,7 @@ export class App extends React.Component { // eslint-disable-line
         headerSpacing: {
           paddingTop: 54,
           flex: 1,
+          maxWidth: '100%',
         },
         sidebar: {
           width: 180,
