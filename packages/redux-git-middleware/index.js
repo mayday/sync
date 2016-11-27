@@ -22,9 +22,8 @@ export default (opts = {}) => store => next => (action) => {
   return new Promise((resolve, reject) => {
     git(gitPath)[method](...args)
       .then((res) => {
-        const data = { ...res, path: gitPath }
-        SUCCESS && next({ type: SUCCESS, [model || method]: data })
-        resolve(data)
+        SUCCESS && next({ type: SUCCESS, [model || method]: res, path: gitPath })
+        resolve({ ...res, path: gitPath })
       })
       .catch((errorText) => {
         const data = { errorText, path: gitPath }
