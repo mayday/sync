@@ -8,7 +8,7 @@ const DEV = process.env.NODE_ENV === 'development'
 const createWindow = () => {
   const mainWindowState = windowStateKeeper({
     defaultWidth: 750,
-    defaultHeight: 500,
+    defaultHeight: 450,
   })
 
   const { x, y, width, height } = mainWindowState
