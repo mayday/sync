@@ -19,12 +19,13 @@ export class App extends React.Component { // eslint-disable-line
           backgroundColor: 'rgba(39, 36, 42, 1)',
         },
         header: {
+          display: 'flex',
           position: 'absolute',
           top: 0,
           right: 0,
           left: 0,
           height: 54,
-          backgroundColor: 'rgba(39, 36, 42, .97)',
+          backgroundColor: 'rgba(39, 36, 42, 0.97)',
         },
         headerSpacing: {
           paddingTop: 54,

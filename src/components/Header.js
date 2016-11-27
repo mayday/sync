@@ -1,18 +1,47 @@
 import React from 'react'
 import reactCSS from 'reactcss'
 
+import TrafficLights from './TrafficLights'
+
 export const Header = () => {
   const styles = reactCSS({
     'default': {
       header: {
-
+        position: 'relative',
+        flex: 1,
+        display: 'flex',
+        alignItems: 'center',
+      },
+      left: {
+        width: 180,
+        paddingLeft: 15,
+        boxSizing: 'border-box',
+      },
+      right: {
+        flex: 1,
+        paddingRight: 15,
+      },
+      divider: {
+        position: 'absolute',
+        bottom: 0,
+        right: 15,
+        left: 15,
+        height: 1,
+        backgroundColor: 'rgba(255, 255, 255, 0.07)',
+        boxShadow: '0 2px 4px rgba(39, 36, 42, 0.4)',
       },
     },
   })
 
   return (
     <div style={ styles.header }>
-      Header
+      <div style={ styles.left }>
+        <TrafficLights />
+      </div>
+      <div style={ styles.right }>
+        header
+      </div>
+      <div style={ styles.divider } />
     </div>
   )
 }
