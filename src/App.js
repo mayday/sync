@@ -6,6 +6,7 @@ import { actions as settingsActions } from 'sync-settings'
 import { actions as uiActions } from 'sync-ui'
 import { store } from 'sync-store'
 
+import Repo from './Repo'
 
 export class App extends React.Component {
   componentDidMount() {
@@ -22,6 +23,10 @@ export class App extends React.Component {
           <div key={ path }>{ name }</div>
         )) }
         { this.props.activeRepo }
+
+        { this.props.activeRepo ? (
+          <Repo />
+        ) : null }
       </div>
     )
   }

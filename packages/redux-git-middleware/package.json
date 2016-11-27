@@ -9,6 +9,7 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
+    "lodash": "^4.17.2",
     "simple-git": "^1.63.0"
   }
 }

@@ -1,3 +1,4 @@
+import _ from 'lodash'
 import git from 'simple-git/promise'
 
 const defaults = {
@@ -6,25 +7,29 @@ const defaults = {
 
 export const GIT_API = 'REDUX_GIT/API'
 
-export default (opts = {}) => () => next => (action) => {
+export default (opts = {}) => store => next => (action) => {
   const apiAction = action && action[GIT_API]
   if (typeof apiAction === 'undefined' || !apiAction) { return next(action) }
 
+  const state = store.getState()
   const options = { ...defaults, ...opts } // eslint-disable-line
   const { path, method, types, args = [], model } = apiAction
+  const gitPath = path || _.get(state, options.path)
   const [REQUEST, SUCCESS, ERROR] = types
 
   REQUEST && next({ type: REQUEST })
 
   return new Promise((resolve, reject) => {
-    git(path)[method](...args)
+    git(gitPath)[method](...args)
       .then((res) => {
-        SUCCESS && next({ type: SUCCESS, [model || method]: res })
-        resolve({ ...res, path })
+        const data = { ...res, path: gitPath }
+        SUCCESS && next({ type: SUCCESS, [model || method]: data })
+        resolve(data)
       })
       .catch((errorText) => {
-        ERROR && next({ type: ERROR, errorText })
-        reject({ errorText, path })
+        const data = { errorText, path: gitPath }
+        ERROR && next({ type: ERROR, ...data })
+        reject(data)
       })
   })
 }

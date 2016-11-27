@@ -4,7 +4,7 @@ import createGit from 'redux-git-middleware'
 import thunk from 'redux-thunk'
 
 const logger = createLogger({ level: 'info', collapsed: true })
-const git = createGit()
+const git = createGit({ path: 'ui.activeRepo' })
 
 export default applyMiddleware(
   thunk,
