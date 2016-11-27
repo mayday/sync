@@ -28,6 +28,7 @@ export default validate({
       'sync-settings': 'packages/sync-settings',
       'sync-store': 'packages/sync-store',
       'sync-ui': 'packages/sync-ui',
+      'sync-window': 'packages/sync-window',
     },
     extensions: ['', '.js'],
   },

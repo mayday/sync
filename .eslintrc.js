@@ -43,6 +43,7 @@ module.exports = {
       'sync-settings',
       'sync-store',
       'sync-ui',
+      'sync-window',
     ]
   }
 }

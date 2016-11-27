@@ -5,6 +5,7 @@ import { actions as gitActions } from 'sync-git'
 import { actions as settingsActions } from 'sync-settings'
 import { actions as uiActions } from 'sync-ui'
 import { store } from 'sync-store'
+import { registerEvents } from 'sync-window'
 
 import Repo from './Repo'
 
@@ -13,6 +14,7 @@ export class App extends React.Component {
     this.props.openRepo('/Users/case/Github/sync').then((repo) => {
       this.props.saveRepo(repo.path)
       this.props.changeActiveRepo(repo.path)
+      registerEvents(window, this.props.dispatch)
     })
   }
   render() {
