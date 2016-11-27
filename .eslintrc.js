@@ -42,6 +42,7 @@ module.exports = {
       'sync-git',
       'sync-settings',
       'sync-store',
+      'sync-ui',
     ]
   }
 }

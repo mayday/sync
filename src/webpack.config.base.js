@@ -27,6 +27,7 @@ export default validate({
       'sync-git': 'packages/sync-git',
       'sync-settings': 'packages/sync-settings',
       'sync-store': 'packages/sync-store',
+      'sync-ui': 'packages/sync-ui',
     },
     extensions: ['', '.js'],
   },

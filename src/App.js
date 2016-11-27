@@ -3,6 +3,7 @@ import _ from 'lodash'
 import { connect } from 'react-redux'
 import { actions as gitActions } from 'sync-git'
 import { actions as settingsActions } from 'sync-settings'
+import { actions as uiActions } from 'sync-ui'
 import { store } from 'sync-store'
 
 
@@ -10,6 +11,7 @@ export class App extends React.Component {
   componentDidMount() {
     this.props.openRepo('/Users/case/Github/sync').then((repo) => {
       this.props.saveRepo(repo.path)
+      this.props.changeActiveRepo(repo.path)
     })
   }
   render() {
@@ -19,6 +21,7 @@ export class App extends React.Component {
         { _.map(this.props.repos, (path, name) => (
           <div key={ path }>{ name }</div>
         )) }
+        { this.props.activeRepo }
       </div>
     )
   }
@@ -27,6 +30,7 @@ export class App extends React.Component {
 export default connect(
   state => ({
     repos: store.getRepos(state),
+    activeRepo: store.getActiveRepo(state),
   }),
-  { ...gitActions, ...settingsActions },
+  { ...gitActions, ...settingsActions, ...uiActions },
 )(App)
