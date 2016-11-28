@@ -1,13 +1,15 @@
 {
   "name": "sync",
+  "productName": "Sync",
   "version": "0.1.0",
   "description": "git",
-  "main": "src/index.js",
+  "main": "./electron/main.development.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "server": "cross-env NODE_ENV=development node -r babel-register scripts/server.js",
-    "electron": "cross-env HOT=1 NODE_ENV=development electron -r babel-register ./electron/main.development",
-    "start": "concurrently --kill-others \"npm run server\" \"npm run electron\""
+    "electron": "cross-env HOT=1 NODE_ENV=development electron -r babel-register .",
+    "start": "concurrently --kill-others \"npm run server\" \"npm run electron\"",
+    "open-settings": "atom ~/Library/Application\\ Support/Sync/settings.js"
   },
   "repository": {
     "type": "git",

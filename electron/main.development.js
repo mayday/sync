@@ -1,3 +1,5 @@
+/* eslint-disable no-console */
+
 import path from 'path'
 import { app, BrowserWindow } from 'electron'
 import windowStateKeeper from 'electron-window-state'
@@ -36,3 +38,7 @@ const createWindow = () => {
 if (DEV) { debug() }
 
 app.on('ready', createWindow)
+
+app.on('before-quit', () => {
+  console.log('Electron Stopped')
+})

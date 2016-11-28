@@ -3,8 +3,9 @@ import { render } from 'react-dom'
 import { Provider } from 'react-redux'
 import { configureStore } from 'sync-store'
 import App from './components/App'
+import { getSettings } from '../electron/store'
 
-const store = configureStore()
+const store = configureStore({ settings: getSettings() })
 
 render(
   <Provider store={ store }>
