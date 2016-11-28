@@ -1,10 +1,13 @@
 import React from 'react'
+import _ from 'lodash'
 import reactCSS from 'reactcss'
-import moment from 'moment'
+
+import { connect } from 'react-redux'
+import { store } from 'sync-store'
 
 import { CommitList } from 'sync-components'
 
-export const Main = () => {
+export const Main = (props) => {
   const styles = reactCSS({
     'default': {
       main: {
@@ -15,37 +18,13 @@ export const Main = () => {
     },
   })
 
-  const commitList = [{
-    message: 'Wallets Fetch Failure',
-    author: 'case@casesandberg.com',
-    date: moment().subtract(11, 'days'),
-    filesChanged: 2,
-  }, {
-    message: 'Fix `WalletBalance` Returned Data',
-    author: 'case@casesandberg.com',
-    date: moment().subtract(11, 'days'),
-    filesChanged: 1,
-  }, {
-    message: 'Add Title',
-    author: 'case@casesandberg.com',
-    date: moment().subtract(10, 'days'),
-    filesChanged: 3,
-  }, {
-    message: 'Wallets Fetch Failure',
-    author: 'case@casesandberg.com',
-    date: moment().subtract(7, 'days'),
-    filesChanged: 2,
-  }, {
-    message: 'Fix `WalletBalance` Returned Data',
-    author: 'case@casesandberg.com',
-    date: moment().subtract(2, 'days'),
-    filesChanged: 1,
-  }, {
-    message: 'Add Title',
-    author: 'case@casesandberg.com',
-    date: moment().subtract(4, 'hours'),
-    filesChanged: 3,
-  }]
+
+  const commitList = _.map(props.commits, ({ message, author_email, date }) => ({
+    message,
+    author: author_email,
+    date,
+    filesChanged: Math.round(Math.random() * 8),
+  }))
 
   return (
     <div style={ styles.main }>
@@ -54,4 +33,9 @@ export const Main = () => {
   )
 }
 
-export default Main
+export default connect(
+  state => ({
+    ...store.getCurrentRepo(state),
+    commits: _.reverse(store.getCurrentCommits(state) || []),
+  }),
+)(Main)

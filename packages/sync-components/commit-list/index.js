@@ -18,8 +18,8 @@ export const CommitList = ({ commits }) => {
 
   return (
     <div style={ styles.list }>
-      { _.map(commits, commit => (
-        <div style={ styles.commit }>
+      { _.map(commits, (commit, i) => (
+        <div key={ i } style={ styles.commit }>
           <Commit { ...commit } />
         </div>
       )) }

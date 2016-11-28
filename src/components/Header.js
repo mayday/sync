@@ -1,10 +1,13 @@
 import React from 'react'
 import reactCSS from 'reactcss'
 
+import { connect } from 'react-redux'
+import { store } from 'sync-store'
+
 import { RepoHeader } from 'sync-components'
 import TrafficLights from './TrafficLights'
 
-export const Header = () => {
+export const Header = ({ path, current }) => {
   const styles = reactCSS({
     'default': {
       header: {
@@ -34,17 +37,24 @@ export const Header = () => {
     },
   })
 
+  const nameSplit = path && path.split('/')
+  const name = nameSplit && nameSplit[nameSplit.length - 1]
+
   return (
     <div style={ styles.header }>
       <div style={ styles.left }>
         <TrafficLights />
       </div>
       <div style={ styles.right }>
-        <RepoHeader name="lightning-desktop" currentBranch="master" />
+        <RepoHeader name={ name } currentBranch={ current } />
       </div>
       <div style={ styles.divider } />
     </div>
   )
 }
 
-export default Header
+export default connect(
+  state => ({
+    ...store.getCurrentRepo(state),
+  }),
+)(Header)

@@ -1,11 +1,26 @@
 import React from 'react'
 import reactCSS from 'reactcss'
 
+import { connect } from 'react-redux'
+import { actions as gitActions } from 'sync-git'
+import { actions as settingsActions } from 'sync-settings'
+import { actions as uiActions } from 'sync-ui'
+import { store } from 'sync-store'
+import { registerEvents } from 'sync-window'
+
 import Header from './Header'
 import Sidebar from './Sidebar'
 import Main from './Main'
 
 export class App extends React.Component { // eslint-disable-line
+  componentDidMount() {
+    this.props.changeActiveRepo('/Users/case/Github/sync')
+    this.props.gitStatus()
+    this.props.gitDiff()
+    this.props.gitDiffSummary()
+    this.props.gitCommits()
+    registerEvents(window, this.props.dispatch)
+  }
   render() {
     const styles = reactCSS({
       'default': {
@@ -69,4 +84,10 @@ export class App extends React.Component { // eslint-disable-line
   }
 }
 
-export default App
+export default connect(
+  state => ({
+    repos: store.getRepos(state),
+    activeRepo: store.getActiveRepo(state),
+  }),
+  { ...gitActions, ...settingsActions, ...uiActions },
+)(App)

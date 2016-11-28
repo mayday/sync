@@ -23,6 +23,8 @@ export const Commit = ({ message, author, date, filesChanged }) => {
         height: 34,
         borderRadius: 17,
         backgroundColor: '#555',
+        background: 'url("https://avatars2.githubusercontent.com/u/4633636?v=3&s=460")',
+        backgroundSize: 'cover',
       },
       count: {
         color: '#555',
@@ -47,7 +49,7 @@ export const Commit = ({ message, author, date, filesChanged }) => {
       <div style={ styles.commit }>
         <Media center left={ <div style={ styles.avatar } /> } right={ count }>
           <div style={ styles.title }>{ message }</div>
-          <div style={ styles.subtitle }>{ moment(date).fromNow() } by { author }</div>
+          <div style={ styles.subtitle }>{ moment(new Date(date)).fromNow() } by { author }</div>
         </Media>
       </div>
     </Card>
