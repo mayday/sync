@@ -29,7 +29,7 @@ export class App extends React.Component { // eslint-disable-line
           right: 0,
           left: 0,
           height: 54,
-          backgroundColor: 'rgba(39, 36, 42, 0.97)',
+          backgroundColor: 'rgba(39, 36, 42, 0.95)',
           zIndex: 2,
         },
         headerSpacing: {
@@ -38,7 +38,7 @@ export class App extends React.Component { // eslint-disable-line
           maxWidth: '100%',
         },
         sidebar: {
-          width: 180,
+          width: 180 - 5,
           display: 'flex',
           overflowY: 'auto',
         },
