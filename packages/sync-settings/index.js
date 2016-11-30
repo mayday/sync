@@ -23,6 +23,7 @@ export const actions = {
 
 export const selectors = {
   getRepos: state => state.repos,
+  getReposPaths: state => _.map(state.repos, 'path'),
   getStarredRepos: state => _(state.repos).filter({ starred: true }).sortBy('name').value(),
   getUnstarredRepos: state => _(state.repos).filter({ starred: false }).sortBy('name').value(),
 }

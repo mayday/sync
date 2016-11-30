@@ -79,4 +79,10 @@ export const selectors = {
   getRepoByPath: (state, path) => {
     return state[path]
   },
+  getReposByPaths: (state, paths) =>
+    _.reduce(paths, (all, path) => {
+      state[path] && (all[path] = state[path]) // eslint-disable-line no-param-reassign
+      return all
+    }, {},
+  ),
 }

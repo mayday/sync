@@ -6,7 +6,7 @@ import { store } from 'sync-store'
 
 import { SidebarGroup } from 'sync-components'
 
-export const Sidebar = ({ starred, repos }) => {
+export const Sidebar = ({ starred, repos, statuses }) => {
   const styles = reactCSS({
     'default': {
       sidebar: {
@@ -22,6 +22,7 @@ export const Sidebar = ({ starred, repos }) => {
           label="Starred"
           icon="star"
           items={ starred }
+          statuses={ statuses }
         />
       ) : null }
 
@@ -29,6 +30,7 @@ export const Sidebar = ({ starred, repos }) => {
         label="Repos"
         icon="file-document-box"
         items={ repos }
+        statuses={ statuses }
       />
     </div>
   )
@@ -38,5 +40,6 @@ export default connect(
   state => ({
     starred: store.getStarredRepos(state),
     repos: store.getUnstarredRepos(state),
+    statuses: store.getReposStatuses(state),
   }),
 )(Sidebar)

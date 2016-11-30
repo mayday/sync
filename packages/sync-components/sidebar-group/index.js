@@ -3,8 +3,9 @@ import _ from 'lodash'
 import reactCSS from 'reactcss'
 
 import { CompactMedia, SmallIcon } from '../'
+import { SidebarGroupItem } from './item'
 
-export const SidebarGroup = ({ label, icon, items }) => {
+export const SidebarGroup = ({ label, icon, items, statuses }) => {
   const styles = reactCSS({
     'default': {
       group: {
@@ -21,15 +22,6 @@ export const SidebarGroup = ({ label, icon, items }) => {
         paddingLeft: 15,
         paddingRight: 15,
       },
-      item: {
-        color: '#bbb',
-        whiteSpace: 'nowrap',
-        overflow: 'hidden',
-        textOverflow: 'ellipsis',
-        width: '100%',
-        paddingRight: 5,
-        boxSizing: 'border-box',
-      },
     },
   })
 
@@ -42,13 +34,18 @@ export const SidebarGroup = ({ label, icon, items }) => {
       </div>
 
       <div style={ styles.items }>
-        { _.map(items, (item, i) => (
-          <div key={ i } style={ styles.spacing }>
-            <div style={ styles.item }>
-              { item.name }
+        { _.map(items, (item, i) => {
+          const repo = statuses[item.path] || {}
+          return (
+            <div key={ i } style={ styles.spacing }>
+              <SidebarGroupItem
+                name={ item.name }
+                unstagedChanges={ repo.files && !!repo.files.length }
+                localChanges={ repo.ahead > 0 }
+              />
             </div>
-          </div>
-        )) }
+          )
+        }) }
       </div>
     </div>
   )
