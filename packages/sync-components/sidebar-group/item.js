@@ -1,14 +1,22 @@
 import React from 'react'
-import reactCSS from 'reactcss'
+import reactCSS, { handleHover } from 'reactcss'
 
-export const SidebarGroupItem = ({ name, localChanges, unstagedChanges }) => {
+export const SidebarGroupItem = handleHover(({ name, localChanges, unstagedChanges,
+  hover }) => {
   const styles = reactCSS({
     'default': {
       item: {
         color: '#bbb',
-        paddingRight: 5,
+        paddingRight: 8,
+        paddingLeft: 8,
         position: 'relative',
-        transition: 'color 100ms ease-out',
+        transition: 'color 100ms ease-out, background-color 100ms ease-out',
+        height: 30,
+        display: 'flex',
+        alignItems: 'center',
+        cursor: 'pointer',
+        borderRadius: 4,
+        backgroundColor: 'rgba(0, 0, 0, 0)',
       },
       label: {
         whiteSpace: 'nowrap',
@@ -21,7 +29,7 @@ export const SidebarGroupItem = ({ name, localChanges, unstagedChanges }) => {
         fontSize: 20,
         lineHeight: '20px',
         position: 'absolute',
-        left: -10,
+        left: -2,
         transition: 'opacity 100ms ease-out',
       },
     },
@@ -35,7 +43,12 @@ export const SidebarGroupItem = ({ name, localChanges, unstagedChanges }) => {
         opacity: 1,
       },
     },
-  }, { localChanges, unstagedChanges })
+    'hover': {
+      item: {
+        backgroundColor: 'rgba(0, 0, 0, .2)',
+      },
+    },
+  }, { localChanges, unstagedChanges, hover })
 
   return (
     <div style={ styles.item }>
@@ -45,4 +58,4 @@ export const SidebarGroupItem = ({ name, localChanges, unstagedChanges }) => {
       </div>
     </div>
   )
-}
+})

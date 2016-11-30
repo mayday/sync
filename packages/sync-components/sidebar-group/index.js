@@ -9,7 +9,6 @@ export const SidebarGroup = ({ label, icon, items, statuses }) => {
   const styles = reactCSS({
     'default': {
       group: {
-        opacity: 0.8,
         color: '#666',
         marginTop: 10,
       },
@@ -18,9 +17,12 @@ export const SidebarGroup = ({ label, icon, items, statuses }) => {
         display: 'flex',
         alignItems: 'center',
       },
+      label: {
+        cursor: 'default',
+      },
       items: {
-        paddingLeft: 15,
-        paddingRight: 15,
+        paddingLeft: 7,
+        paddingRight: 7,
       },
     },
   })
@@ -29,7 +31,7 @@ export const SidebarGroup = ({ label, icon, items, statuses }) => {
     <div style={ styles.group }>
       <div style={ styles.spacing }>
         <CompactMedia center left={ <SmallIcon name={ icon } /> }>
-          { label }
+          <div style={ styles.label }>{ label }</div>
         </CompactMedia>
       </div>
 
