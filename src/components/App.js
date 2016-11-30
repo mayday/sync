@@ -15,11 +15,12 @@ import Main from './Main'
 export class App extends React.Component { // eslint-disable-line
   componentDidMount() {
     this.props.changeActiveRepo('/Users/case/Github/sync')
-    this.props.gitStatus()
-    this.props.gitDiff()
-    this.props.gitDiffSummary()
+    // this.props.gitStatus()
+    // this.props.gitDiff()
+    // this.props.gitDiffSummary()
+    this.props.gitReposStatus(this.props.repos)
     this.props.gitCommits()
-    registerEvents(window, this.props.dispatch)
+    registerEvents(window, this.props.store)
   }
   render() {
     const styles = reactCSS({

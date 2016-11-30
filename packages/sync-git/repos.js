@@ -1,3 +1,4 @@
+import _ from 'lodash'
 import { GIT_API } from 'redux-git-middleware'
 
 export const OPEN_REQUEST = 'GIT/REPOS/OPEN_REQUEST'
@@ -48,8 +49,14 @@ export const actions = {
       types: [OPEN_REQUEST, OPEN, OPEN_FAILURE],
     },
   }),
-  gitStatus: () => ({
+  gitReposStatus: repoList => (dispatch) => {
+    _.each(repoList, ({ path }) =>
+      dispatch(actions.gitStatus(path)),
+    )
+  },
+  gitStatus: path => ({
     [GIT_API]: {
+      path,
       method: 'status',
       types: [STATUS_REQUEST, STATUS, STATUS_FAILURE],
     },

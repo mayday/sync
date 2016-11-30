@@ -9,7 +9,7 @@ const store = configureStore({ settings: getSettings() })
 
 render(
   <Provider store={ store }>
-    <App dispatch={ store.dispatch } />
+    <App store={ store } />
   </Provider>,
   document.getElementById('root'),
 )
