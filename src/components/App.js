@@ -14,7 +14,6 @@ import Main from './Main'
 
 export class App extends React.Component { // eslint-disable-line
   componentDidMount() {
-    this.props.changeActiveRepo('/Users/case/Github/sync')
     // this.props.gitStatus()
     // this.props.gitDiff()
     // this.props.gitDiffSummary()

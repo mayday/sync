@@ -1,7 +1,7 @@
 export const CHANGE_ACTIVE_REPO = 'UI/CHANGE_ACTIVE_REPO'
 
 const initialState = {
-  activeRepo: '',
+  activeRepo: '/Users/case/Github/sync', // TODO: REMOVE
 }
 
 export default function ui(state = initialState, action) {
