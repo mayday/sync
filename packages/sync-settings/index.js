@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux'
+import _ from 'lodash'
 
 export const SAVE_REPO = 'SETTINGS/SAVE_REPO'
 
@@ -22,4 +23,6 @@ export const actions = {
 
 export const selectors = {
   getRepos: state => state.repos,
+  getStarredRepos: state => _(state.repos).filter({ starred: true }).sortBy('name').value(),
+  getUnstarredRepos: state => _(state.repos).filter({ starred: false }).sortBy('name').value(),
 }

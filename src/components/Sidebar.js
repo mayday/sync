@@ -1,9 +1,12 @@
 import React from 'react'
 import reactCSS from 'reactcss'
 
+import { connect } from 'react-redux'
+import { store } from 'sync-store'
+
 import { SidebarGroup } from 'sync-components'
 
-export const Sidebar = () => {
+export const Sidebar = ({ starred, repos }) => {
   const styles = reactCSS({
     'default': {
       sidebar: {
@@ -12,38 +15,15 @@ export const Sidebar = () => {
     },
   })
 
-  const starredItems = [{
-    name: 'lightning-core',
-    value: '/User/case/Github/lightning-core',
-  }, {
-    name: 'lightning-core-ui',
-    value: '/User/case/Github/lightning-core-ui',
-  }, {
-    name: 'lightning-desktop',
-    value: '/User/case/Github/lightning-desktop',
-  }]
-
-  const repos = [{
-    name: 'editor-settings',
-    value: '/User/case/Github/editor-settings',
-  }, {
-    name: 'react-color',
-    value: '/User/case/Github/react-color',
-  }, {
-    name: 'reactcss',
-    value: '/User/case/Github/reactcss',
-  }, {
-    name: 'redux-nylas-middleware',
-    value: '/User/case/Github/redux-nylas-middleware',
-  }]
-
   return (
     <div style={ styles.sidebar }>
-      <SidebarGroup
-        label="Starred"
-        icon="star"
-        items={ starredItems }
-      />
+      { starred ? (
+        <SidebarGroup
+          label="Starred"
+          icon="star"
+          items={ starred }
+        />
+      ) : null }
 
       <SidebarGroup
         label="Repos"
@@ -54,4 +34,9 @@ export const Sidebar = () => {
   )
 }
 
-export default Sidebar
+export default connect(
+  state => ({
+    starred: store.getStarredRepos(state),
+    repos: store.getUnstarredRepos(state),
+  }),
+)(Sidebar)
