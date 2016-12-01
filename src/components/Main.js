@@ -18,12 +18,11 @@ export const Main = (props) => {
     },
   })
 
-
-  const commitList = _.map(props.commits, ({ message, author_email, date }) => ({
+  const commitList = _.map(props.commits, ({ message, author_email, date }, i) => ({
     message,
     author: author_email,
     date,
-    filesChanged: Math.round(Math.random() * 8),
+    local: i >= props.commits.length - props.ahead,
   }))
 
   return (
