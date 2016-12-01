@@ -8,7 +8,7 @@ export const CommitList = ({ commits }) => {
   const styles = reactCSS({
     'default': {
       list: {
-        marginBottom: 64,
+        marginBottom: 15,
       },
       commit: {
         marginBottom: 1,
