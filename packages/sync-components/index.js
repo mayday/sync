@@ -1,6 +1,7 @@
 export * from './card'
 export * from './commit-list'
 export * from './icon'
+export * from './local-changes'
 export * from './media'
 export * from './repo-header'
 export * from './scroll'

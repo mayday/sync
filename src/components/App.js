@@ -14,9 +14,9 @@ import Main from './Main'
 
 export class App extends React.Component { // eslint-disable-line
   componentDidMount() {
-    // this.props.gitStatus()
-    // this.props.gitDiff()
-    // this.props.gitDiffSummary()
+    this.props.gitStatus()
+    this.props.gitDiff()
+    this.props.gitDiffSummary()
     this.props.gitReposStatus(this.props.repos)
     this.props.gitCommits()
     registerEvents(window, this.props.store)

@@ -5,7 +5,7 @@ import reactCSS from 'reactcss'
 import { connect } from 'react-redux'
 import { store } from 'sync-store'
 
-import { CommitList, Scroll } from 'sync-components'
+import { CommitList, LocalChanges, Scroll } from 'sync-components'
 
 export const Main = (props) => {
   const styles = reactCSS({
@@ -14,6 +14,11 @@ export const Main = (props) => {
         marginTop: 15,
         marginRight: 15,
         marginLeft: 5,
+      },
+      changes: {
+        marginBottom: 15,
+        maxHeight: '78vh',
+        display: 'flex',
       },
     },
   })
@@ -29,6 +34,11 @@ export const Main = (props) => {
     <Scroll scrollToBottom>
       <div style={ styles.main }>
         <CommitList commits={ commitList } />
+        { props.diff ? (
+          <div style={ styles.changes }>
+            <LocalChanges files={ props.files } diff={ props.diff } />
+          </div>
+        ) : null }
       </div>
     </Scroll>
   )
