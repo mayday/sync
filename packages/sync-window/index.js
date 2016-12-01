@@ -10,5 +10,6 @@ export const registerEvents = (window, { getState, dispatch }) => {
     dispatch(git.gitReposStatus(store.getRepos(state)))
     dispatch(git.gitDiff())
     dispatch(git.gitDiffSummary())
+    dispatch(git.gitCommits())
   }
 }

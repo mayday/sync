@@ -51,6 +51,7 @@ export class App extends React.Component { // eslint-disable-line
           paddingTop: 54,
           flex: 1,
           maxWidth: '100%',
+          display: 'flex',
         },
         sidebar: {
           width: 180 - 5,
@@ -60,7 +61,6 @@ export class App extends React.Component { // eslint-disable-line
         main: {
           flex: 1,
           display: 'flex',
-          overflowY: 'auto',
         },
       },
     })

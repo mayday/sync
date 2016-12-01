@@ -5,7 +5,7 @@ import reactCSS from 'reactcss'
 import { connect } from 'react-redux'
 import { store } from 'sync-store'
 
-import { CommitList } from 'sync-components'
+import { CommitList, Scroll } from 'sync-components'
 
 export const Main = (props) => {
   const styles = reactCSS({
@@ -27,9 +27,11 @@ export const Main = (props) => {
   }))
 
   return (
-    <div style={ styles.main }>
-      <CommitList commits={ commitList } />
-    </div>
+    <Scroll scrollToBottom>
+      <div style={ styles.main }>
+        <CommitList commits={ commitList } />
+      </div>
+    </Scroll>
   )
 }
 
