@@ -8,9 +8,11 @@ export const RepoHeader = ({ name, currentBranch }) => {
     'default': {
       header: {
         color: '#666',
+        cursor: 'default',
       },
       branch: {
         color: '#bbb',
+        cursor: 'pointer',
       },
     },
   })
@@ -19,10 +21,14 @@ export const RepoHeader = ({ name, currentBranch }) => {
     <div style={ styles.header }>
       <Media
         center
-        left={ <Icon name="source-branch" /> }
+        left={ name ? <Icon name="source-branch" /> : null }
         right={ <Icon name="refresh" /> }
       >
-        { name } / <span style={ styles.branch }>{ currentBranch }</span>
+        { name ? (
+          <div>
+            { name } / <span style={ styles.branch }>{ currentBranch }</span>
+          </div>
+        ) : null }
       </Media>
     </div>
   )

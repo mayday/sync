@@ -13,10 +13,12 @@ export const Commit = ({ message, author, date, filesChanged }) => {
       },
       title: {
         color: '#aaa',
+        userSelect: 'text',
       },
       subtitle: {
         color: '#555',
         fontSize: 14,
+        cursor: 'default',
       },
       avatar: {
         width: 34,
@@ -30,9 +32,11 @@ export const Commit = ({ message, author, date, filesChanged }) => {
         color: '#555',
         display: 'flex',
         alignItems: 'center',
+        cursor: 'pointer',
       },
       number: {
         marginRight: 5,
+        cursor: 'pointer',
       },
     },
   })
