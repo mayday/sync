@@ -1,6 +1,7 @@
 import React from 'react'
 import reactCSS from 'reactcss'
 import moment from 'moment'
+import { parseMessageText } from './helper'
 
 import { Card, Icon, Media } from '../'
 
@@ -52,7 +53,7 @@ export const Commit = ({ message, author, date, filesChanged }) => {
     <Card>
       <div style={ styles.commit }>
         <Media center left={ <div style={ styles.avatar } /> } right={ count }>
-          <div style={ styles.title }>{ message }</div>
+          <div style={ styles.title }>{ parseMessageText(message) }</div>
           <div style={ styles.subtitle }>{ moment(new Date(date)).fromNow() } by { author }</div>
         </Media>
       </div>
