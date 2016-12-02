@@ -25,24 +25,26 @@ export const SidebarGroupItem = handleHover(({ name, localChanges, unstagedChang
         width: '100%',
       },
       active: {
-        opacity: 0,
         position: 'absolute',
         left: -7,
-        transition: 'opacity 100ms ease-out',
+        transition: 'opacity 100ms ease-out, transform 100ms ease-out',
         height: 24,
         width: 3,
         borderRadius: '0 2px 2px 0',
         background: 'rgba(212, 225, 87, 1)',
+        transform: 'translateX(-3px)',
       },
     },
     'localChanges': {
       item: {
         color: 'rgba(212, 225, 87, 1)',
+        fontWeight: 500,
       },
     },
     'unstagedChanges': {
       item: {
         color: 'rgba(212, 225, 87, 1)',
+        fontWeight: 500,
       },
     },
     'hover': {
@@ -52,7 +54,7 @@ export const SidebarGroupItem = handleHover(({ name, localChanges, unstagedChang
     },
     'active': {
       active: {
-        opacity: 1,
+        transform: 'translateX(0)',
       },
     },
   }, { localChanges, unstagedChanges, hover, active })
