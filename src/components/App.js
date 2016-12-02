@@ -58,6 +58,7 @@ export class App extends React.Component { // eslint-disable-line
         main: {
           flex: 1,
           display: 'flex',
+          minWidth: 0,
         },
       },
     })

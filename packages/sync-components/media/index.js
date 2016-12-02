@@ -12,6 +12,7 @@ export const Media = ({ left, children, right, spacing = 72, center }) => {
       },
       left: {
         width: spacing - 15,
+        flexShrink: 0,
       },
       center: {
         flex: 1,

@@ -26,6 +26,7 @@ export class LocalChanges extends React.Component {
         wrap: {
           display: 'flex',
           flexDirection: 'column',
+          minWidth: 0,
         },
         commit: {
           height: 54,
@@ -34,6 +35,7 @@ export class LocalChanges extends React.Component {
         changes: {
           flex: 1,
           display: 'flex',
+          minWidth: 0,
         },
         files: {
           width: 200,
@@ -43,12 +45,13 @@ export class LocalChanges extends React.Component {
         diff: {
           flex: 1,
           display: 'flex',
+          minWidth: 0,
         },
       },
     })
 
     return (
-      <Card style={{ display: 'flex', flex: 1 }}>
+      <Card style={{ display: 'flex', flex: 1, minWidth: 0 }}>
         <div style={ styles.wrap }>
           <div style={ styles.commit }>
             commit
@@ -64,7 +67,7 @@ export class LocalChanges extends React.Component {
               </Scroll>
             </div>
             <div style={ styles.diff }>
-              <Scroll>
+              <Scroll x>
                 <LocalChangesDiff
                   fileSelected={ fileSelected }
                   files={ parse(diff) }

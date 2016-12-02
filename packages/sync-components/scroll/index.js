@@ -14,6 +14,7 @@ export class Scroll extends React.Component {
   render() {
     const style = {
       overflowY: 'auto',
+      overflowX: this.props.x ? 'auto' : 'visible',
       flex: 1,
     }
     return (

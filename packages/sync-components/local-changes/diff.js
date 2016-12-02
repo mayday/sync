@@ -3,6 +3,7 @@ import _ from 'lodash'
 import reactCSS from 'reactcss'
 
 import { Media } from '../'
+import { Code } from './code'
 
 export const LocalChangesDiff = ({ files, fileSelected }) => {
   const styles = reactCSS({
@@ -11,15 +12,10 @@ export const LocalChangesDiff = ({ files, fileSelected }) => {
         color: '#bbb',
         paddingTop: 15,
         paddingBottom: 15,
+        width: 600,
       },
       content: {
         color: '#666',
-      },
-      del: {
-        color: 'red',
-      },
-      add: {
-        color: 'green',
       },
     },
   })
@@ -36,11 +32,13 @@ export const LocalChangesDiff = ({ files, fileSelected }) => {
             const leftLine = change.type === 'del' ? change.ln : change.ln1
             const rightLine = change.type === 'add' ? change.ln : change.ln2
             return (
-              <Media key={ j } left={ <div>{ leftLine } - { rightLine }</div> }>
-                <div style={ styles[change.type] }>
-                  { change.content }
-                </div>
-              </Media>
+              <Code
+                key={ j }
+                beforeLineNumber={ leftLine }
+                currentLineNumber={ rightLine }
+                type={ change.type }
+                content={ change.content }
+              />
             )
           }) }
         </div>
