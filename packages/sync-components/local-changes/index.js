@@ -13,6 +13,7 @@ export const LocalChanges = ({ files, diff }) => {
       },
       commit: {
         height: 54,
+        borderBottom: '1px solid #222',
       },
       changes: {
         flex: 1,
@@ -21,6 +22,7 @@ export const LocalChanges = ({ files, diff }) => {
       files: {
         width: 200,
         display: 'flex',
+        borderRight: '1px solid #222',
       },
       diff: {
         flex: 1,

@@ -9,6 +9,10 @@ export const STATUS_REQUEST = 'GIT/REPOS/STATUS_REQUEST'
 export const STATUS = 'GIT/REPOS/STATUS'
 export const STATUS_FAILURE = 'GIT/REPOS/STATUS_FAILURE'
 
+export const ADD_REQUEST = 'GIT/REPOS/ADD_REQUEST'
+export const ADD = 'GIT/REPOS/ADD'
+export const ADD_FAILURE = 'GIT/REPOS/ADD_FAILURE'
+
 export const DIFF_REQUEST = 'GIT/REPOS/DIFF_REQUEST'
 export const DIFF = 'GIT/REPOS/DIFF'
 export const DIFF_FAILURE = 'GIT/REPOS/DIFF_FAILURE'
@@ -59,6 +63,13 @@ export const actions = {
       path,
       method: 'status',
       types: [STATUS_REQUEST, STATUS, STATUS_FAILURE],
+    },
+  }),
+  gitAdd: () => ({
+    [GIT_API]: {
+      method: 'add',
+      args: ['.'],
+      types: [ADD_REQUEST, ADD, ADD_FAILURE],
     },
   }),
   gitDiff: () => ({

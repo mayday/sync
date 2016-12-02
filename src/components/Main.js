@@ -34,7 +34,7 @@ export const Main = (props) => {
     <Scroll scrollToBottom>
       <div style={ styles.main }>
         <CommitList commits={ commitList } />
-        { props.diff ? (
+        { props.files && props.files.length ? (
           <div style={ styles.changes }>
             <LocalChanges files={ props.files } diff={ props.diff } />
           </div>
