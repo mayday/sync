@@ -5,7 +5,7 @@ import { parseMessageText } from './helper'
 
 import { Card, Icon, Media } from '../'
 
-export const Commit = ({ message, author, date, filesChanged, local, position }) => {
+export const Commit = ({ message, author, date, local, position }) => {
   const styles = reactCSS({
     'default': {
       commit: {
@@ -22,6 +22,9 @@ export const Commit = ({ message, author, date, filesChanged, local, position })
         cursor: 'default',
       },
       icon: {
+        color: '#666',
+      },
+      more: {
         color: '#666',
       },
       count: {
@@ -42,13 +45,6 @@ export const Commit = ({ message, author, date, filesChanged, local, position })
     },
   }, { local })
 
-  const count = filesChanged !== 1 ? (
-    <div style={ styles.count }>
-      <div style={ styles.number }>{ filesChanged }</div>
-      <Icon name="unfold-more" />
-    </div>
-  ) : null
-
   const iconPosition = {
     'first': 'source-commit-start',
     'middle': 'source-commit',
@@ -64,7 +60,7 @@ export const Commit = ({ message, author, date, filesChanged, local, position })
           spacing={ 54 }
           center
           left={ <div style={ styles.icon }><Icon name={ iconPosition } /></div> }
-          right={ count }
+          right={ <div style={ styles.more }><Icon name="dots-vertical" /></div> }
         >
           <div style={ styles.title }>{ parseMessageText(message) }</div>
           <div style={ styles.subtitle }>{ moment(new Date(date)).fromNow() } by { author }</div>

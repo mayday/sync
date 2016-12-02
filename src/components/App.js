@@ -53,6 +53,7 @@ export class App extends React.Component { // eslint-disable-line
           width: 180 - 5,
           display: 'flex',
           overflowY: 'auto',
+          flexShrink: 0,
         },
         main: {
           flex: 1,

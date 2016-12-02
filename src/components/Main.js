@@ -4,7 +4,8 @@ import reactCSS from 'reactcss'
 
 import { connect } from 'react-redux'
 import { store } from 'sync-store'
-import { actions } from 'sync-git'
+import { actions as gitActions } from 'sync-git'
+import { actions as uiActions } from 'sync-ui'
 
 
 import { CommitList, LocalChanges, Scroll } from 'sync-components'
@@ -21,7 +22,7 @@ export class Main extends React.Component {
   }
 
   render() {
-    const { commits, ahead, files, diff } = this.props
+    const { commits, ahead, files, diff, setFileSelectedDiff, fileSelected } = this.props
     const styles = reactCSS({
       'default': {
         main: {
@@ -50,7 +51,12 @@ export class Main extends React.Component {
           <CommitList commits={ commitList } />
           { files && files.length ? (
             <div style={ styles.changes }>
-              <LocalChanges files={ files } diff={ diff } />
+              <LocalChanges
+                files={ files }
+                diff={ diff }
+                onSelect={ setFileSelectedDiff }
+                fileSelected={ fileSelected }
+              />
             </div>
           ) : null }
         </div>
@@ -63,6 +69,7 @@ export default connect(
   state => ({
     ...store.getCurrentRepo(state),
     commits: _.reverse(store.getCurrentCommits(state) || []),
+    fileSelected: store.getFileSelected(state),
   }),
-  actions,
+  { ...gitActions, ...uiActions },
 )(Main)

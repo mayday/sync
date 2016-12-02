@@ -2,17 +2,13 @@ import React from 'react'
 import _ from 'lodash'
 import reactCSS from 'reactcss'
 
-export const LocalChangesFiles = ({ files }) => {
+import { File } from './file'
+
+export const LocalChangesFiles = ({ files, fileSelected, onSelect }) => {
   const styles = reactCSS({
     'default': {
       files: {
         padding: 15,
-      },
-      file: {
-        fontSize: 14,
-        color: '#D4E157',
-        opacity: 0.6,
-        marginBottom: 10,
       },
     },
   })
@@ -20,7 +16,12 @@ export const LocalChangesFiles = ({ files }) => {
   return (
     <div style={ styles.files }>
       { _.map(files, (file, i) => (
-        <div key={ i } style={ styles.file }>{ file.path }</div>
+        <File
+          key={ i }
+          path={ file.path }
+          onSelect={ onSelect }
+          selected={ file.path === fileSelected }
+        />
       )) }
     </div>
   )
