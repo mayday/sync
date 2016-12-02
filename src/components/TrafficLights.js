@@ -23,7 +23,7 @@ export const TrafficLights = ({ hover }) => {
     },
     'hover': {
       light: {
-        backgroundColor: '#aaa',
+        backgroundColor: '#bbb',
       },
     },
   }, { hover })

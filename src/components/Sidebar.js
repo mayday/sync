@@ -7,7 +7,7 @@ import { actions } from 'sync-ui'
 
 import { SidebarGroup } from 'sync-components'
 
-export const Sidebar = ({ starred, repos, statuses, changeActiveRepo }) => {
+export const Sidebar = ({ starred, repos, statuses, changeActiveRepo, activeRepo }) => {
   const styles = reactCSS({
     'default': {
       sidebar: {
@@ -25,6 +25,7 @@ export const Sidebar = ({ starred, repos, statuses, changeActiveRepo }) => {
           items={ starred }
           statuses={ statuses }
           onSelect={ changeActiveRepo }
+          activeRepo={ activeRepo }
         />
       ) : null }
 
@@ -34,6 +35,7 @@ export const Sidebar = ({ starred, repos, statuses, changeActiveRepo }) => {
         items={ repos }
         statuses={ statuses }
         onSelect={ changeActiveRepo }
+        activeRepo={ activeRepo }
       />
     </div>
   )
@@ -44,6 +46,7 @@ export default connect(
     starred: store.getStarredRepos(state),
     repos: store.getUnstarredRepos(state),
     statuses: store.getReposStatuses(state),
+    activeRepo: store.getActiveRepo(state),
   }),
   actions,
 )(Sidebar)

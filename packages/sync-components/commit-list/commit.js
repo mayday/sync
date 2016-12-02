@@ -13,7 +13,7 @@ export const Commit = ({ message, author, date, local, position }) => {
         paddingBottom: 15,
       },
       title: {
-        color: '#aaa',
+        color: '#bbb',
         userSelect: 'text',
       },
       subtitle: {

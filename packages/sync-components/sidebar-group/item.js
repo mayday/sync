@@ -2,7 +2,7 @@ import React from 'react'
 import reactCSS, { handleHover } from 'reactcss'
 
 export const SidebarGroupItem = handleHover(({ name, localChanges, unstagedChanges,
-  hover, path, onSelect }) => {
+  hover, path, onSelect, active }) => {
   const styles = reactCSS({
     'default': {
       item: {
@@ -24,13 +24,15 @@ export const SidebarGroupItem = handleHover(({ name, localChanges, unstagedChang
         textOverflow: 'ellipsis',
         width: '100%',
       },
-      dot: {
+      active: {
         opacity: 0,
-        fontSize: 20,
-        lineHeight: '20px',
         position: 'absolute',
-        left: -2,
+        left: -7,
         transition: 'opacity 100ms ease-out',
+        height: 24,
+        width: 3,
+        borderRadius: '0 2px 2px 0',
+        background: 'rgba(212, 225, 87, 1)',
       },
     },
     'localChanges': {
@@ -39,8 +41,8 @@ export const SidebarGroupItem = handleHover(({ name, localChanges, unstagedChang
       },
     },
     'unstagedChanges': {
-      dot: {
-        opacity: 1,
+      item: {
+        color: 'rgba(212, 225, 87, 1)',
       },
     },
     'hover': {
@@ -48,13 +50,18 @@ export const SidebarGroupItem = handleHover(({ name, localChanges, unstagedChang
         backgroundColor: 'rgba(0, 0, 0, .2)',
       },
     },
-  }, { localChanges, unstagedChanges, hover })
+    'active': {
+      active: {
+        opacity: 1,
+      },
+    },
+  }, { localChanges, unstagedChanges, hover, active })
 
   const handleClick = () => onSelect(path)
 
   return (
     <div style={ styles.item } onClick={ handleClick }>
-      <div style={ styles.dot }>•</div>
+      <div style={ styles.active } />
       <div style={ styles.label }>
         { name }
       </div>
