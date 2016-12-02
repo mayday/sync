@@ -3,10 +3,11 @@ import reactCSS from 'reactcss'
 
 import { connect } from 'react-redux'
 import { store } from 'sync-store'
+import { actions } from 'sync-ui'
 
 import { SidebarGroup } from 'sync-components'
 
-export const Sidebar = ({ starred, repos, statuses }) => {
+export const Sidebar = ({ starred, repos, statuses, changeActiveRepo }) => {
   const styles = reactCSS({
     'default': {
       sidebar: {
@@ -23,6 +24,7 @@ export const Sidebar = ({ starred, repos, statuses }) => {
           icon="star"
           items={ starred }
           statuses={ statuses }
+          onSelect={ changeActiveRepo }
         />
       ) : null }
 
@@ -31,6 +33,7 @@ export const Sidebar = ({ starred, repos, statuses }) => {
         icon="file-document-box"
         items={ repos }
         statuses={ statuses }
+        onSelect={ changeActiveRepo }
       />
     </div>
   )
@@ -42,4 +45,5 @@ export default connect(
     repos: store.getUnstarredRepos(state),
     statuses: store.getReposStatuses(state),
   }),
+  actions,
 )(Sidebar)

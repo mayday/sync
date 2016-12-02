@@ -26,9 +26,9 @@ const repo = (state, action) => {
     case STATUS:
       return { ...state, ...action.status, path: action.path }
     case DIFF:
-      return { ...state, diff: action.diff }
+      return { ...state, diff: action.diff, path: action.path }
     case DIFF_SUMMARY:
-      return { ...state, diffSummary: action.diffSummary }
+      return { ...state, diffSummary: action.diffSummary, path: action.path }
     default: return state
   }
 }

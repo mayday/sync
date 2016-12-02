@@ -5,7 +5,7 @@ import reactCSS from 'reactcss'
 import { CompactMedia, SmallIcon } from '../'
 import { SidebarGroupItem } from './item'
 
-export const SidebarGroup = ({ label, icon, items, statuses }) => {
+export const SidebarGroup = ({ label, icon, items, statuses, onSelect }) => {
   const styles = reactCSS({
     'default': {
       group: {
@@ -41,9 +41,11 @@ export const SidebarGroup = ({ label, icon, items, statuses }) => {
           return (
             <div key={ i } style={ styles.spacing }>
               <SidebarGroupItem
+                path={ item.path }
                 name={ item.name }
                 unstagedChanges={ repo.files && !!repo.files.length }
                 localChanges={ repo.ahead > 0 }
+                onSelect={ onSelect }
               />
             </div>
           )

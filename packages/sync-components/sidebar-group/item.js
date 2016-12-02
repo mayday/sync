@@ -2,7 +2,7 @@ import React from 'react'
 import reactCSS, { handleHover } from 'reactcss'
 
 export const SidebarGroupItem = handleHover(({ name, localChanges, unstagedChanges,
-  hover }) => {
+  hover, path, onSelect }) => {
   const styles = reactCSS({
     'default': {
       item: {
@@ -50,8 +50,10 @@ export const SidebarGroupItem = handleHover(({ name, localChanges, unstagedChang
     },
   }, { localChanges, unstagedChanges, hover })
 
+  const handleClick = () => onSelect(path)
+
   return (
-    <div style={ styles.item }>
+    <div style={ styles.item } onClick={ handleClick }>
       <div style={ styles.dot }>•</div>
       <div style={ styles.label }>
         { name }

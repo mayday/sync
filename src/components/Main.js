@@ -4,44 +4,59 @@ import reactCSS from 'reactcss'
 
 import { connect } from 'react-redux'
 import { store } from 'sync-store'
+import { actions } from 'sync-git'
+
 
 import { CommitList, LocalChanges, Scroll } from 'sync-components'
 
-export const Main = (props) => {
-  const styles = reactCSS({
-    'default': {
-      main: {
-        marginTop: 15,
-        marginRight: 15,
-        marginLeft: 5,
-      },
-      changes: {
-        marginBottom: 15,
-        maxHeight: '78vh',
-        display: 'flex',
-      },
-    },
-  })
+export class Main extends React.Component {
+  componentDidUpdate(lastProps) {
+    if (lastProps.path !== this.props.path) {
+      this.props.gitDiff()
+      this.props.gitDiffSummary()
+      this.props.gitCommits()
+      this.props.gitStatus()
+      // this.props.gitAdd()
+    }
+  }
 
-  const commitList = _.map(props.commits, ({ message, author_email, date }, i) => ({
-    message,
-    author: author_email,
-    date,
-    local: i >= props.commits.length - props.ahead,
-  }))
+  render() {
+    const { commits, ahead, files, diff } = this.props
+    const styles = reactCSS({
+      'default': {
+        main: {
+          marginTop: 15,
+          marginRight: 15,
+          marginLeft: 5,
+        },
+        changes: {
+          marginBottom: 15,
+          maxHeight: '78vh',
+          display: 'flex',
+        },
+      },
+    })
 
-  return (
-    <Scroll scrollToBottom>
-      <div style={ styles.main }>
-        <CommitList commits={ commitList } />
-        { props.files && props.files.length ? (
-          <div style={ styles.changes }>
-            <LocalChanges files={ props.files } diff={ props.diff } />
-          </div>
-        ) : null }
-      </div>
-    </Scroll>
-  )
+    const commitList = _.map(commits, ({ message, author_email, date }, i) => ({
+      message,
+      author: author_email,
+      date,
+      local: i >= commits.length - ahead,
+    }))
+
+    return (
+      <Scroll scrollToBottom>
+        <div style={ styles.main }>
+          <CommitList commits={ commitList } />
+          { files && files.length ? (
+            <div style={ styles.changes }>
+              <LocalChanges files={ files } diff={ diff } />
+            </div>
+          ) : null }
+        </div>
+      </Scroll>
+    )
+  }
 }
 
 export default connect(
@@ -49,4 +64,5 @@ export default connect(
     ...store.getCurrentRepo(state),
     commits: _.reverse(store.getCurrentCommits(state) || []),
   }),
+  actions,
 )(Main)
