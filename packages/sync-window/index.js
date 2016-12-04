@@ -8,9 +8,10 @@ export const registerEvents = (window, { getState, dispatch }) => {
   window.onfocus = () => {
     const state = getState()
     dispatch(git.gitReposStatus(store.getRepos(state)))
-    // dispatch(git.gitAdd())
-    dispatch(git.gitDiff())
-    dispatch(git.gitDiffSummary())
-    dispatch(git.gitCommits())
+    dispatch(git.gitAdd()).then(() => {
+      dispatch(git.gitDiff())
+      dispatch(git.gitDiffSummary())
+      dispatch(git.gitCommits())
+    })
   }
 }

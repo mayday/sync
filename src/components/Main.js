@@ -13,11 +13,12 @@ import { CommitList, LocalChanges, Scroll } from 'sync-components'
 export class Main extends React.Component {
   componentDidUpdate(lastProps) {
     if (lastProps.path !== this.props.path) {
-      this.props.gitDiff()
-      this.props.gitDiffSummary()
+      this.props.gitAdd().then(() => {
+        this.props.gitDiff()
+        this.props.gitDiffSummary()
+      })
       this.props.gitCommits()
       this.props.gitStatus()
-      // this.props.gitAdd()
     }
   }
 

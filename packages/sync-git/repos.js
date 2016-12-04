@@ -75,6 +75,7 @@ export const actions = {
   gitDiff: () => ({
     [GIT_API]: {
       method: 'diff',
+      args: [['--cached']],
       types: [DIFF_REQUEST, DIFF, DIFF_FAILURE],
     },
   }),
