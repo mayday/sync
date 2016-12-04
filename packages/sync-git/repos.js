@@ -21,10 +21,20 @@ export const DIFF_SUMMARY_REQUEST = 'GIT/REPOS/DIFF_SUMMARY_REQUEST'
 export const DIFF_SUMMARY = 'GIT/REPOS/DIFF_SUMMARY'
 export const DIFF_SUMMARY_FAILURE = 'GIT/REPOS/DIFF_SUMMARY_FAILURE'
 
+const files = (state = [], action) => {
+  switch (action.type) {
+    case STATUS:
+      return _.map(action.status.files, (file) => {
+        return { ...file, tracked: true }
+      })
+    default: return state
+  }
+}
+
 const repo = (state, action) => {
   switch (action.type) {
     case STATUS:
-      return { ...state, ...action.status, path: action.path }
+      return { ...state, ...action.status, files: files([], action), path: action.path }
     case DIFF:
       return { ...state, diff: action.diff, path: action.path }
     case DIFF_SUMMARY:

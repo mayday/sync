@@ -1,4 +1,5 @@
 import React from 'react'
+import _ from 'lodash'
 import reactCSS from 'reactcss'
 import parse from 'parse-diff'
 
@@ -21,7 +22,8 @@ export class LocalChanges extends React.Component {
     }
   }
   render() {
-    const { files, diff, fileSelected, onSelect } = this.props
+    const { files, diff, fileSelected, onSelect, commitMessage,
+      onCommitMessageChange } = this.props
     const styles = reactCSS({
       'default': {
         wrap: {
@@ -51,11 +53,18 @@ export class LocalChanges extends React.Component {
       },
     })
 
+    const filePaths = _(this.props.files).filter({ tracked: true }).map('path').value()
+    const handleCommit = () => this.props.onCommit(commitMessage, filePaths)
+
     return (
       <Card style={{ display: 'flex', flex: 1, minWidth: 0 }}>
         <div style={ styles.wrap }>
           <div style={ styles.commit }>
-            <LocalChangesCommit />
+            <LocalChangesCommit
+              message={ commitMessage }
+              onChange={ onCommitMessageChange }
+              onCommit={ handleCommit }
+            />
           </div>
           <div style={ styles.changes }>
             <div style={ styles.files }>

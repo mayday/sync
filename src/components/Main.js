@@ -23,7 +23,8 @@ export class Main extends React.Component {
   }
 
   render() {
-    const { commits, ahead, files, diff, setFileSelectedDiff, fileSelected } = this.props
+    const { commits, ahead, files, diff, setFileSelectedDiff, fileSelected,
+      gitCommit, changeCommitMessage, commitMessage } = this.props
     const styles = reactCSS({
       'default': {
         main: {
@@ -57,6 +58,9 @@ export class Main extends React.Component {
                 diff={ diff }
                 onSelect={ setFileSelectedDiff }
                 fileSelected={ fileSelected }
+                onCommitMessageChange={ changeCommitMessage }
+                commitMessage={ commitMessage }
+                onCommit={ gitCommit }
               />
             </div>
           ) : null }
@@ -71,6 +75,7 @@ export default connect(
     ...store.getCurrentRepo(state),
     commits: _.reverse(store.getCurrentCommits(state) || []),
     fileSelected: store.getFileSelected(state),
+    commitMessage: store.getCommitMessage(state),
   }),
   { ...gitActions, ...uiActions },
 )(Main)

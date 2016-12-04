@@ -3,7 +3,7 @@ import reactCSS from 'reactcss'
 
 import { Input, Media, SmallIcon } from 'sync-components'
 
-export const LocalChangesCommit = () => {
+export const LocalChangesCommit = ({ message, onChange, onCommit }) => {
   const styles = reactCSS({
     'default': {
       commit: {
@@ -25,9 +25,15 @@ export const LocalChangesCommit = () => {
         center
         spacing={ 54 }
         left={ <SmallIcon name="checkbox-marked" /> }
-        right={ <div>COMMIT</div> }
+        right={ <div onClick={ onCommit }>COMMIT</div> }
       >
-        <Input placeholder="Changes (2)…" style={ styles.input } />
+        <Input
+          placeholder="Changes (2)…"
+          value={ message }
+          onChange={ onChange }
+          onEnter={ onCommit }
+          style={ styles.input }
+        />
       </Media>
     </div>
   )
