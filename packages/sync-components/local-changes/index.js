@@ -5,6 +5,7 @@ import parse from 'parse-diff'
 import { Card, Scroll } from 'sync-components'
 import { LocalChangesFiles } from './files'
 import { LocalChangesDiff } from './diff'
+import { LocalChangesCommit } from './commit'
 
 export class LocalChanges extends React.Component {
   componentDidMount() {
@@ -54,7 +55,7 @@ export class LocalChanges extends React.Component {
       <Card style={{ display: 'flex', flex: 1, minWidth: 0 }}>
         <div style={ styles.wrap }>
           <div style={ styles.commit }>
-            commit
+            <LocalChangesCommit />
           </div>
           <div style={ styles.changes }>
             <div style={ styles.files }>
