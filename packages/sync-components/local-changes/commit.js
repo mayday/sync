@@ -3,7 +3,7 @@ import reactCSS from 'reactcss'
 
 import { Input, Media, SmallIcon } from 'sync-components'
 
-export const LocalChangesCommit = ({ message, onChange, onCommit }) => {
+export const LocalChangesCommit = ({ message, onChange, onCommit, fileChangeCount }) => {
   const styles = reactCSS({
     'default': {
       commit: {
@@ -28,7 +28,7 @@ export const LocalChangesCommit = ({ message, onChange, onCommit }) => {
         right={ <div onClick={ onCommit }>COMMIT</div> }
       >
         <Input
-          placeholder="Changes (2)…"
+          placeholder={ `Changes (${ fileChangeCount })…` }
           value={ message }
           onChange={ onChange }
           onEnter={ onCommit }

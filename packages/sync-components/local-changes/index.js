@@ -61,6 +61,7 @@ export class LocalChanges extends React.Component {
         <div style={ styles.wrap }>
           <div style={ styles.commit }>
             <LocalChangesCommit
+              fileChangeCount={ files.length }
               message={ commitMessage }
               onChange={ onCommitMessageChange }
               onCommit={ handleCommit }
