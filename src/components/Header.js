@@ -18,7 +18,7 @@ export const Header = ({ path, current }) => {
         WebkitAppRegion: 'drag',
       },
       left: {
-        width: 180,
+        width: 150,
         paddingLeft: 15,
         boxSizing: 'border-box',
       },

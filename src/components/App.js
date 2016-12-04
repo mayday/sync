@@ -50,7 +50,7 @@ export class App extends React.Component { // eslint-disable-line
           display: 'flex',
         },
         sidebar: {
-          width: 180 - 5,
+          width: 150 - 5,
           display: 'flex',
           overflowY: 'auto',
           flexShrink: 0,
