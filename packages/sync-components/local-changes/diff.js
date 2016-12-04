@@ -37,7 +37,7 @@ export const LocalChangesDiff = ({ files, fileSelected }) => {
                 beforeLineNumber={ leftLine }
                 currentLineNumber={ rightLine }
                 type={ change.type }
-                content={ change.content }
+                content={ change.content.substring(1) }
               />
             )
           }) }

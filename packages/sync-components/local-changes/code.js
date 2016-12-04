@@ -16,6 +16,8 @@ export const Code = ({ beforeLineNumber, currentLineNumber, type, content }) => 
       },
       pre: {
         margin: 0,
+        userSelect: 'text',
+        fontSize: 15,
       },
     },
     'add': {
