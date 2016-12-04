@@ -1,5 +1,8 @@
 import React from 'react'
 import reactCSS from 'reactcss'
+import { trimPath } from './helper'
+
+import { CompactMedia, SmallIcon } from '../'
 
 export const File = ({ path, selected, onSelect }) => {
   const styles = reactCSS({
@@ -21,6 +24,10 @@ export const File = ({ path, selected, onSelect }) => {
   const handleClick = () => onSelect(path)
 
   return (
-    <div style={ styles.file } onClick={ handleClick }>{ path }</div>
+    <div style={ styles.file } onClick={ handleClick }>
+      <CompactMedia left={ <SmallIcon name="checkbox-marked" /> }>
+        { trimPath(path) }
+      </CompactMedia>
+    </div>
   )
 }

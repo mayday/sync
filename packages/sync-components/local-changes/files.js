@@ -8,7 +8,8 @@ export const LocalChangesFiles = ({ files, fileSelected, onSelect }) => {
   const styles = reactCSS({
     'default': {
       files: {
-        padding: 15,
+        paddingTop: 15,
+        paddingBottom: 15,
       },
     },
   })
