@@ -26,7 +26,7 @@ export default validate({
       'redux-git-middleware': 'packages/redux-git-middleware',
       'sync-components': 'packages/sync-components',
       'sync-store-git': 'packages/sync-store-git',
-      'sync-settings': 'packages/sync-settings',
+      'sync-store-settings': 'packages/sync-store-settings',
       'sync-store': 'packages/sync-store',
       'sync-theme-ui-dark': 'packages/sync-theme-ui-dark',
       'sync-store-ui': 'packages/sync-store-ui',

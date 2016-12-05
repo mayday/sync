@@ -42,7 +42,7 @@ module.exports = {
       'redux-git-middleware',
       'sync-components',
       'sync-store-git',
-      'sync-settings',
+      'sync-store-settings',
       'sync-store',
       'sync-theme-ui-dark',
       'sync-store-ui',

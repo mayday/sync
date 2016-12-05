@@ -1,7 +1,7 @@
 import { scopeStateToSelectors } from 'redux-selector'
 
 import { selectors as git } from 'sync-store-git'
-import { selectors as settings } from 'sync-settings'
+import { selectors as settings } from 'sync-store-settings'
 import { selectors as ui } from 'sync-store-ui'
 
 export default {
