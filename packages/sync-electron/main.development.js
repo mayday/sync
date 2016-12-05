@@ -1,6 +1,5 @@
 /* eslint-disable no-console */
 
-import path from 'path'
 import { app, BrowserWindow } from 'electron'
 import windowStateKeeper from 'electron-window-state'
 import debug from 'electron-debug'
