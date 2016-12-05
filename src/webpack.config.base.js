@@ -27,6 +27,7 @@ export default validate({
       'sync-components': 'packages/sync-components',
       'sync-store-git': 'packages/sync-store-git',
       'sync-store-settings': 'packages/sync-store-settings',
+      'sync-electron': 'packages/sync-electron',
       'sync-store': 'packages/sync-store',
       'sync-theme-ui-dark': 'packages/sync-theme-ui-dark',
       'sync-store-ui': 'packages/sync-store-ui',

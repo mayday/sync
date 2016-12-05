@@ -25,7 +25,7 @@ const createWindow = () => {
   })
 
   mainWindowState.manage(mainWindow)
-  mainWindow.loadURL(`file://${ path.resolve(__dirname, '../src') }/index.html`)
+  mainWindow.loadURL(`file://${ __dirname }/index.html`)
 
   mainWindow.webContents.on('did-finish-load', () => {
     mainWindow.show()

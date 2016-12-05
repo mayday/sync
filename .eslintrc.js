@@ -43,6 +43,7 @@ module.exports = {
       'sync-components',
       'sync-store-git',
       'sync-store-settings',
+      'sync-electron',
       'sync-store',
       'sync-theme-ui-dark',
       'sync-store-ui',
