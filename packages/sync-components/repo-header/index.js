@@ -3,7 +3,7 @@ import reactCSS from 'reactcss'
 
 import { Icon, Media } from '../'
 
-export const RepoHeader = ({ name, currentBranch }) => {
+export const RepoHeader = ({ name, currentBranch, onSync }) => {
   const styles = reactCSS({
     'default': {
       header: {
@@ -22,7 +22,7 @@ export const RepoHeader = ({ name, currentBranch }) => {
       <Media
         center
         left={ name ? <Icon name="source-branch" /> : null }
-        right={ <Icon name="refresh" /> }
+        right={ <Icon name="refresh" onClick={ onSync } /> }
       >
         { name ? (
           <div>

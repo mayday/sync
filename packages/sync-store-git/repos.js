@@ -21,6 +21,18 @@ export const DIFF_SUMMARY_REQUEST = 'GIT/REPOS/DIFF_SUMMARY_REQUEST'
 export const DIFF_SUMMARY = 'GIT/REPOS/DIFF_SUMMARY'
 export const DIFF_SUMMARY_FAILURE = 'GIT/REPOS/DIFF_SUMMARY_FAILURE'
 
+export const PULL_REQUEST = 'GIT/REPOS/PULL_REQUEST'
+export const PULL = 'GIT/REPOS/PULL'
+export const PULL_FAILURE = 'GIT/REPOS/PULL_FAILURE'
+
+export const PUSH_REQUEST = 'GIT/REPOS/PUSH_REQUEST'
+export const PUSH = 'GIT/REPOS/PUSH'
+export const PUSH_FAILURE = 'GIT/REPOS/PUSH_FAILURE'
+
+export const SYNC_REQUEST = 'GIT/REPOS/SYNC_REQUEST'
+export const SYNC = 'GIT/REPOS/SYNC'
+export const SYNC_FAILURE = 'GIT/REPOS/SYNC_FAILURE'
+
 const files = (state = [], action) => {
   switch (action.type) {
     case STATUS:
@@ -95,6 +107,32 @@ export const actions = {
       types: [DIFF_SUMMARY_REQUEST, DIFF_SUMMARY, DIFF_SUMMARY_FAILURE],
     },
   }),
+  gitPull: () => ({
+    [GIT_API]: {
+      method: 'pull',
+      types: [PULL_REQUEST, PULL, PULL_FAILURE],
+    },
+  }),
+  gitPush: () => ({
+    [GIT_API]: {
+      method: 'push',
+      types: [PUSH_REQUEST, PUSH, PUSH_FAILURE],
+    },
+  }),
+
+  gitSync: () => (dispatch) => {
+    dispatch({ type: SYNC_REQUEST })
+    dispatch(actions.gitPull())
+    .then(() => {
+      dispatch(actions.gitPush())
+      .then(() => {
+        dispatch({ type: SYNC })
+      })
+    })
+    .catch((error) => {
+      dispatch({ type: SYNC_FAILURE, error })
+    })
+  },
 }
 
 export const selectors = {

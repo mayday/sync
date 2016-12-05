@@ -3,11 +3,12 @@ import reactCSS from 'reactcss'
 
 import { connect } from 'react-redux'
 import { store } from 'sync-store'
+import { actions } from 'sync-store-git'
 
 import { RepoHeader } from 'sync-components'
 import TrafficLights from './TrafficLights'
 
-export const Header = ({ path, current }) => {
+export const Header = ({ path, current, gitSync }) => {
   const styles = reactCSS({
     'default': {
       header: {
@@ -46,7 +47,7 @@ export const Header = ({ path, current }) => {
         <TrafficLights />
       </div>
       <div style={ styles.right }>
-        <RepoHeader name={ name } currentBranch={ current } />
+        <RepoHeader name={ name } currentBranch={ current } onSync={ gitSync } />
       </div>
       <div style={ styles.divider } />
     </div>
@@ -57,4 +58,5 @@ export default connect(
   state => ({
     ...store.getCurrentRepo(state),
   }),
+  actions,
 )(Header)
