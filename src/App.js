@@ -3,7 +3,7 @@ import _ from 'lodash'
 import { connect } from 'react-redux'
 import { actions as gitActions } from 'sync-store-git'
 import { actions as settingsActions } from 'sync-settings'
-import { actions as uiActions } from 'sync-ui'
+import { actions as uiActions } from 'sync-store-ui'
 import { store } from 'sync-store'
 import { registerEvents } from 'sync-window'
 

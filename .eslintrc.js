@@ -45,7 +45,7 @@ module.exports = {
       'sync-settings',
       'sync-store',
       'sync-theme-ui-dark',
-      'sync-ui',
+      'sync-store-ui',
       'sync-window',
     ]
   }

@@ -3,7 +3,7 @@ import reactCSS from 'reactcss'
 
 import { connect } from 'react-redux'
 import { store } from 'sync-store'
-import { actions } from 'sync-ui'
+import { actions } from 'sync-store-ui'
 
 import { SidebarGroup } from 'sync-components'
 

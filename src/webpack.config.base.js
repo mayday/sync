@@ -29,7 +29,7 @@ export default validate({
       'sync-settings': 'packages/sync-settings',
       'sync-store': 'packages/sync-store',
       'sync-theme-ui-dark': 'packages/sync-theme-ui-dark',
-      'sync-ui': 'packages/sync-ui',
+      'sync-store-ui': 'packages/sync-store-ui',
       'sync-window': 'packages/sync-window',
     },
     extensions: ['', '.js'],
