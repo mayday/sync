@@ -1,6 +1,6 @@
 /* eslint-disable no-param-reassign */
 
-import { actions as git } from 'sync-git'
+import { actions as git } from 'sync-store-git'
 import { store } from 'sync-store'
 
 export const registerEvents = (window, { getState, dispatch }) => {

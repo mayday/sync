@@ -1,5 +1,5 @@
 {
-  "name": "sync-git",
+  "name": "sync-store-git",
   "version": "0.1.0",
   "description": "",
   "main": "index.js",

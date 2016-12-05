@@ -41,7 +41,7 @@ module.exports = {
       'electron',
       'redux-git-middleware',
       'sync-components',
-      'sync-git',
+      'sync-store-git',
       'sync-settings',
       'sync-store',
       'sync-theme-ui-dark',

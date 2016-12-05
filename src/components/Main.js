@@ -4,7 +4,7 @@ import reactCSS from 'reactcss'
 
 import { connect } from 'react-redux'
 import { store } from 'sync-store'
-import { actions as gitActions } from 'sync-git'
+import { actions as gitActions } from 'sync-store-git'
 import { actions as uiActions } from 'sync-ui'
 
 

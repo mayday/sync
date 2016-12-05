@@ -1,7 +1,7 @@
 import path from 'path'
 import validate from 'webpack-validator'
 
-const exclude = /node_modules\/(?!sync-store|sync-git)/
+const exclude = /node_modules\/(?!sync-store|sync-store-git)/
 
 export default validate({
   module: {
@@ -25,7 +25,7 @@ export default validate({
     alias: {
       'redux-git-middleware': 'packages/redux-git-middleware',
       'sync-components': 'packages/sync-components',
-      'sync-git': 'packages/sync-git',
+      'sync-store-git': 'packages/sync-store-git',
       'sync-settings': 'packages/sync-settings',
       'sync-store': 'packages/sync-store',
       'sync-theme-ui-dark': 'packages/sync-theme-ui-dark',
