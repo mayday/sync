@@ -21,6 +21,7 @@ export const RepoHeader = ({ name, currentBranch, onSync }) => {
     <div style={ styles.header }>
       <Media
         center
+        spacing={ 54 }
         left={ name ? <Icon name="source-branch" /> : null }
         right={ <Icon name="refresh" onClick={ onSync } /> }
       >
