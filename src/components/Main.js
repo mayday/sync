@@ -4,11 +4,10 @@ import reactCSS from 'reactcss'
 
 import { connect } from 'react-redux'
 import { store } from 'sync-store'
-import { actions as gitActions } from 'sync-store-git'
-import { actions as uiActions } from 'sync-store-ui'
+import { actions } from 'sync-store-git'
 
-
-import { CommitList, LocalChanges, Scroll } from 'sync-components'
+import { CommitList, Scroll } from 'sync-components'
+import LocalChanges from './LocalChanges'
 
 export class Main extends React.Component {
   componentDidUpdate(lastProps) {
@@ -23,8 +22,7 @@ export class Main extends React.Component {
   }
 
   render() {
-    const { commits, ahead, files, diff, setFileSelectedDiff, fileSelected,
-      gitCommit, changeCommitMessage, commitMessage } = this.props
+    const { commits, ahead, files } = this.props
     const styles = reactCSS({
       'default': {
         main: {
@@ -53,15 +51,7 @@ export class Main extends React.Component {
           <CommitList commits={ commitList } />
           { files && files.length ? (
             <div style={ styles.changes }>
-              <LocalChanges
-                files={ files }
-                diff={ diff }
-                onSelect={ setFileSelectedDiff }
-                fileSelected={ fileSelected }
-                onCommitMessageChange={ changeCommitMessage }
-                commitMessage={ commitMessage }
-                onCommit={ gitCommit }
-              />
+              <LocalChanges />
             </div>
           ) : null }
         </div>
@@ -74,8 +64,6 @@ export default connect(
   state => ({
     ...store.getCurrentRepo(state),
     commits: _.reverse(store.getCurrentCommits(state) || []),
-    fileSelected: store.getFileSelected(state),
-    commitMessage: store.getCommitMessage(state),
   }),
-  { ...gitActions, ...uiActions },
+  actions,
 )(Main)
