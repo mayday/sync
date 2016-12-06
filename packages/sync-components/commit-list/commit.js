@@ -23,6 +23,7 @@ export const Commit = ({ message, author, date, local, position }) => {
       },
       icon: {
         color: '#666',
+        transition: 'color 100ms ease-out',
       },
       more: {
         color: '#666',
