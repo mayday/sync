@@ -16,6 +16,7 @@ class HeaderDropdownContainer extends React.Component {
 export default connect(
   state => ({
     ...store.getCurrentRepo(state),
+    branchSearch: store.getBranchSearch(state),
   }),
   { ...gitActions, ...uiActions },
 )(HeaderDropdownContainer)
