@@ -10,7 +10,8 @@ import { RepoHeader } from 'sync-components'
 import HeaderDropdown from './HeaderDropdown'
 import TrafficLights from './TrafficLights'
 
-export const Header = ({ path, current, gitSync, menuVisible }) => {
+export const Header = ({ path, current, gitSync, menuVisible,
+  toggleBranchMenuVisibility }) => {
   const styles = reactCSS({
     'default': {
       header: {
@@ -49,7 +50,12 @@ export const Header = ({ path, current, gitSync, menuVisible }) => {
         <TrafficLights />
       </div>
       <div style={ styles.right }>
-        <RepoHeader name={ name } currentBranch={ current } onSync={ gitSync } />
+        <RepoHeader
+          name={ name }
+          currentBranch={ current }
+          onSync={ gitSync }
+          toggleBranchMenuVisibility={ toggleBranchMenuVisibility }
+        />
         { menuVisible ? (
           <HeaderDropdown name={ name } currentBranch={ current } />
         ) : null }

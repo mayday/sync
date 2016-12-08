@@ -8,7 +8,7 @@ const initialState = {
   activeRepo: '/Users/case/Github/sync', // TODO: REMOVE
   fileSelected: '',
   commitMessage: '',
-  branchMenuVisibility: true,
+  branchMenuVisibility: false,
   branchSearch: '',
 }
 

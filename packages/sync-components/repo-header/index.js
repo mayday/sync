@@ -3,7 +3,7 @@ import reactCSS from 'reactcss'
 
 import { Icon, Media } from '../'
 
-export const RepoHeader = ({ name, currentBranch, onSync }) => {
+export const RepoHeader = ({ name, currentBranch, onSync, toggleBranchMenuVisibility }) => {
   const styles = reactCSS({
     'default': {
       header: {
@@ -17,6 +17,8 @@ export const RepoHeader = ({ name, currentBranch, onSync }) => {
     },
   })
 
+  const handleClick = () => toggleBranchMenuVisibility()
+
   return (
     <div style={ styles.header }>
       <Media
@@ -27,7 +29,7 @@ export const RepoHeader = ({ name, currentBranch, onSync }) => {
       >
         { name ? (
           <div>
-            { name } / <span style={ styles.branch }>{ currentBranch }</span>
+            { name } / <span style={ styles.branch } onClick={ handleClick }>{ currentBranch }</span>
           </div>
         ) : null }
       </Media>

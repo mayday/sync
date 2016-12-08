@@ -34,6 +34,7 @@ export const SYNC = 'GIT/REPOS/SYNC'
 export const SYNC_FAILURE = 'GIT/REPOS/SYNC_FAILURE'
 
 export const BRANCHES = 'GIT/REPOS/BRANCHES'
+export const CHECKOUT_BRANCH = 'GIT/REPOS/CHECKOUT_BRANCH'
 
 const files = (state = [], action) => {
   switch (action.type) {
@@ -146,6 +147,8 @@ export const actions = {
       types: [null, BRANCHES],
     },
   }),
+
+  gitCheckoutBranch: branch => ({ type: CHECKOUT_BRANCH, branch }),
 }
 
 export const selectors = {

@@ -4,9 +4,10 @@ import reactCSS from 'reactcss'
 import { createFilter } from 'react-search-input'
 
 import { Input, Media } from '../'
+import { HeaderDropdownItem } from './item'
 
 export const HeaderDropdown = ({ name, currentBranch, branches,
-  branchSearchChange, branchSearch }) => {
+  branchSearchChange, branchSearch, gitCheckoutBranch }) => {
   const styles = reactCSS({
     'default': {
       dropdown: {
@@ -29,9 +30,6 @@ export const HeaderDropdown = ({ name, currentBranch, branches,
         color: '#bbb',
         marginLeft: 5,
       },
-      highlight: {
-        color: '#bbb',
-      },
     },
   })
 
@@ -50,19 +48,15 @@ export const HeaderDropdown = ({ name, currentBranch, branches,
         </div>
       </Media>
 
-      { _.map(filteredBranches, (branch, i) => {
-        const index = branch.indexOf(branchSearch)
-        const before = branch.slice(0, index)
-        const match = branch.slice(index, index + branchSearch.length)
-        const after = branch.slice(index + branchSearch.length, branch.length)
-        return (
-          <Media key={ i } spacing={ 54 } left>
-            <div style={ styles.searchbar }>
-              { name } / { before } <span style={ styles.highlight }>{ match }</span> { after }
-            </div>
-          </Media>
-        )
-      }) }
+      { _.map(filteredBranches, (branch, i) => (
+        <HeaderDropdownItem
+          prefix={ name }
+          key={ i }
+          name={ branch }
+          search={ branchSearch }
+          onSelect={ gitCheckoutBranch }
+        />
+      )) }
     </div>
   )
 }
