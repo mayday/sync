@@ -33,6 +33,8 @@ export const SYNC_REQUEST = 'GIT/REPOS/SYNC_REQUEST'
 export const SYNC = 'GIT/REPOS/SYNC'
 export const SYNC_FAILURE = 'GIT/REPOS/SYNC_FAILURE'
 
+export const BRANCHES = 'GIT/REPOS/BRANCHES'
+
 const files = (state = [], action) => {
   switch (action.type) {
     case STATUS:
@@ -51,6 +53,8 @@ const repo = (state, action) => {
       return { ...state, diff: action.diff, path: action.path }
     case DIFF_SUMMARY:
       return { ...state, diffSummary: action.diffSummary, path: action.path }
+    case BRANCHES:
+      return { ...state, branches: action.branchLocal.all }
     default: return state
   }
 }
@@ -62,6 +66,8 @@ export default function repos(state = {}, action) {
     case DIFF:
       return { ...state, [action.path]: repo(state[action.path], action) }
     case DIFF_SUMMARY:
+      return { ...state, [action.path]: repo(state[action.path], action) }
+    case BRANCHES:
       return { ...state, [action.path]: repo(state[action.path], action) }
     default: return state
   }
@@ -133,6 +139,13 @@ export const actions = {
       dispatch({ type: SYNC_FAILURE, error })
     })
   },
+
+  gitBranches: () => ({
+    [GIT_API]: {
+      method: 'branchLocal',
+      types: [null, BRANCHES],
+    },
+  }),
 }
 
 export const selectors = {
