@@ -54,7 +54,15 @@ export class LocalChanges extends React.Component {
     })
 
     const filePaths = _(this.props.files).filter({ tracked: true }).map('path').value()
-    const handleCommit = () => this.props.onCommit(commitMessage, filePaths)
+    const handleCommit = () => {
+      this.props.onCommit(commitMessage, filePaths)
+      .then(() => {
+        this.props.gitStatus()
+        this.props.gitDiff()
+        this.props.gitDiffSummary()
+        this.props.gitCommits()
+      })
+    }
 
     return (
       <Card style={{ display: 'flex', flex: 1, minWidth: 0 }}>
