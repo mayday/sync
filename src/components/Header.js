@@ -25,6 +25,8 @@ export const Header = ({ path, current, gitSync, menuVisible,
         width: 150,
         paddingLeft: 15,
         boxSizing: 'border-box',
+        marginTop: 11,
+        alignSelf: 'flex-start',
       },
       right: {
         flex: 1,
@@ -54,6 +56,7 @@ export const Header = ({ path, current, gitSync, menuVisible,
           name={ name }
           currentBranch={ current }
           onSync={ gitSync }
+          menuVisible={ menuVisible }
           toggleBranchMenuVisibility={ toggleBranchMenuVisibility }
         />
         { menuVisible ? (

@@ -10,15 +10,6 @@ export const HeaderDropdown = ({ name, currentBranch, branches,
   setBranchSearch, branchSearch, gitCheckoutBranch }) => {
   const styles = reactCSS({
     'default': {
-      dropdown: {
-        position: 'absolute',
-        zIndex: 2,
-        top: 0,
-        left: 0,
-        right: 0,
-        backgroundColor: 'rgba(39, 36, 42, 0.95)',
-        paddingLeft: 150,
-      },
       searchbar: {
         fontSize: 16,
         color: '#666',

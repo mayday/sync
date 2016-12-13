@@ -39,9 +39,9 @@ export class App extends React.Component { // eslint-disable-line
           top: 0,
           right: 0,
           left: 0,
-          height: 54,
           backgroundColor: 'rgba(39, 36, 42, 0.95)',
           zIndex: 2,
+          maxHeight: '100%',
         },
         headerSpacing: {
           paddingTop: 54,
