@@ -13,7 +13,7 @@ export default connect(
   }),
   {
     onSelect: uiActions.setFileSelectedDiff,
-    onCommitMessageChange: uiActions.changeCommitMessage,
+    onCommitMessageChange: uiActions.setCommitMessage,
     onCommit: gitActions.gitCommit,
     ...gitActions,
     ...uiActions,

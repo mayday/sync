@@ -7,7 +7,7 @@ import { Input, Media } from '../'
 import { HeaderDropdownItem } from './item'
 
 export const HeaderDropdown = ({ name, currentBranch, branches,
-  branchSearchChange, branchSearch, gitCheckoutBranch }) => {
+  setBranchSearch, branchSearch, gitCheckoutBranch }) => {
   const styles = reactCSS({
     'default': {
       dropdown: {
@@ -42,7 +42,7 @@ export const HeaderDropdown = ({ name, currentBranch, branches,
           { name } /
           <Input
             placeholder={ currentBranch }
-            onChange={ branchSearchChange }
+            onChange={ setBranchSearch }
             style={ styles.input }
           />
         </div>

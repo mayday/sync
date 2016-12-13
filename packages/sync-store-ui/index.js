@@ -29,11 +29,11 @@ export default function ui(state = initialState, action) {
 }
 
 export const actions = {
-  changeActiveRepo: path => ({ type: CHANGE_ACTIVE_REPO, path }),
+  setActiveRepo: path => ({ type: CHANGE_ACTIVE_REPO, path }),
   setFileSelectedDiff: path => ({ type: CHANGE_FILE_SELECTED, path }),
-  changeCommitMessage: message => ({ type: CHANGE_COMMIT_MESSAGE, message }),
+  setCommitMessage: message => ({ type: CHANGE_COMMIT_MESSAGE, message }),
   toggleBranchMenuVisibility: () => ({ type: TOGGLE_BRANCH_MENU_VISIBILITY }),
-  branchSearchChange: value => ({ type: BRANCH_SEARCH_CHANGE, value }),
+  setBranchSearch: value => ({ type: BRANCH_SEARCH_CHANGE, value }),
 }
 
 export const selectors = {

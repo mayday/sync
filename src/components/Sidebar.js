@@ -7,7 +7,7 @@ import { actions } from 'sync-store-ui'
 
 import { SidebarGroup } from 'sync-components'
 
-export const Sidebar = ({ starred, repos, statuses, changeActiveRepo, activeRepo }) => {
+export const Sidebar = ({ starred, repos, statuses, setActiveRepo, activeRepo }) => {
   const styles = reactCSS({
     'default': {
       sidebar: {
@@ -24,7 +24,7 @@ export const Sidebar = ({ starred, repos, statuses, changeActiveRepo, activeRepo
           icon="star"
           items={ starred }
           statuses={ statuses }
-          onSelect={ changeActiveRepo }
+          onSelect={ setActiveRepo }
           activeRepo={ activeRepo }
         />
       ) : null }
@@ -34,7 +34,7 @@ export const Sidebar = ({ starred, repos, statuses, changeActiveRepo, activeRepo
         icon="file-document-box"
         items={ repos }
         statuses={ statuses }
-        onSelect={ changeActiveRepo }
+        onSelect={ setActiveRepo }
         activeRepo={ activeRepo }
       />
     </div>
