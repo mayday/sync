@@ -6,12 +6,11 @@ import { store } from 'sync-store'
 import { actions as gitActions } from 'sync-store-git'
 import { actions as uiActions } from 'sync-store-ui'
 
-import { RepoHeader } from 'sync-components'
-import HeaderDropdown from './HeaderDropdown'
+import BranchesPane from 'sync-pane-branches'
+
 import TrafficLights from './TrafficLights'
 
-export const Header = ({ path, current, gitSync, menuVisible,
-  toggleBranchMenuVisibility }) => {
+export const Header = () => {
   const styles = reactCSS({
     'default': {
       header: {
@@ -43,8 +42,8 @@ export const Header = ({ path, current, gitSync, menuVisible,
     },
   })
 
-  const nameSplit = path && path.split('/')
-  const name = nameSplit && nameSplit[nameSplit.length - 1]
+  // const nameSplit = path && path.split('/')
+  // const name = nameSplit && nameSplit[nameSplit.length - 1]
 
   return (
     <div style={ styles.header }>
@@ -52,16 +51,7 @@ export const Header = ({ path, current, gitSync, menuVisible,
         <TrafficLights />
       </div>
       <div style={ styles.right }>
-        <RepoHeader
-          name={ name }
-          currentBranch={ current }
-          onSync={ gitSync }
-          menuVisible={ menuVisible }
-          toggleBranchMenuVisibility={ toggleBranchMenuVisibility }
-        />
-        { menuVisible ? (
-          <HeaderDropdown name={ name } currentBranch={ current } />
-        ) : null }
+        <BranchesPane />
       </div>
       <div style={ styles.divider } />
     </div>
