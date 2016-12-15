@@ -23,6 +23,7 @@ const initialState = {
 const clear = {
   search: '',
   listVisibility: false,
+  active: '',
 }
 
 export const reducer = (state = initialState, action) => {
