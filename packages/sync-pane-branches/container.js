@@ -11,11 +11,13 @@ export default connect(
     branches: store.getFilteredBranches(state),
     listVisible: store.getListVisibility(state),
     search: store.getSearch(state),
+    active: store.getActive(state),
   }),
   {
     onToggleList: actions.toggleListVisibility,
     onSearch: actions.setSearch,
     onClear: actions.clear,
     onSelect: actions.select,
+    onSetActive: actions.setActive,
   },
 )(Bar)

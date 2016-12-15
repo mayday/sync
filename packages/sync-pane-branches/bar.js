@@ -1,4 +1,5 @@
 import React from 'react'
+import _ from 'lodash'
 import reactCSS from 'reactcss'
 
 import { Icon, Input, Media } from 'sync-components'
@@ -9,10 +10,21 @@ export class Bar extends React.Component {
     if (prevProps.listVisible === false && this.props.listVisible === true) {
       this.input.focus()
     }
+
+    if (prevProps.listVisible === true && this.props.listVisible === false) {
+      this.input.blur()
+    }
+
+    if (!_.find(this.props.branches, { name: this.props.active })) {
+      const name = this.props.branches.length && this.props.branches[0].name
+      if (name) {
+        this.props.onSetActive(name)
+      }
+    }
   }
   render() {
     const { name, current, branches, onToggleList, onSearch, listVisible,
-      search, onClear, onSelect } = this.props
+      search, onClear, onSelect, active } = this.props
 
     const styles = reactCSS({
       'default': {
@@ -26,12 +38,15 @@ export class Bar extends React.Component {
         input: {
           color: '#bbb',
           marginLeft: 5,
+          flex: 1,
         },
         list: {
           marginBottom: 15,
         },
       },
     })
+
+    const handleEnter = () => onSelect(active)
 
     return (
       <div style={ styles.header }>
@@ -42,7 +57,7 @@ export class Bar extends React.Component {
           left={ name ? <Icon name="source-branch" onClick={ onToggleList } /> : null }
         >
           { name ? (
-            <div>
+            <div style={{ display: 'flex' }}>
               { name } /
               <Input
                 style={ styles.input }
@@ -50,6 +65,7 @@ export class Bar extends React.Component {
                 value={ search }
                 onChange={ onSearch }
                 onEscape={ onClear }
+                onEnter={ handleEnter }
                 // onBlur={ onClear }
                 onFocus={ listVisible === false && onToggleList }
                 ref2={ input => this.input = input }
@@ -62,6 +78,7 @@ export class Bar extends React.Component {
           <div style={ styles.list }>
             <List
               name={ name }
+              active={ active }
               current={ current }
               branches={ branches }
               onSelect={ onSelect }
