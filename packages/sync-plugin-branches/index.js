@@ -2,7 +2,7 @@ import { connect } from 'react-redux'
 import { store } from 'sync-store'
 import { actions } from './reducer'
 
-import { Bar } from './bar'
+import { Bar } from './components/bar'
 
 export default connect(
   state => ({
