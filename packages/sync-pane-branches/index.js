@@ -23,3 +23,5 @@ export default connect(
 )(Bar)
 
 export { reducer, actions, selectors } from './reducer'
+
+export keymap from './keymap'

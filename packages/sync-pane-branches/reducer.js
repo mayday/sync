@@ -28,7 +28,7 @@ const clear = {
 
 export const reducer = (state = initialState, action) => {
   const handler = {
-    [TOGGLE_LIST]: () => ({ ...state, listVisibility: !state.listVisibility }),
+    [TOGGLE_LIST]: () => ({ ...state, ...clear, listVisibility: !state.listVisibility }),
     [SEARCH]: () => ({ ...state, search: action.search }),
     [CLEAR]: () => ({ ...state, ...clear }),
     [SELECT]: () => ({ ...state, current: action.branch, ...clear }),
