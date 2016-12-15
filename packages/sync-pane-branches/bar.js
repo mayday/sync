@@ -24,7 +24,7 @@ export class Bar extends React.Component {
   }
   render() {
     const { name, current, branches, onToggleList, onSearch, listVisible,
-      search, onClear, onSelect, active } = this.props
+      search, onClear, onSelect, active, onSetActive } = this.props
 
     const styles = reactCSS({
       'default': {
@@ -46,7 +46,25 @@ export class Bar extends React.Component {
       },
     })
 
+    const UP = 38
+    const DOWN = 40
+
     const handleEnter = () => onSelect(active)
+    const handleKeyDown = (e) => {
+      const index = _.findIndex(this.props.branches, { name: this.props.active })
+      if (e.keyCode === UP) {
+        const prev = branches[index - 1]
+        if (prev) {
+          onSetActive(prev.name)
+        }
+      }
+      if (e.keyCode === DOWN) {
+        const next = branches[index + 1]
+        if (next) {
+          onSetActive(next.name)
+        }
+      }
+    }
 
     return (
       <div style={ styles.header }>
@@ -66,6 +84,7 @@ export class Bar extends React.Component {
                 onChange={ onSearch }
                 onEscape={ onClear }
                 onEnter={ handleEnter }
+                onKeyDown={ handleKeyDown }
                 // onBlur={ onClear }
                 onFocus={ listVisible === false && onToggleList }
                 ref2={ input => this.input = input }
