@@ -12,7 +12,7 @@ export class Bar extends React.Component {
   }
   render() {
     const { name, current, branches, onToggleList, onSearch, listVisible,
-      search, onClear } = this.props
+      search, onClear, onSelect } = this.props
 
     const styles = reactCSS({
       'default': {
@@ -21,10 +21,14 @@ export class Bar extends React.Component {
           cursor: 'default',
           display: 'flex',
           flexDirection: 'column',
+          marginRight: 15,
         },
         input: {
           color: '#bbb',
           marginLeft: 5,
+        },
+        list: {
+          marginBottom: 15,
         },
       },
     })
@@ -46,7 +50,7 @@ export class Bar extends React.Component {
                 value={ search }
                 onChange={ onSearch }
                 onEscape={ onClear }
-                onBlur={ onClear }
+                // onBlur={ onClear }
                 onFocus={ listVisible === false && onToggleList }
                 ref2={ input => this.input = input }
               />
@@ -55,11 +59,14 @@ export class Bar extends React.Component {
         </Media>
 
         { listVisible ? (
-          <List
-            name={ name }
-            current={ current }
-            branches={ branches }
-          />
+          <div style={ styles.list }>
+            <List
+              name={ name }
+              current={ current }
+              branches={ branches }
+              onSelect={ onSelect }
+            />
+          </div>
         ) : null }
       </div>
     )

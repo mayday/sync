@@ -7,7 +7,7 @@ import { Bar } from './bar'
 export default connect(
   state => ({
     name: 'sync',
-    current: 'master',
+    current: store.getCurrentBranch(state),
     branches: store.getFilteredBranches(state),
     listVisible: store.getListVisibility(state),
     search: store.getSearch(state),
@@ -16,5 +16,6 @@ export default connect(
     onToggleList: actions.toggleListVisibility,
     onSearch: actions.setSearch,
     onClear: actions.clear,
+    onSelect: actions.select,
   },
 )(Bar)

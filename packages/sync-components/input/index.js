@@ -32,7 +32,7 @@ export class Input extends React.Component {
 
     return (
       <input
-        { ..._.omit(this.props, ['onEnter', 'ref2']) }
+        { ..._.omit(this.props, ['onEnter', 'ref2', 'onEscape']) }
         onKeyUp={ handleKeyUp }
         onChange={ handleChange }
         style={ style }
