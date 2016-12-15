@@ -2,10 +2,10 @@ import React from 'react'
 import _ from 'lodash'
 import reactCSS from 'reactcss'
 
-import { CompactMedia, SmallIcon } from '../'
-import { SidebarGroupItem } from './item'
+import { CompactMedia, SmallIcon } from 'sync-components'
+import { ProjectItem } from './project-item'
 
-export const SidebarGroup = ({ label, icon, items, statuses, onSelect, activeRepo }) => {
+export const ProjectGroup = ({ label, icon, items, onSelect, activeRepo }) => {
   const styles = reactCSS({
     'default': {
       group: {
@@ -37,14 +37,11 @@ export const SidebarGroup = ({ label, icon, items, statuses, onSelect, activeRep
 
       <div style={ styles.items }>
         { _.map(items, (item, i) => {
-          const repo = statuses[item.path] || {}
           return (
             <div key={ i } style={ styles.spacing }>
-              <SidebarGroupItem
+              <ProjectItem
                 path={ item.path }
                 name={ item.name }
-                unstagedChanges={ repo.files && !!repo.files.length }
-                localChanges={ repo.ahead > 0 }
                 active={ item.path === activeRepo }
                 onSelect={ onSelect }
               />

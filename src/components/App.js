@@ -8,8 +8,9 @@ import { actions as uiActions } from 'sync-store-ui'
 import { store } from 'sync-store'
 import { registerEvents } from 'sync-window'
 
+import ProjectPane from 'sync-pane-projects'
+
 import Header from './Header'
-import Sidebar from './Sidebar'
 import Main from './Main'
 
 export class App extends React.Component { // eslint-disable-line
@@ -69,7 +70,7 @@ export class App extends React.Component { // eslint-disable-line
         </div>
         <div style={ styles.sidebar }>
           <div style={ styles.headerSpacing }>
-            <Sidebar />
+            <ProjectPane />
           </div>
         </div>
         <div style={ styles.main }>

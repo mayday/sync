@@ -1,8 +1,8 @@
 import React from 'react'
 import reactCSS, { handleHover } from 'reactcss'
 
-export const SidebarGroupItem = handleHover(({ name, localChanges, unstagedChanges,
-  hover, path, onSelect, active }) => {
+export const ProjectItem = handleHover(({ path, name, active, hover, onSelect,
+  localChanges, unstagedChanges }) => {
   const styles = reactCSS({
     'default': {
       item: {
