@@ -6,7 +6,7 @@ import { store } from 'sync-store'
 import { actions as gitActions } from 'sync-store-git'
 import { actions as uiActions } from 'sync-store-ui'
 
-import BranchesPane from 'sync-pane-branches'
+import BranchesPlugin from 'sync-plugin-branches'
 
 import TrafficLights from './TrafficLights'
 
@@ -51,7 +51,7 @@ export const Header = () => {
         <TrafficLights />
       </div>
       <div style={ styles.right }>
-        <BranchesPane />
+        <BranchesPlugin />
       </div>
       <div style={ styles.divider } />
     </div>

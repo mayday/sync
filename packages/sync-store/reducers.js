@@ -4,10 +4,10 @@ import git from 'sync-store-git'
 import settings from 'sync-store-settings'
 import ui from 'sync-store-ui'
 
-import { reducer as syncPaneBranches } from 'sync-pane-branches'
+import { reducer as syncPluginBranches } from 'sync-plugin-branches'
 
-const pane = combineReducers({
-  'sync-pane-branches': syncPaneBranches,
+const plugin = combineReducers({
+  'sync-plugin-branches': syncPluginBranches,
 })
 
 export default combineReducers({
@@ -15,5 +15,5 @@ export default combineReducers({
   settings,
   ui,
 
-  pane,
+  plugin,
 })

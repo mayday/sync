@@ -1,11 +1,11 @@
 import _ from 'lodash'
 import { createFilter } from 'react-search-input'
 
-export const TOGGLE_LIST = 'PANE/BRANCHES/TOGGLE_LIST'
-export const SEARCH = 'PANE/BRANCHES/SEARCH'
-export const CLEAR = 'PANE/BRANCHES/CLEAR'
-export const SELECT = 'PANE/BRANCHES/SELECT'
-export const SET_ACTIVE = 'PANE/BRANCHES/SET_ACTIVE'
+export const TOGGLE_LIST = 'PLUGIN/BRANCHES/TOGGLE_LIST'
+export const SEARCH = 'PLUGIN/BRANCHES/SEARCH'
+export const CLEAR = 'PLUGIN/BRANCHES/CLEAR'
+export const SELECT = 'PLUGIN/BRANCHES/SELECT'
+export const SET_ACTIVE = 'PLUGIN/BRANCHES/SET_ACTIVE'
 
 const initialState = {
   search: '',

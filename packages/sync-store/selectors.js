@@ -4,10 +4,10 @@ import { selectors as git } from 'sync-store-git'
 import { selectors as settings } from 'sync-store-settings'
 import { selectors as ui } from 'sync-store-ui'
 
-import { selectors as syncPaneBranches } from 'sync-pane-branches'
+import { selectors as syncPluginBranches } from 'sync-plugin-branches'
 
-const pane = scopeStateToSelectors({
-  'sync-pane-branches': syncPaneBranches,
+const plugin = scopeStateToSelectors({
+  'sync-plugin-branches': syncPluginBranches,
 })
 
 export default scopeStateToSelectors({
@@ -15,7 +15,7 @@ export default scopeStateToSelectors({
   settings,
   ui,
 
-  pane,
+  plugin,
 }, {
   getCurrentRepo: state => git.getRepoByPath(state.git, ui.getActiveRepo(state.ui)),
   getCurrentCommits: state => git.getCommitsByRepo(state.git, ui.getActiveRepo(state.ui)),

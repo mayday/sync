@@ -8,7 +8,7 @@ import { actions as uiActions } from 'sync-store-ui'
 import { store } from 'sync-store'
 import { registerEvents } from 'sync-window'
 
-import ProjectPane from 'sync-pane-projects'
+import ProjectPlugin from 'sync-plugin-projects'
 
 import Header from './Header'
 import Main from './Main'
@@ -70,7 +70,7 @@ export class App extends React.Component { // eslint-disable-line
         </div>
         <div style={ styles.sidebar }>
           <div style={ styles.headerSpacing }>
-            <ProjectPane />
+            <ProjectPlugin />
           </div>
         </div>
         <div style={ styles.main }>
