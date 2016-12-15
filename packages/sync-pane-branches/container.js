@@ -15,5 +15,6 @@ export default connect(
   {
     onToggleList: actions.toggleListVisibility,
     onSearch: actions.setSearch,
+    onClear: actions.clear,
   },
 )(Bar)

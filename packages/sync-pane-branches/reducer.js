@@ -3,6 +3,7 @@ import { createFilter } from 'react-search-input'
 
 export const TOGGLE_LIST = 'PANE/BRANCHES/TOGGLE_LIST'
 export const SEARCH = 'PANE/BRANCHES/SEARCH'
+export const CLEAR = 'PANE/BRANCHES/CLEAR'
 
 const initialState = {
   search: '',
@@ -19,6 +20,7 @@ export const reducer = (state = initialState, action) => {
   const handler = {
     [TOGGLE_LIST]: () => ({ ...state, listVisibility: !state.listVisibility }),
     [SEARCH]: () => ({ ...state, search: action.search }),
+    [CLEAR]: () => ({ ...state, search: '', listVisibility: false }),
   }[action.type]
   return handler ? handler() : state
 }
@@ -26,6 +28,7 @@ export const reducer = (state = initialState, action) => {
 export const actions = {
   toggleListVisibility: () => ({ type: TOGGLE_LIST }),
   setSearch: search => ({ type: SEARCH, search }),
+  clear: () => ({ type: CLEAR }),
 }
 
 export const selectors = {
@@ -35,6 +38,6 @@ export const selectors = {
     return _.map(state.branches, name => ({ name, search }))
   },
   getFilteredBranches: state =>
-    _.filter(selectors.getBranches(state), createFilter(state.search)),
+    _.filter(selectors.getBranches(state), createFilter(state.search, ['name'])),
   getListVisibility: state => state.listVisibility,
 }
