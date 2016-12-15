@@ -1,5 +1,5 @@
 import { actions } from './reducer'
 
 export default {
-  'cmd-b': actions.toggleListVisibility,
+  'command+b': actions.toggleListVisibility,
 }

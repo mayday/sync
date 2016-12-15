@@ -2,7 +2,8 @@
 
 // import { actions as git } from 'sync-store-git'
 // import { store } from 'sync-store'
-import Keyboard from 'keyboard-cjs'
+import _ from 'lodash'
+import Mousetrap from 'mousetrap'
 
 import { keymap as syncPaneBranchesKeymap } from 'sync-pane-branches'
 
@@ -18,28 +19,14 @@ export const registerEvents = (window, { getState, dispatch }) => { // eslint-di
     // })
   }
 
-  // HAX
-  const kb = new Keyboard(window)
-  const engaged = {}
-  const creator = syncPaneBranchesKeymap['cmd-b']
+  const keymaps = {
+    ...syncPaneBranchesKeymap,
+  }
 
-  kb.on('*', 'activate', (e) => {
-    if (e.action === 'activate') {
-      if (e.name === 'OSLeft') {
-        engaged.cmd = true
-      }
-    }
-
-    if (e.action === 'release') {
-      if (e.name === 'OSLeft') {
-        engaged.cmd = true
-      }
-    }
-
-    if (e.action === 'press') {
-      if (e.name === 'b' && engaged.cmd) {
-        dispatch(creator(dispatch))
-      }
-    }
+  _.each(keymaps, (action, combo) => {
+    Mousetrap.bind(combo, () => {
+      const state = getState()
+      dispatch(action(dispatch, state))
+    })
   })
 }
