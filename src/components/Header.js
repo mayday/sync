@@ -29,6 +29,8 @@ export const Header = () => {
       },
       right: {
         flex: 1,
+        maxHeight: '100%',
+        display: 'flex',
       },
       divider: {
         position: 'absolute',

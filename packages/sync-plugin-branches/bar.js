@@ -34,6 +34,7 @@ export class Bar extends React.Component {
           display: 'flex',
           flexDirection: 'column',
           marginRight: 15,
+          flex: 1,
         },
         input: {
           color: '#bbb',
@@ -42,6 +43,8 @@ export class Bar extends React.Component {
         },
         list: {
           marginBottom: 15,
+          flex: 1,
+          overflowY: 'auto',
         },
       },
     })
@@ -68,30 +71,32 @@ export class Bar extends React.Component {
 
     return (
       <div style={ styles.header }>
-        <Media
-          style={{ height: 54 }}
-          center
-          spacing={ 54 }
-          left={ name ? <Icon name="source-branch" onClick={ onToggleList } /> : null }
-        >
-          { name ? (
-            <div style={{ display: 'flex' }}>
-              { name } /
-              <Input
-                style={ styles.input }
-                placeholder={ current }
-                value={ search }
-                onChange={ onSearch }
-                onEscape={ onClear }
-                onEnter={ handleEnter }
-                onKeyDown={ handleKeyDown }
-                // onBlur={ onClear }
-                onFocus={ listVisible === false && onToggleList }
-                ref2={ input => this.input = input }
-              />
-            </div>
-          ) : null }
-        </Media>
+        <div>
+          <Media
+            style={{ height: 54 }}
+            center
+            spacing={ 54 }
+            left={ name ? <Icon name="source-branch" onClick={ onToggleList } /> : null }
+          >
+            { name ? (
+              <div style={{ display: 'flex' }}>
+                { name } /
+                <Input
+                  style={ styles.input }
+                  placeholder={ current }
+                  value={ search }
+                  onChange={ onSearch }
+                  onEscape={ onClear }
+                  onEnter={ handleEnter }
+                  onKeyDown={ handleKeyDown }
+                  // onBlur={ onClear }
+                  onFocus={ listVisible === false && onToggleList }
+                  ref2={ input => this.input = input }
+                />
+              </div>
+            ) : null }
+          </Media>
+        </div>
 
         { listVisible ? (
           <div style={ styles.list }>
