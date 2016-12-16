@@ -3,7 +3,8 @@ import reactCSS, { handleHover } from 'reactcss'
 
 import { Icon, Media } from 'sync-components'
 
-export const ListItem = handleHover(({ project, name, search, active, hover, onSelect }) => {
+export const ListItem = handleHover(({ project, name, search, active, hover,
+  onSelect, right }) => {
   const styles = reactCSS({
     'default': {
       item: {
@@ -51,7 +52,7 @@ export const ListItem = handleHover(({ project, name, search, active, hover, onS
   const icon = active || hover ? <Icon name="swap-horizontal" /> : true
   return (
     <div style={ styles.item } onClick={ handleClick }>
-      <Media center spacing={ 54 } left={ icon }>
+      <Media center spacing={ 54 } left={ icon } right={ right }>
         { project } / { before }
         <span style={ styles.highlight }>{ match }</span>
         { after }

@@ -10,9 +10,8 @@ export const List = ({ name, branches, onSelect, active }) => {
         <ListItem
           key={ branch.name }
           project={ name }
-          name={ branch.name }
+          { ...branch }
           active={ branch.name === active }
-          search={ branch.search }
           onSelect={ onSelect }
         />
       )) }

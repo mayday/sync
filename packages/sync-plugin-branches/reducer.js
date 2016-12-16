@@ -11,7 +11,7 @@ const initialState = {
   search: '',
   listVisibility: false,
   current: 'master',
-  active: '',
+  active: 'master',
   branches: [
     'master',
     'new-feature-branch-name',
@@ -23,7 +23,7 @@ const initialState = {
 const clear = {
   search: '',
   listVisibility: false,
-  active: '',
+  active: 'master',
 }
 
 export const reducer = (state = initialState, action) => {
@@ -50,7 +50,10 @@ export const selectors = {
   getSearch: state => state.search,
   getBranches: (state) => {
     const search = selectors.getSearch(state)
-    return _.map(state.branches, name => ({ name, search }))
+    return [
+      ..._.map(state.branches, name => ({ name, search })),
+      { name: search, right: 'Add Branch', search },
+    ]
   },
   getFilteredBranches: state =>
     _.filter(selectors.getBranches(state), createFilter(state.search, ['name'])),
