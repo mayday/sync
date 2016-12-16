@@ -45,6 +45,7 @@ module.exports = {
       'sync-store-settings',
       'sync-electron',
       'sync-plugin-branches',
+      'sync-plugin-jump-to-project',
       'sync-plugin-projects',
       'sync-store',
       'sync-theme-ui-dark',

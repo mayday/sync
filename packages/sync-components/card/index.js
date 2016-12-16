@@ -1,7 +1,7 @@
 import React from 'react'
 import reactCSS from 'reactcss'
 
-export const Card = ({ children, style }) => {
+export const Card = ({ children, style, lighter }) => {
   const styles = reactCSS({
     'default': {
       card: {
@@ -11,7 +11,17 @@ export const Card = ({ children, style }) => {
         ...style,
       },
     },
-  })
+    'lighter': {
+      card: {
+        backgroundColor: 'rgba(63, 61, 64, 1)',
+      },
+    },
+    'deeper': {
+      card: {
+        boxShadow: '0 4px 8px rgba(0, 0, 0, 0.24)',
+      },
+    },
+  }, { lighter })
 
   return (
     <div style={ styles.card }>

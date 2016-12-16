@@ -5,6 +5,11 @@ const ENTER = 13
 const ESC = 27
 
 export class Input extends React.Component {
+  componentDidMount() {
+    if (this.props.focusOnRender) {
+      this.input.focus()
+    }
+  }
   render() {
     const style = {
       border: 'none',
@@ -32,11 +37,11 @@ export class Input extends React.Component {
 
     return (
       <input
-        { ..._.omit(this.props, ['onEnter', 'ref2', 'onEscape']) }
+        { ..._.omit(this.props, ['onEnter', 'ref2', 'onEscape', 'focusOnRender']) }
         onKeyUp={ handleKeyUp }
         onChange={ handleChange }
         style={ style }
-        ref={ this.props.ref2 }
+        ref={ this.props.ref2 || (input => (this.input = input)) }
       />
     )
   }

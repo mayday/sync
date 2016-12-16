@@ -6,6 +6,7 @@ import _ from 'lodash'
 import Mousetrap from 'mousetrap'
 
 import { keymap as syncPluginBranchesKeymap } from 'sync-plugin-branches'
+import { keymap as syncPluginJumpToProjectKeymap } from 'sync-plugin-jump-to-project'
 
 export const registerEvents = (window, { getState, dispatch }) => { // eslint-disable-line
   window.onblur = () => {}
@@ -21,6 +22,7 @@ export const registerEvents = (window, { getState, dispatch }) => { // eslint-di
 
   const keymaps = {
     ...syncPluginBranchesKeymap,
+    ...syncPluginJumpToProjectKeymap,
   }
 
   _.each(keymaps, (action, combo) => {

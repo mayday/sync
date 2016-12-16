@@ -9,6 +9,7 @@ import { store } from 'sync-store'
 import { registerEvents } from 'sync-window'
 
 import ProjectPlugin from 'sync-plugin-projects'
+import JumpToProjectPlugin from 'sync-plugin-jump-to-project'
 
 import Header from './Header'
 import Main from './Main'
@@ -65,6 +66,7 @@ export class App extends React.Component { // eslint-disable-line
     })
     return (
       <div style={ styles.app }>
+        <JumpToProjectPlugin />
         <div style={ styles.header }>
           <Header />
         </div>
