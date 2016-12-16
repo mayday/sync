@@ -2,6 +2,8 @@ import _ from 'lodash'
 import { remote } from 'electron'
 
 const ADD_FOLDER = 'PLUGIN/PROJECTS/ADD_FOLDER'
+const STAR = 'PLUGIN/PROJECTS/STAR'
+const REMOVE = 'PLUGIN/PROJECTS/REMOVE'
 
 const initialState = {
   '/Users/case/Github/sync': {
@@ -26,6 +28,8 @@ const initialState = {
 export const reducer = (state = initialState, action) => {
   const handler = {
     [ADD_FOLDER]: () => ({ ...state, [action.project.path]: action.project }),
+    [STAR]: () => ({ ...state, [action.path]: { ...state[action.path], category: 'starred' } }),
+    [REMOVE]: () => _.omit(state, action.path),
   }[action.type]
   return handler ? handler() : state
 }
@@ -41,6 +45,8 @@ export const actions = {
       }
     })
   },
+  star: path => ({ type: STAR, path }),
+  remove: path => ({ type: REMOVE, path }),
 }
 
 export const selectors = {

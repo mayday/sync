@@ -5,7 +5,8 @@ import reactCSS from 'reactcss'
 import { CompactMedia, SmallIcon } from 'sync-components'
 import { ProjectItem } from './project-item'
 
-export const ProjectGroup = ({ label, icon, items, onSelect, activeRepo }) => {
+export const ProjectGroup = ({ label, icon, items, onSelect, onStar, onRemove,
+  activeRepo }) => {
   const styles = reactCSS({
     'default': {
       group: {
@@ -44,6 +45,8 @@ export const ProjectGroup = ({ label, icon, items, onSelect, activeRepo }) => {
                 name={ item.name }
                 active={ item.path === activeRepo }
                 onSelect={ onSelect }
+                onStar={ onStar }
+                onRemove={ onRemove }
               />
             </div>
           )

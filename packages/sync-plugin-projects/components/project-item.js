@@ -1,8 +1,9 @@
 import React from 'react'
 import reactCSS, { handleHover } from 'reactcss'
+import { remote } from 'electron'
 
 export const ProjectItem = handleHover(({ path, name, active, hover, onSelect,
-  localChanges, unstagedChanges }) => {
+  localChanges, unstagedChanges, onStar, onRemove }) => {
   const styles = reactCSS({
     'default': {
       item: {
@@ -60,9 +61,29 @@ export const ProjectItem = handleHover(({ path, name, active, hover, onSelect,
   }, { localChanges, unstagedChanges, hover, active })
 
   const handleClick = () => onSelect(path)
+  const handleStar = () => onStar(path)
+  const handleRemove = () => onRemove(path)
+
+  // move this into componentDidMount
+  const { Menu, MenuItem } = remote
+  const menu = new Menu()
+  menu.append(new MenuItem({
+    label: 'Star Repo',
+    click: handleStar,
+  }))
+  menu.append(new MenuItem({ type: 'separator' }))
+  menu.append(new MenuItem({
+    label: 'Remove',
+    click: handleRemove,
+  }))
+
+  const handleMenu = (e) => {
+    e.preventDefault()
+    menu.popup(e.clientX, e.clientY)
+  }
 
   return (
-    <div style={ styles.item } onClick={ handleClick }>
+    <div style={ styles.item } onClick={ handleClick } onContextMenu={ handleMenu }>
       <div style={ styles.active } />
       <div style={ styles.label }>
         { name }

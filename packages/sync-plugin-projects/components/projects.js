@@ -4,7 +4,7 @@ import reactCSS from 'reactcss'
 
 import { ProjectGroup } from './project-group'
 
-export const Projects = ({ groups, onSelect, activeRepo }) => {
+export const Projects = ({ groups, onSelect, onStar, onRemove, activeRepo }) => {
   const styles = reactCSS({
     'default': {
       sidebar: {
@@ -32,6 +32,8 @@ export const Projects = ({ groups, onSelect, activeRepo }) => {
           { ...display[category] }
           items={ items }
           onSelect={ onSelect }
+          onStar={ onStar }
+          onRemove={ onRemove }
           activeRepo={ activeRepo }
         />
       ) : null)) }
