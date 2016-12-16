@@ -40,6 +40,7 @@ module.exports = {
     'import/core-modules': [
       'electron',
       'redux-git-middleware',
+      'sync-app',
       'sync-components',
       'sync-store-git',
       'sync-store-settings',
