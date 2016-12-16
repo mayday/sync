@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 import { store } from 'sync-store'
 
-import { Projects } from './projects'
+import { Projects } from './components/projects'
 
 export default connect(
   state => ({
