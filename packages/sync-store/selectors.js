@@ -6,10 +6,12 @@ import { selectors as ui } from 'sync-store-ui'
 
 import { selectors as syncPluginBranches } from 'sync-plugin-branches'
 import { selectors as syncPluginJumpToProject } from 'sync-plugin-jump-to-project'
+import { selectors as syncPluginProjects } from 'sync-plugin-projects'
 
 const plugin = scopeStateToSelectors({
   'sync-plugin-branches': syncPluginBranches,
   'sync-plugin-jump-to-project': syncPluginJumpToProject,
+  'sync-plugin-projects': syncPluginProjects,
 })
 
 export default scopeStateToSelectors({
