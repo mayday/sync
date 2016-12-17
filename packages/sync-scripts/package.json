@@ -1,0 +1,21 @@
+{
+  "name": "sync-scripts",
+  "version": "0.1.0",
+  "description": "",
+  "main": "start.js",
+  "scripts": {
+    "start": "cross-env NODE_ENV=development node -r babel-register start.js"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "babel-loader": "^6.2.10",
+    "express": "^4.14.0",
+    "json-loader": "^0.5.4",
+    "webpack": "^1.14.0",
+    "webpack-dev-middleware": "^1.9.0",
+    "webpack-hot-middleware": "^2.13.2",
+    "webpack-merge": "^1.1.1",
+    "webpack-validator": "^2.3.0"
+  }
+}
