@@ -1,6 +1,6 @@
 {
   "name": "sync-plugin-branches",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -15,7 +15,7 @@
     "react-search-input": "^0.10.3",
     "reactcss": "^1.1.1",
     "redux": "^3.6.0",
-    "sync-components": "^0.1.1",
-    "sync-store-selectors": "^0.1.0"
+    "sync-components": "^0.1.2",
+    "sync-store-selectors": "^0.1.1"
   }
 }
