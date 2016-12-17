@@ -1,6 +1,6 @@
 {
   "name": "sync-window",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -11,8 +11,8 @@
   "dependencies": {
     "lodash": "^4.17.2",
     "mousetrap": "^1.6.0",
-    "sync-plugin-branches": "^0.1.2",
-    "sync-plugin-jump-to-project": "^0.1.2",
-    "sync-plugin-projects": "^0.1.2"
+    "sync-plugin-branches": "^0.1.3",
+    "sync-plugin-jump-to-project": "^0.1.3",
+    "sync-plugin-projects": "^0.1.3"
   }
 }
