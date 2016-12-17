@@ -3,7 +3,7 @@ import _ from 'lodash'
 import reactCSS from 'reactcss'
 
 import { connect } from 'react-redux'
-import { store } from 'sync-store'
+import { store } from 'sync-store-selectors'
 import { actions } from 'sync-store-git'
 
 import { CommitList, Scroll } from 'sync-components'

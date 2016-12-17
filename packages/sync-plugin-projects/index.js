@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { store } from 'sync-store'
+import { store } from 'sync-store-selectors'
 import { actions as uiActions } from 'sync-store-ui'
 import { actions } from './reducer'
 

@@ -1,6 +1,6 @@
 {
-  "name": "sync-app",
-  "version": "0.1.1",
+  "name": "sync-store-selectors",
+  "version": "0.1.0",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -9,16 +9,12 @@
   "author": "case <case@casesandberg.com>",
   "license": "MIT",
   "dependencies": {
-    "react-redux": "^4.4.6",
-    "sync-components": "^0.1.1",
+    "redux-selector": "^0.2.0",
     "sync-plugin-branches": "^0.1.1",
     "sync-plugin-jump-to-project": "^0.1.1",
     "sync-plugin-projects": "^0.1.1",
-    "sync-store": "^0.1.1",
     "sync-store-git": "^0.1.1",
-    "sync-store-selectors": "^0.1.0",
     "sync-store-settings": "^0.1.1",
-    "sync-store-ui": "^0.1.1",
-    "sync-window": "^0.1.1"
+    "sync-store-ui": "^0.1.1"
   }
 }

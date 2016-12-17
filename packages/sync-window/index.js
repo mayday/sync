@@ -1,7 +1,7 @@
 /* eslint-disable no-param-reassign */
 
 // import { actions as git } from 'sync-store-git'
-// import { store } from 'sync-store'
+// import { store } from 'sync-store-selectors'
 import _ from 'lodash'
 import Mousetrap from 'mousetrap'
 

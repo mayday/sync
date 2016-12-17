@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import { actions as gitActions } from 'sync-store-git'
 import { actions as settingsActions } from 'sync-store-settings'
 import { actions as uiActions } from 'sync-store-ui'
-import { store } from 'sync-store'
+import { store } from 'sync-store-selectors'
 import { registerEvents } from 'sync-window'
 
 import ProjectPlugin from 'sync-plugin-projects'

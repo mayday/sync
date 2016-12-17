@@ -10,6 +10,7 @@
   "license": "MIT",
   "dependencies": {
     "react-redux": "^4.4.6",
-    "sync-components": "^0.1.1"
+    "sync-components": "^0.1.1",
+    "sync-store-selectors": "^0.1.0"
   }
 }

@@ -5,5 +5,3 @@ import reducers from './reducers'
 export function configureStore(initialState) {
   return createStore(reducers, initialState, middleware)
 }
-
-export { default as store } from './selectors'

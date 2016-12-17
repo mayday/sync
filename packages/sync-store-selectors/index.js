@@ -14,7 +14,7 @@ const plugin = scopeStateToSelectors({
   'sync-plugin-projects': syncPluginProjects,
 })
 
-export default scopeStateToSelectors({
+export const store = scopeStateToSelectors({
   git,
   settings,
   ui,
