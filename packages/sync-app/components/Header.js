@@ -7,7 +7,10 @@ import { actions as gitActions } from 'sync-store-git'
 import { actions as uiActions } from 'sync-store-ui'
 
 import BranchesPlugin from 'sync-plugin-branches'
+import { icon as commitsIcon } from 'sync-plugin-commits'
+import { icon as localChangesIcon } from 'sync-plugin-local-changes'
 
+import { Icon } from 'sync-components'
 import TrafficLights from './TrafficLights'
 
 export const Header = () => {
@@ -41,6 +44,16 @@ export const Header = () => {
         backgroundColor: 'rgba(255, 255, 255, 0.07)',
         boxShadow: '0 2px 4px rgba(39, 36, 42, 0.4)',
       },
+      actions: {
+        color: '#666',
+        display: 'flex',
+        height: 54,
+        alignItems: 'center',
+        marginRight: 15,
+      },
+      spacer: {
+        width: 20,
+      },
     },
   })
 
@@ -54,6 +67,13 @@ export const Header = () => {
       </div>
       <div style={ styles.right }>
         <BranchesPlugin />
+        <div style={ styles.actions }>
+          { localChangesIcon }
+          <div style={ styles.spacer } />
+          { commitsIcon }
+          <div style={ styles.spacer } />
+          <Icon name="sync" />
+        </div>
       </div>
       <div style={ styles.divider } />
     </div>
