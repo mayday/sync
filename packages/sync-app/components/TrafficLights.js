@@ -1,6 +1,6 @@
 import React from 'react'
 import reactCSS, { handleHover } from 'reactcss'
-import { remote } from 'electron'
+// import { remote } from 'electron'
 
 export const TrafficLights = ({ hover }) => {
   const styles = reactCSS({
@@ -28,12 +28,12 @@ export const TrafficLights = ({ hover }) => {
     },
   }, { hover })
 
-  const electron = remote.getCurrentWindow()
-  const handleClose = () => electron.close()
-  const handleMin = () => electron.minimize()
-  const handleMax = () => (
-    electron.isFullScreen() ? electron.setFullScreen(false) : electron.setFullScreen(true)
-  )
+  // const electron = remote.getCurrentWindow()
+  const handleClose = () => {} // electron.close()
+  const handleMin = () => {} // electron.minimize()
+  const handleMax = () => {} // (
+  //  electron.isFullScreen() ? electron.setFullScreen(false) : electron.setFullScreen(true)
+  // )
 
   return (
     <div style={ styles.traffic }>
