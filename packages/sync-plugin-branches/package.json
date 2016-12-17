@@ -9,6 +9,7 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
+    "lodash": "^4.17.2",
     "react-redux": "^4.4.6",
     "react-search-input": "^0.10.3",
     "sync-components": "^0.1.1",

@@ -9,6 +9,7 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
+    "lodash": "^4.17.2",
     "redux": "^3.6.0",
     "redux-git-middleware": "^0.1.1",
     "redux-selector": "^0.2.0",
