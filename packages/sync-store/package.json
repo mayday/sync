@@ -10,6 +10,7 @@
   "license": "MIT",
   "dependencies": {
     "redux": "^3.6.0",
+    "redux-git-middleware": "^0.1.1",
     "redux-logger": "^2.7.4",
     "redux-selector": "^0.2.0",
     "redux-thunk": "^2.1.0"
