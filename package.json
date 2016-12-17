@@ -50,7 +50,6 @@
     "redux-git-middleware": "^0.1.1",
     "redux-logger": "^2.7.4",
     "sync-components": "^0.1.1",
-    "sync-electron": "^0.1.1",
     "sync-plugin-branches": "^0.1.1",
     "sync-plugin-jump-to-project": "^0.1.1",
     "sync-plugin-projects": "^0.1.1",
