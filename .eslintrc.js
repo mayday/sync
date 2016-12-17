@@ -36,22 +36,4 @@ module.exports = {
     'no-return-assign': IGNORE,
     'import/prefer-default-export': IGNORE,
   },
-  'settings': {
-    'import/core-modules': [
-      'electron',
-      'redux-git-middleware',
-      'sync-app',
-      'sync-components',
-      'sync-store-git',
-      'sync-store-settings',
-      'sync-electron',
-      'sync-plugin-branches',
-      'sync-plugin-jump-to-project',
-      'sync-plugin-projects',
-      'sync-store',
-      'sync-theme-ui-dark',
-      'sync-store-ui',
-      'sync-window',
-    ]
-  }
 }
