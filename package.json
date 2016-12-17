@@ -43,20 +43,9 @@
     "lodash": "^4.17.2",
     "react": "^15.4.1",
     "react-dom": "^15.4.1",
-    "react-redux": "^4.4.6",
-    "react-router": "^4.0.0-alpha.6",
     "reactcss": "^1.1.1",
     "redux": "^3.6.0",
     "redux-git-middleware": "^0.1.1",
-    "redux-logger": "^2.7.4",
-    "sync-components": "^0.1.1",
-    "sync-plugin-branches": "^0.1.1",
-    "sync-plugin-jump-to-project": "^0.1.1",
-    "sync-plugin-projects": "^0.1.1",
-    "sync-store": "^0.1.1",
-    "sync-store-git": "^0.1.1",
-    "sync-store-settings": "^0.1.1",
-    "sync-store-ui": "^0.1.1",
-    "sync-window": "^0.1.1"
+    "redux-logger": "^2.7.4"
   }
 }

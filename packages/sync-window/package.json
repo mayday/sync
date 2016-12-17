@@ -9,6 +9,9 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "mousetrap": "^1.6.0"
+    "mousetrap": "^1.6.0",
+    "sync-plugin-branches": "^0.1.1",
+    "sync-plugin-jump-to-project": "^0.1.1",
+    "sync-plugin-projects": "^0.1.1"
   }
 }

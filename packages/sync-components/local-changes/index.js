@@ -3,7 +3,7 @@ import _ from 'lodash'
 import reactCSS from 'reactcss'
 import parse from 'parse-diff'
 
-import { Card, Scroll } from 'sync-components'
+import { Card, Scroll } from '../'
 import { LocalChangesFiles } from './files'
 import { LocalChangesDiff } from './diff'
 import { LocalChangesCommit } from './commit'

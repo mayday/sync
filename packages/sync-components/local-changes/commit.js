@@ -1,7 +1,7 @@
 import React from 'react'
 import reactCSS from 'reactcss'
 
-import { Input, Media, SmallIcon } from 'sync-components'
+import { Input, Media, SmallIcon } from '../'
 
 export const LocalChangesCommit = ({ message, onChange, onCommit, fileChangeCount }) => {
   const styles = reactCSS({
