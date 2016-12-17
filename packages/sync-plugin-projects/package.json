@@ -11,6 +11,7 @@
   "dependencies": {
     "lodash": "^4.17.2",
     "react-redux": "^4.4.6",
+    "reactcss": "^1.1.1",
     "sync-components": "^0.1.1",
     "sync-store-selectors": "^0.1.0",
     "sync-store-ui": "^0.1.1"

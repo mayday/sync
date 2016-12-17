@@ -12,6 +12,7 @@
     "lodash": "^4.17.2",
     "react-dom": "^15.4.1",
     "react-redux": "^4.4.6",
+    "reactcss": "^1.1.1",
     "sync-components": "^0.1.1",
     "sync-plugin-branches": "^0.1.1",
     "sync-plugin-jump-to-project": "^0.1.1",
