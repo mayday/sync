@@ -12,6 +12,7 @@
     "react": "^15.4.1",
     "react-redux": "^4.4.6",
     "reactcss": "^1.1.1",
+    "redux": "^3.6.0",
     "sync-components": "^0.1.1",
     "sync-store-selectors": "^0.1.0"
   }
