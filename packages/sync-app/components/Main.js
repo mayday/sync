@@ -1,7 +1,7 @@
 import React from 'react'
 import reactCSS from 'reactcss'
 
-import CommitsPlugin from 'sync-plugin-commits'
+import LocalChangesPlugin from 'sync-plugin-local-changes'
 
 import { Scroll } from 'sync-components'
 
@@ -24,7 +24,7 @@ export const Main = () => {
   return (
     <Scroll scrollToBottom>
       <div style={ styles.main }>
-        <CommitsPlugin />
+        <LocalChangesPlugin />
       </div>
     </Scroll>
   )
