@@ -11,7 +11,6 @@
   "dependencies": {
     "lodash": "^4.17.2",
     "git-diff-parser": "^0.1.1",
-    "moment": "^2.17.0",
     "parse-diff": "^0.4.0",
     "react": "^15.4.1",
     "react-search-input": "^0.10.3",
