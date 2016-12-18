@@ -11,6 +11,7 @@ export const LocalChanges = ({ files, fileSelected, onFileSelect }) => {
         display: 'flex',
         flexDirection: 'column',
         minWidth: 0,
+        flex: 1,
       },
       commit: {
         height: 54,

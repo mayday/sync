@@ -16,6 +16,7 @@ export class Scroll extends React.Component {
       overflowY: 'auto',
       overflowX: this.props.x ? 'auto' : 'visible',
       flex: 1,
+      ...this.props.style,
     }
     return (
       <div style={ style } ref={ el => this.wrap = el }>

@@ -11,7 +11,10 @@ export const Main = () => {
       main: {
         marginTop: 15,
         marginRight: 15,
+        marginBottom: 15,
         marginLeft: 5,
+        flex: 1,
+        display: 'flex',
       },
       changes: {
         marginBottom: 15,
@@ -22,7 +25,7 @@ export const Main = () => {
   })
 
   return (
-    <Scroll scrollToBottom>
+    <Scroll scrollToBottom style={{ display: 'flex' }}>
       <div style={ styles.main }>
         <LocalChangesPlugin />
       </div>
