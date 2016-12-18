@@ -3,8 +3,9 @@ import _ from 'lodash'
 import reactCSS from 'reactcss'
 
 import { Scroll } from 'sync-components'
+import { File } from './file'
 
-export const Files = ({ files }) => {
+export const Files = ({ files, selected, diff, onSelect, onToggleStaged }) => {
   const styles = reactCSS({
     'default': {
       changes: {
@@ -13,9 +14,10 @@ export const Files = ({ files }) => {
         minWidth: 0,
       },
       files: {
-        width: 200,
+        width: 170,
         display: 'flex',
         borderRight: '1px solid #222',
+        padding: 10,
       },
       diff: {
         flex: 1,
@@ -30,13 +32,19 @@ export const Files = ({ files }) => {
       <div style={ styles.files }>
         <Scroll>
           { _.map(files, (file, i) => (
-            <div key={ i }>{ file.path }</div>
+            <File
+              key={ i }
+              { ...file }
+              active={ file.path === selected }
+              onSelect={ onSelect }
+              onToggleStaged={ onToggleStaged }
+            />
           )) }
         </Scroll>
       </div>
       <div style={ styles.diff }>
         <Scroll x>
-          diff
+          { diff }
         </Scroll>
       </div>
     </div>

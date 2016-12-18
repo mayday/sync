@@ -4,7 +4,8 @@ import reactCSS from 'reactcss'
 import { Card } from 'sync-components'
 import { Files } from './files'
 
-export const LocalChanges = ({ files, fileSelected, onFileSelect }) => {
+export const LocalChanges = ({ files, selectedFile, diff, onFileSelect,
+  onToggleStaged }) => {
   const styles = reactCSS({
     'default': {
       wrap: {
@@ -29,8 +30,10 @@ export const LocalChanges = ({ files, fileSelected, onFileSelect }) => {
 
         <Files
           files={ files }
-          selected={ fileSelected }
+          diff={ diff }
+          selected={ selectedFile }
           onSelect={ onFileSelect }
+          onToggleStaged={ onToggleStaged }
         />
       </div>
     </Card>

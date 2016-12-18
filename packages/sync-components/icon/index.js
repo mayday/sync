@@ -26,4 +26,4 @@ export const Icon = ({ name, size = 24, onClick }) => {
 
 export default Icon
 
-export const SmallIcon = ({ name }) => <Icon name={ name } size={ 18 } />
+export const SmallIcon = props => <Icon { ...props } size={ 18 } />

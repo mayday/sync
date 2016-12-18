@@ -11,8 +11,11 @@ export const icon = <Icon name="checkbox-multiple-marked-outline" />
 export default connect(
   state => ({
     files: store.getChangedFilesByRepo(state, '/Users/case/Github/sync'),
+    selectedFile: store.getSelectedFilePath(state),
+    diff: store.getSelectedDiff(state),
   }), {
     onFileSelect: actions.selectFile,
+    onToggleStaged: actions.toggleStagedFile,
   },
 )(LocalChanges)
 
