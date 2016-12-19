@@ -1,8 +1,9 @@
 import { remote } from 'electron'
 
-const plugins = remote.require('../sync-scripts/plugins.js')
+// make electron ignore this when it comes across it
+const plugins = remote ? remote.require('../sync-plugins/server') : {}
 
-export const getReducers = plugins.getReducers
-export const getSelectors = plugins.getSelectors
-export const getKeymaps = plugins.getKeymaps
-export const getComponents = plugins.getComponents
+export const getReducers = plugins.getReducers || (() => {})
+export const getSelectors = plugins.getSelectors || (() => {})
+export const getKeymaps = plugins.getKeymaps || (() => {})
+export const getComponents = plugins.getComponents || (() => {})
