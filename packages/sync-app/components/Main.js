@@ -1,9 +1,11 @@
 import React from 'react'
 import reactCSS from 'reactcss'
-
-import LocalChangesPlugin from 'sync-plugin-local-changes'
+import { getComponents } from 'sync-plugins'
 
 import { Scroll } from 'sync-components'
+
+const components = getComponents()
+const LocalChangesPlugin = components['sync-plugin-local-changes']
 
 export const Main = () => {
   const styles = reactCSS({

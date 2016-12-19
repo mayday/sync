@@ -13,11 +13,7 @@
     "redux-git-middleware": "^0.1.1",
     "redux-logger": "^2.7.4",
     "redux-thunk": "^2.1.0",
-    "sync-plugin-branches": "^0.1.4",
-    "sync-plugin-commits": "^0.1.2",
-    "sync-plugin-jump-to-project": "^0.1.4",
-    "sync-plugin-local-changes": "^0.1.2",
-    "sync-plugin-projects": "^0.1.4",
+    "sync-plugins": "^0.1.1",
     "sync-store-git": "^0.1.3",
     "sync-store-settings": "^0.1.2",
     "sync-store-ui": "^0.1.1"

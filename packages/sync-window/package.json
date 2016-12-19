@@ -11,8 +11,6 @@
   "dependencies": {
     "lodash": "^4.17.2",
     "mousetrap": "^1.6.0",
-    "sync-plugin-branches": "^0.1.4",
-    "sync-plugin-jump-to-project": "^0.1.4",
-    "sync-plugin-projects": "^0.1.4"
+    "sync-plugins": "^0.1.1"
   }
 }

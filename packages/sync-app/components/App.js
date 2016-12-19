@@ -7,12 +7,14 @@ import { actions as settingsActions } from 'sync-store-settings'
 import { actions as uiActions } from 'sync-store-ui'
 import { store } from 'sync-store-selectors'
 import { registerEvents } from 'sync-window'
-
-import ProjectPlugin from 'sync-plugin-projects'
-import JumpToProjectPlugin from 'sync-plugin-jump-to-project'
+import { getComponents } from 'sync-plugins'
 
 import Header from './Header'
 import Main from './Main'
+
+const components = getComponents()
+const ProjectPlugin = components['sync-plugin-projects']
+const JumpToProjectPlugin = components['sync-plugin-jump-to-project']
 
 export class App extends React.Component { // eslint-disable-line
   componentDidMount() {
