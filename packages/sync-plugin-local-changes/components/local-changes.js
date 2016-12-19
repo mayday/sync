@@ -3,9 +3,11 @@ import reactCSS from 'reactcss'
 
 import { Card } from 'sync-components'
 import { Files } from './files'
+import { Commit } from './commit'
+import { ActionIcon } from './action-icon'
 
 export const LocalChanges = ({ files, selectedFile, diff, onFileSelect,
-  onToggleStaged }) => {
+  onToggleStaged, message, onEditMessage }) => {
   const styles = reactCSS({
     'default': {
       wrap: {
@@ -16,7 +18,14 @@ export const LocalChanges = ({ files, selectedFile, diff, onFileSelect,
       },
       commit: {
         height: 54,
+        display: 'flex',
         borderTop: '1px solid #222',
+      },
+      actions: {
+        color: '#555',
+        display: 'flex',
+        alignItems: 'center',
+        marginRight: 5,
       },
     },
   })
@@ -32,7 +41,16 @@ export const LocalChanges = ({ files, selectedFile, diff, onFileSelect,
           onToggleStaged={ onToggleStaged }
         />
         <div style={ styles.commit }>
-          commit message
+          <Commit
+            changeCount={ files.length }
+            message={ message }
+            onEditMessage={ onEditMessage }
+          />
+          <div style={ styles.actions }>
+            <ActionIcon name="map-marker" />
+            <ActionIcon name="timer" />
+            <ActionIcon name="save" active={ !!message.length } />
+          </div>
         </div>
       </div>
     </Card>

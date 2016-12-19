@@ -13,9 +13,11 @@ export default connect(
     files: store.getChangedFilesByRepo(state, '/Users/case/Github/sync'),
     selectedFile: store.getSelectedFilePath(state),
     diff: store.getSelectedDiff(state),
+    message: store.getMessage(state),
   }), {
     onFileSelect: actions.selectFile,
     onToggleStaged: actions.toggleStagedFile,
+    onEditMessage: actions.editMessage,
   },
 )(LocalChanges)
 

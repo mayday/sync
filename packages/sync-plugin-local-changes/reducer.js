@@ -2,6 +2,7 @@ import _ from 'lodash'
 
 export const SELECT = 'PLUGIN/LOCAL_CHANGES/SELECT'
 export const TOGGLE_STAGED = 'PLUGIN/LOCAL_CHANGES/TOGGLE_STAGED'
+export const EDIT_MESSAGE = 'PLUGIN/LOCAL_CHANGES/EDIT_MESSAGE'
 
 const initialState = {
   files: {
@@ -25,6 +26,7 @@ const initialState = {
     },
   },
   selected: 'packages/sync-state/index.js',
+  message: '',
 }
 
 const file = (state, action) => {
@@ -44,6 +46,7 @@ export const reducer = (state = initialState, action) => {
         [action.path]: file(state.files[action.path], action),
       },
     }),
+    [EDIT_MESSAGE]: () => ({ ...state, message: action.message }),
   }[action.type]
   return handler ? handler() : state
 }
@@ -51,10 +54,12 @@ export const reducer = (state = initialState, action) => {
 export const actions = {
   selectFile: path => ({ type: SELECT, path }),
   toggleStagedFile: path => ({ type: TOGGLE_STAGED, path }),
+  editMessage: message => ({ type: EDIT_MESSAGE, message }),
 }
 
 export const selectors = {
   getChangedFilesByRepo: (state, repo) => _.filter(state.files, { repo }),
   getSelectedFilePath: state => state.selected,
   getSelectedDiff: state => state.files[selectors.getSelectedFilePath(state)].diff,
+  getMessage: state => state.message,
 }
