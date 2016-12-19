@@ -39,6 +39,10 @@ export default validate({
   },
 
   resolve: {
-    extensions: ['', '.js'],
+    extensions: ['', '.js', '.json'],
+  },
+
+  resolveLoader: {
+    root: path.resolve(__dirname, 'node_modules'),
   },
 })

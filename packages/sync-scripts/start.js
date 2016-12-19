@@ -20,7 +20,7 @@ app.use(webpackHotMiddleware(compiler))
 
 app.use(express.static('src'))
 app.get('*', (request, response) => {
-  response.sendFile(path.resolve(__dirname, '../src', 'index.html'))
+  response.sendFile(path.resolve(__dirname, '../sync-electron', 'index.html'))
 })
 
 app.listen(PORT, 'localhost', (err) => {
