@@ -16,7 +16,7 @@ export const LocalChanges = ({ files, selectedFile, diff, onFileSelect,
       },
       commit: {
         height: 54,
-        borderBottom: '1px solid #222',
+        borderTop: '1px solid #222',
       },
     },
   })
@@ -24,10 +24,6 @@ export const LocalChanges = ({ files, selectedFile, diff, onFileSelect,
   return (
     <Card style={{ display: 'flex', flex: 1, minWidth: 0 }}>
       <div style={ styles.wrap }>
-        <div style={ styles.commit }>
-          commit message
-        </div>
-
         <Files
           files={ files }
           diff={ diff }
@@ -35,6 +31,9 @@ export const LocalChanges = ({ files, selectedFile, diff, onFileSelect,
           onSelect={ onFileSelect }
           onToggleStaged={ onToggleStaged }
         />
+        <div style={ styles.commit }>
+          commit message
+        </div>
       </div>
     </Card>
   )
