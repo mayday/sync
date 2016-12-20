@@ -8,6 +8,11 @@ import { LocalChanges } from './components/local-changes'
 export const name = 'Local Changes'
 export const icon = <Icon name="checkbox-multiple-marked-outline" />
 
+class LocalChangesContainer extends React.Component {
+  componentDidMount() { this.props.onRefresh() }
+  render() { return <LocalChanges { ...this.props } /> }
+}
+
 export default connect(
   state => ({
     files: store.getChangedFilesByRepo(state, '/Users/case/Github/sync'),
@@ -19,7 +24,8 @@ export default connect(
     onToggleStaged: actions.toggleStagedFile,
     onEditMessage: actions.editMessage,
     onCommit: actions.commit,
+    onRefresh: actions.refresh,
   },
-)(LocalChanges)
+)(LocalChangesContainer)
 
 export { reducer, actions, selectors } from './reducer'
