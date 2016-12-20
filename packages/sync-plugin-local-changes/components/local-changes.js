@@ -1,4 +1,5 @@
 import React from 'react'
+import _ from 'lodash'
 import reactCSS from 'reactcss'
 
 import { Card } from 'sync-components'
@@ -7,7 +8,7 @@ import { Commit } from './commit'
 import { ActionIcon } from './action-icon'
 
 export const LocalChanges = ({ files, selectedFile, diff, onFileSelect,
-  onToggleStaged, message, onEditMessage }) => {
+  onToggleStaged, message, onEditMessage, onCommit }) => {
   const styles = reactCSS({
     'default': {
       wrap: {
@@ -30,6 +31,9 @@ export const LocalChanges = ({ files, selectedFile, diff, onFileSelect,
     },
   })
 
+  const canCommit = !!message.length
+  const handleCommit = () => onCommit(message, _.filter(files, { staged: true }))
+
   return (
     <Card style={{ display: 'flex', flex: 1, minWidth: 0 }}>
       <div style={ styles.wrap }>
@@ -49,7 +53,7 @@ export const LocalChanges = ({ files, selectedFile, diff, onFileSelect,
           <div style={ styles.actions }>
             <ActionIcon name="map-marker" />
             <ActionIcon name="timer" />
-            <ActionIcon name="save" active={ !!message.length } />
+            <ActionIcon name="save" active={ canCommit } onClick={ canCommit && handleCommit } />
           </div>
         </div>
       </div>

@@ -18,6 +18,7 @@ export default connect(
     onFileSelect: actions.selectFile,
     onToggleStaged: actions.toggleStagedFile,
     onEditMessage: actions.editMessage,
+    onCommit: actions.commit,
   },
 )(LocalChanges)
 

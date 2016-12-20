@@ -3,7 +3,7 @@ import reactCSS, { handleHover } from 'reactcss'
 
 import { Icon } from 'sync-components'
 
-export const ActionIcon = handleHover(({ name, active, hover }) => {
+export const ActionIcon = handleHover(({ name, active, hover, onClick }) => {
   const styles = reactCSS({
     'default': {
       icon: {
@@ -27,7 +27,7 @@ export const ActionIcon = handleHover(({ name, active, hover }) => {
   }, { hover, active })
 
   return (
-    <div style={ styles.icon }>
+    <div style={ styles.icon } onClick={ onClick }>
       <Icon name={ name } />
     </div>
   )

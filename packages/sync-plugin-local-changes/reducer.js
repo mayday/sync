@@ -3,6 +3,7 @@ import _ from 'lodash'
 export const SELECT = 'PLUGIN/LOCAL_CHANGES/SELECT'
 export const TOGGLE_STAGED = 'PLUGIN/LOCAL_CHANGES/TOGGLE_STAGED'
 export const EDIT_MESSAGE = 'PLUGIN/LOCAL_CHANGES/EDIT_MESSAGE'
+export const COMMIT = 'PLUGIN/LOCAL_CHANGES/COMMIT'
 
 const initialState = {
   files: {
@@ -47,6 +48,10 @@ export const reducer = (state = initialState, action) => {
       },
     }),
     [EDIT_MESSAGE]: () => ({ ...state, message: action.message }),
+    [COMMIT]: () => {
+      console.log('Message', action.commit.message)
+      return { ...state, message: '' }
+    },
   }[action.type]
   return handler ? handler() : state
 }
@@ -55,6 +60,7 @@ export const actions = {
   selectFile: path => ({ type: SELECT, path }),
   toggleStagedFile: path => ({ type: TOGGLE_STAGED, path }),
   editMessage: message => ({ type: EDIT_MESSAGE, message }),
+  commit: (message, files) => ({ type: COMMIT, commit: { message, files } }),
 }
 
 export const selectors = {
