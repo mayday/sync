@@ -4,6 +4,7 @@ import reactCSS from 'reactcss'
 
 import { Scroll } from 'sync-components'
 import { File } from './file'
+import { Diff } from './diff'
 
 export const Files = ({ files, selectedFile, onSelect, onToggleStaged }) => {
   const styles = reactCSS({
@@ -44,7 +45,7 @@ export const Files = ({ files, selectedFile, onSelect, onToggleStaged }) => {
       </div>
       <div style={ styles.diff }>
         <Scroll x>
-          { selectedFile.diff }
+          <Diff chunks={ selectedFile.chunks } />
         </Scroll>
       </div>
     </div>
