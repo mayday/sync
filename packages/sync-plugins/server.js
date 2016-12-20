@@ -6,6 +6,7 @@ const pluginPaths = [
   '../sync-plugin-branches',
   '../sync-plugin-commits',
   '../sync-plugin-jump-to-project',
+  '../sync-plugin-location',
   '../sync-plugin-local-changes',
   '../sync-plugin-projects',
 ]
@@ -44,7 +45,10 @@ const withKeys = key => _.reduce(plugins, (combineReducer, plugin) => {
   return combineReducer
 }, {})
 
+const inArray = key => _(plugins).map(key).compact().value()
+
 export const getReducers = () => withKeys('reducer')
 export const getSelectors = () => withKeys('selectors')
+export const getMiddlewares = () => inArray('middleware')
 export const getKeymaps = () => withKeys('keymap')
 export const getComponents = () => withKeys('default')
