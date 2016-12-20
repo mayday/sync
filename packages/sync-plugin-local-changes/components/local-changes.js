@@ -7,7 +7,7 @@ import { Files } from './files'
 import { Commit } from './commit'
 import { ActionIcon } from './action-icon'
 
-export const LocalChanges = ({ files, selectedFile, diff, onFileSelect,
+export const LocalChanges = ({ files, selectedFile, onFileSelect,
   onToggleStaged, message, onEditMessage, onCommit }) => {
   const styles = reactCSS({
     'default': {
@@ -39,8 +39,7 @@ export const LocalChanges = ({ files, selectedFile, diff, onFileSelect,
       <div style={ styles.wrap }>
         <Files
           files={ files }
-          diff={ diff }
-          selected={ selectedFile }
+          selectedFile={ selectedFile }
           onSelect={ onFileSelect }
           onToggleStaged={ onToggleStaged }
         />

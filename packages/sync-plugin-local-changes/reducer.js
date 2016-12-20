@@ -1,4 +1,5 @@
 import _ from 'lodash'
+import parse from 'parse-diff'
 import * as GIT from 'sync-store-git/repos'
 
 export const SELECT = 'PLUGIN/LOCAL_CHANGES/SELECT'
@@ -7,31 +8,12 @@ export const EDIT_MESSAGE = 'PLUGIN/LOCAL_CHANGES/EDIT_MESSAGE'
 export const COMMIT = 'PLUGIN/LOCAL_CHANGES/COMMIT'
 
 const initialState = {
-  files: {
-    'packages/sync-state/index.js': {
-      path: 'packages/sync-state/index.js',
-      diff: 'packages/sync-state/index.js',
-      repo: '/Users/case/Github/sync',
-      staged: true,
-    },
-    'packages/sync-state/reducer.js': {
-      path: 'packages/sync-state/reducer.js',
-      diff: 'packages/sync-state/reducer.js',
-      repo: '/Users/case/Github/sync',
-      staged: true,
-    },
-    'packages/sync-state/selectors.js': {
-      path: 'packages/sync-state/selectors.js',
-      diff: 'packages/sync-state/selectors.js',
-      repo: '/Users/case/Github/sync',
-      staged: true,
-    },
-  },
-  selected: 'packages/sync-state/index.js',
+  files: {},
+  selected: '',
   message: '',
 }
 
-const file = (state, action) => {
+const file = (state = {}, action) => {
   const handler = {
     [TOGGLE_STAGED]: () => ({ ...state, staged: !state.staged }),
     [GIT.DIFF_SUMMARY]: () => ({
@@ -40,6 +22,10 @@ const file = (state, action) => {
       diff: action.file.file,
       repo: action.path,
       staged: state.staged || true,
+    }),
+    [GIT.DIFF]: () => ({
+      ...state,
+      chunks: action.file.chunks,
     }),
   }[action.type]
   return handler ? handler() : state
@@ -64,14 +50,21 @@ export const reducer = (state = initialState, action) => {
       const selected = action.diffSummary.files[0] && action.diffSummary.files[0].file
       const files = _.reduce(action.diffSummary.files, (all, f) => {
         // eslint-disable-next-line no-param-reassign
-        all[f.file] = file({}, { ...action, file: f })
+        all[f.file] = file(all[f.file], { ...action, file: f })
         return all
-      }, {})
-      return {
-        ...state,
-        files,
-        selected,
-      }
+      }, state.files)
+
+      return { ...state, files, selected }
+    },
+    [GIT.DIFF]: () => {
+      const diff = parse(action.diff)
+      const files = (diff, (all, f) => {
+        // eslint-disable-next-line no-param-reassign
+        all[f.to] = file(all[f.to], { ...action, file: f })
+        return all
+      }, state.files)
+
+      return { ...state, files }
     },
   }[action.type]
   return handler ? handler() : state
@@ -84,12 +77,13 @@ export const actions = {
   commit: (message, files) => ({ type: COMMIT, commit: { message, files } }),
   refresh: () => (dispatch) => {
     dispatch(GIT.actions.gitDiffSummary())
+    dispatch(GIT.actions.gitDiff())
   },
 }
 
 export const selectors = {
   getChangedFilesByRepo: (state, repo) => _.filter(state.files, { repo }),
   getSelectedFilePath: state => state.selected,
-  getSelectedDiff: state => state.files[selectors.getSelectedFilePath(state)].diff,
+  getSelectedFile: state => state.files[selectors.getSelectedFilePath(state)] || {},
   getMessage: state => state.message,
 }

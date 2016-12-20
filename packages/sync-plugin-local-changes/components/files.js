@@ -5,7 +5,7 @@ import reactCSS from 'reactcss'
 import { Scroll } from 'sync-components'
 import { File } from './file'
 
-export const Files = ({ files, selected, diff, onSelect, onToggleStaged }) => {
+export const Files = ({ files, selectedFile, onSelect, onToggleStaged }) => {
   const styles = reactCSS({
     'default': {
       changes: {
@@ -35,7 +35,7 @@ export const Files = ({ files, selected, diff, onSelect, onToggleStaged }) => {
             <File
               key={ i }
               { ...file }
-              active={ file.path === selected }
+              active={ file.path === selectedFile.path }
               onSelect={ onSelect }
               onToggleStaged={ onToggleStaged }
             />
@@ -44,7 +44,7 @@ export const Files = ({ files, selected, diff, onSelect, onToggleStaged }) => {
       </div>
       <div style={ styles.diff }>
         <Scroll x>
-          { diff }
+          { selectedFile.diff }
         </Scroll>
       </div>
     </div>
