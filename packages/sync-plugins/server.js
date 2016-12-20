@@ -45,6 +45,6 @@ const withKeys = key => _.reduce(plugins, (combineReducer, plugin) => {
 }, {})
 
 export const getReducers = () => withKeys('reducer')
-export const getSelectors = () => withKeys('selector')
+export const getSelectors = () => withKeys('selectors')
 export const getKeymaps = () => withKeys('keymap')
 export const getComponents = () => withKeys('default')

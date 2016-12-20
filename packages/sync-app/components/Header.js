@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import { store } from 'sync-store-selectors'
 import { actions as gitActions } from 'sync-store-git'
 import { actions as uiActions } from 'sync-store-ui'
-import { getComponents } from 'sync-plugins'
+// import { getComponents } from 'sync-plugins'
 
 // import { icon as commitsIcon } from 'sync-plugin-commits'
 // import { icon as localChangesIcon } from 'sync-plugin-local-changes'
@@ -13,8 +13,8 @@ import { getComponents } from 'sync-plugins'
 import { Icon } from 'sync-components'
 import TrafficLights from './TrafficLights'
 
-const components = getComponents()
-const BranchesPlugin = components['sync-plugin-branches']
+// const components = getComponents()
+const BranchesPlugin = require('../../sync-plugin-branches').default
 
 export const Header = () => {
   const styles = reactCSS({
