@@ -9,8 +9,8 @@ const logger = createLogger({ level: 'info', collapsed: true })
 const git = createGit({ path: 'ui.activeRepo' })
 
 export default applyMiddleware(
-  ...getMiddlewares(),
   thunk,
   git,
+  ...getMiddlewares(),
   logger,
 )
