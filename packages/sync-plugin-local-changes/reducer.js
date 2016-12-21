@@ -58,7 +58,7 @@ export const reducer = (state = initialState, action) => {
     },
     [GIT.DIFF]: () => {
       const diff = parse(action.diff)
-      const files = (diff, (all, f) => {
+      const files = _.reduce(diff, (all, f) => {
         // eslint-disable-next-line no-param-reassign
         all[f.to] = file(all[f.to], { ...action, file: f })
         return all
