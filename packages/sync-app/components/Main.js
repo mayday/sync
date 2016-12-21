@@ -17,6 +17,7 @@ export const Main = () => {
         marginLeft: 5,
         flex: 1,
         display: 'flex',
+        minWidth: 0,
       },
       changes: {
         marginBottom: 15,
