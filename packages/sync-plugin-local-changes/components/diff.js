@@ -20,8 +20,6 @@ export const Diff = ({ chunks }) => {
     },
   })
 
-  console.log(chunks)
-
   return (
     <div style={ styles.diff }>
       { _.map(chunks, (chunk, i) => (

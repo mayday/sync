@@ -32,7 +32,8 @@ export const LocalChanges = ({ files, selectedFile, onFileSelect,
   })
 
   const canCommit = !!message.length
-  const handleCommit = () => onCommit(message, _.filter(files, { staged: true }))
+  const stagedFilePaths = _(files).filter({ staged: true }).map('path').value()
+  const handleCommit = () => onCommit(message, stagedFilePaths)
 
   return (
     <Card style={{ display: 'flex', flex: 1, minWidth: 0 }}>
