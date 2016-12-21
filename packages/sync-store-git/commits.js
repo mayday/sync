@@ -53,6 +53,7 @@ export const actions = {
       method: 'commit',
       args: [message, files],
       types: [COMMIT_REQUEST, COMMIT, COMMIT_FAILURE],
+      passthrough: { files },
       model: 'commit',
     },
   }),

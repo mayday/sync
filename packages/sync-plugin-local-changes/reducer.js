@@ -47,6 +47,11 @@ export const reducer = (state = initialState, action) => {
 
       return { ...state, files }
     },
+    [GIT.COMMIT]: () => ({
+      ...state,
+      files: _.omit(state.files, action.files),
+      message: '',
+    }),
   }[action.type]
   return handler ? handler() : state
 }
