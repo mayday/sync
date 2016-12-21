@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux'
 import { scopeStateToSelectors } from 'redux-selector'
 
-import commits, { actions as commitsActions, selectors as commitsSelectors } from './commits'
-import repos, { actions as reposActions, selectors as reposSelectors } from './repos'
+import commits, * as commit from './commits'
+import repos, * as repo from './repos'
 
 export default combineReducers({
   commits,
@@ -10,11 +10,13 @@ export default combineReducers({
 })
 
 export const actions = {
-  ...commitsActions,
-  ...reposActions,
+  ...commit.actions,
+  ...repo.actions,
 }
 
 export const selectors = scopeStateToSelectors({
-  commits: commitsSelectors,
-  repos: reposSelectors,
+  commits: commit.electors,
+  repos: repo.selectors,
 })
+
+export const types = { ...commit, ...repo }
