@@ -46,7 +46,7 @@ export const LocalChanges = ({ files, selectedFile, onFileSelect,
         />
         <div style={ styles.commit }>
           <Commit
-            changeCount={ files.length }
+            changeCount={ stagedFilePaths.length }
             message={ message }
             onEditMessage={ onEditMessage }
           />
