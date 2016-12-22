@@ -43,7 +43,7 @@ export const reducer = (state = initialState, action) => {
         // eslint-disable-next-line no-param-reassign
         all[f.to] = file(all[f.to], { ...action, file: f })
         return all
-      }, state.files)
+      }, {})
 
       return { ...state, files }
     },
