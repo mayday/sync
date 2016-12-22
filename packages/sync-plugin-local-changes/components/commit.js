@@ -7,7 +7,7 @@ export const Commit = ({ changeCount, message, onEditMessage }) => {
   const styles = reactCSS({
     'default': {
       input: {
-        paddingLeft: 20,
+        paddingLeft: 5,
         flex: 1,
         color: '#ddd',
       },

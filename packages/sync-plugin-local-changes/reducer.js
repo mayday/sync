@@ -5,6 +5,7 @@ import { types as GIT, actions as git } from 'sync-store-git'
 export const SELECT = 'PLUGIN/LOCAL_CHANGES/SELECT'
 export const TOGGLE_STAGED = 'PLUGIN/LOCAL_CHANGES/TOGGLE_STAGED'
 export const EDIT_MESSAGE = 'PLUGIN/LOCAL_CHANGES/EDIT_MESSAGE'
+export const TOGGLE_ALL_FILES_STAGED = 'PLUGIN/LOCAL_CHANGES/TOGGLE_ALL_FILES_STAGED'
 
 const initialState = {
   files: {},
@@ -21,6 +22,10 @@ const file = (state = {}, action) => {
       path: action.file.to,
       chunks: action.file.chunks,
       staged: state.staged || true,
+    }),
+    [TOGGLE_ALL_FILES_STAGED]: () => ({
+      ...state,
+      staged: action.staged,
     }),
   }[action.type]
   return handler ? handler() : state
@@ -59,6 +64,14 @@ export const reducer = (state = initialState, action) => {
       ...state,
       files: _.omit(state.files, [action.args]),
     }),
+    [TOGGLE_ALL_FILES_STAGED]: () => ({
+      ...state,
+      files: _.reduce(state.files, (all, f) => {
+        // eslint-disable-next-line no-param-reassign
+        all[f.path] = file(f, action)
+        return all
+      }, {}),
+    }),
   }[action.type]
   return handler ? handler() : state
 }
@@ -76,6 +89,7 @@ export const actions = {
   discardChanges: path => (dispatch) => {
     dispatch(git.gitCheckout([path]))
   },
+  toggleAllFilesStaged: staged => ({ type: TOGGLE_ALL_FILES_STAGED, staged }),
 }
 
 export const selectors = {

@@ -25,6 +25,7 @@ export default connect(
     onCommit: actions.commit,
     onRefresh: actions.refresh,
     onDiscardChanges: actions.discardChanges,
+    onToggleAllFilesStaged: actions.toggleAllFilesStaged,
   },
 )(LocalChangesContainer)
 

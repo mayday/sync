@@ -2,13 +2,14 @@ import React from 'react'
 import _ from 'lodash'
 import reactCSS from 'reactcss'
 
-import { Card } from 'sync-components'
+import { Card, SmallIcon } from 'sync-components'
 import { Files } from './files'
 import { Commit } from './commit'
 import { ActionIcon } from './action-icon'
 
 export const LocalChanges = ({ files, selectedFile, onFileSelect,
-  onToggleStaged, message, onEditMessage, onCommit, onDiscardChanges }) => {
+  onToggleStaged, message, onEditMessage, onCommit, onDiscardChanges,
+  onToggleAllFilesStaged }) => {
   const styles = reactCSS({
     'default': {
       wrap: {
@@ -43,12 +44,22 @@ export const LocalChanges = ({ files, selectedFile, onFileSelect,
         left: 0,
         borderRadius: 4,
       },
+      selectAll: {
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        paddingLeft: 5,
+        width: 30,
+        color: '#666',
+        cursor: 'pointer',
+      },
     },
   })
 
-  const canCommit = !!message.length
   const stagedFilePaths = _(files).filter({ staged: true }).map('path').value()
-  const handleCommit = () => onCommit(message, stagedFilePaths)
+  const canCommit = !!message.length && stagedFilePaths.length
+  const handleCommit = () => canCommit && onCommit(message, stagedFilePaths)
+  const handleSelectDeselectAll = () => onToggleAllFilesStaged(!stagedFilePaths.length)
 
   return (
     <Card style={{ display: 'flex', flex: 1, minWidth: 0 }}>
@@ -64,6 +75,12 @@ export const LocalChanges = ({ files, selectedFile, onFileSelect,
           onDiscardChanges={ onDiscardChanges }
         />
         <div style={ styles.commit }>
+          <div style={ styles.selectAll }>
+            <SmallIcon
+              name={ stagedFilePaths.length ? 'checkbox-marked' : 'checkbox-blank-outline' }
+              onClick={ handleSelectDeselectAll }
+            />
+          </div>
           <Commit
             changeCount={ stagedFilePaths.length }
             message={ message }
