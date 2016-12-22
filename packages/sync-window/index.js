@@ -4,9 +4,11 @@
 // import { store } from 'sync-store-selectors'
 import _ from 'lodash'
 import Mousetrap from 'mousetrap'
-import { getKeymaps } from 'sync-plugins'
+import { getKeymaps, plugins } from 'sync-plugins'
 
 export const registerEvents = (window, { getState, dispatch }) => { // eslint-disable-line
+  const getOnLoad = _(plugins).map('windowOnFocus').compact().value()
+
   window.onblur = () => {}
   window.onfocus = () => {
     const state = getState() // eslint-disable-line
@@ -16,7 +18,16 @@ export const registerEvents = (window, { getState, dispatch }) => { // eslint-di
     //   dispatch(git.gitDiffSummary())
     //   dispatch(git.gitCommits())
     // })
+
+    _.each(getOnLoad, (onLoad) => {
+      onLoad(dispatch)
+    })
   }
+
+
+  _.each(getOnLoad, (onLoad) => {
+    onLoad(dispatch)
+  })
 
   const keymaps = getKeymaps()
 

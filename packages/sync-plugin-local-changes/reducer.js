@@ -75,3 +75,7 @@ export const selectors = {
   getSelectedFile: state => state.files[selectors.getSelectedFilePath(state)] || {},
   getMessage: state => state.message,
 }
+
+export const windowOnFocus = (dispatch) => {
+  dispatch(git.gitDiff())
+}
