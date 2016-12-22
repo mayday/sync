@@ -9,7 +9,7 @@ export const name = 'Local Changes'
 export const icon = <Icon name="checkbox-multiple-marked-outline" />
 
 class LocalChangesContainer extends React.Component {
-  // componentDidMount() { this.props.onRefresh() }
+  componentDidMount() { this.props.onRefresh() }
   render() { return <LocalChanges { ...this.props } /> }
 }
 
