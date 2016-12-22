@@ -24,11 +24,6 @@ export const registerEvents = (window, { getState, dispatch }) => { // eslint-di
     })
   }
 
-
-  _.each(getOnLoad, (onLoad) => {
-    onLoad(dispatch)
-  })
-
   const keymaps = getKeymaps()
 
   _.each(keymaps, (action, combo) => {
