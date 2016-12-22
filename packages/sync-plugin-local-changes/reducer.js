@@ -44,8 +44,9 @@ export const reducer = (state = initialState, action) => {
         all[f.to] = file(all[f.to], { ...action, file: f })
         return all
       }, {})
+      const selected = diff.length ? diff[0].to : ''
 
-      return { ...state, files }
+      return { ...state, files, selected }
     },
     [GIT.COMMIT]: () => ({
       ...state,
