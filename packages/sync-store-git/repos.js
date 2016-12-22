@@ -33,6 +33,9 @@ export const SYNC_REQUEST = 'GIT/REPOS/SYNC_REQUEST'
 export const SYNC = 'GIT/REPOS/SYNC'
 export const SYNC_FAILURE = 'GIT/REPOS/SYNC_FAILURE'
 
+export const CHECKOUT = 'GIT/REPOS/CHECKOUT'
+export const CHECKOUT_FAILURE = 'GIT/REPOS/CHECKOUT_FAILURE'
+
 export const BRANCHES = 'GIT/REPOS/BRANCHES'
 export const CHECKOUT_BRANCH = 'GIT/REPOS/CHECKOUT_BRANCH'
 
@@ -124,6 +127,15 @@ export const actions = {
     [GIT_API]: {
       method: 'push',
       types: [PUSH_REQUEST, PUSH, PUSH_FAILURE],
+    },
+  }),
+
+  gitCheckout: args => ({
+    [GIT_API]: {
+      method: 'checkout',
+      args,
+      types: [null, CHECKOUT, CHECKOUT_FAILURE],
+      passthrough: { args },
     },
   }),
 

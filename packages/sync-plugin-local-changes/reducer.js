@@ -53,6 +53,10 @@ export const reducer = (state = initialState, action) => {
       files: _.omit(state.files, action.files),
       message: '',
     }),
+    [GIT.CHECKOUT]: () => ({
+      ...state,
+      files: _.omit(state.files, [action.args]),
+    }),
   }[action.type]
   return handler ? handler() : state
 }
@@ -67,7 +71,9 @@ export const actions = {
   refresh: () => (dispatch) => {
     dispatch(git.gitDiff())
   },
-  discardChanges: path => ({ type: 'DISCARD_CHANGES', path }),
+  discardChanges: path => (dispatch) => {
+    dispatch(git.gitCheckout([path]))
+  },
 }
 
 export const selectors = {
