@@ -44,7 +44,9 @@ export const reducer = (state = initialState, action) => {
         all[f.to] = file(all[f.to], { ...action, file: f })
         return all
       }, {})
-      const selected = diff.length ? diff[0].to : ''
+      const first = diff.length ? diff[0].to : ''
+      const selected = diff.length && _(diff).map('to').includes(state.selected)
+        ? state.selected : first
 
       return { ...state, files, selected }
     },
