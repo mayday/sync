@@ -36,4 +36,9 @@ module.exports = {
     'no-return-assign': IGNORE,
     'import/prefer-default-export': IGNORE,
   },
+  'settings': {
+    'import/core-modules': [
+      'electron',
+    ]
+  }
 }
