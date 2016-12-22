@@ -8,6 +8,7 @@ import { List } from './list'
 export class Bar extends React.Component {
   componentDidUpdate(prevProps) {
     if (prevProps.listVisible === false && this.props.listVisible === true) {
+      this.props.onRefresh()
       this.input.focus()
     }
 

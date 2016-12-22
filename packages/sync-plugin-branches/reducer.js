@@ -1,5 +1,6 @@
 import _ from 'lodash'
 import { createFilter } from 'react-search-input'
+import { actions as gitActions, types as GIT } from 'sync-store-git'
 
 export const TOGGLE_LIST = 'PLUGIN/BRANCHES/TOGGLE_LIST'
 export const SEARCH = 'PLUGIN/BRANCHES/SEARCH'
@@ -12,12 +13,7 @@ const initialState = {
   listVisibility: false,
   current: 'master',
   active: 'master',
-  branches: [
-    'master',
-    'new-feature-branch-name',
-    'some-branch',
-    'some-branch-diff',
-  ],
+  branches: [],
 }
 
 const clear = {
@@ -33,6 +29,7 @@ export const reducer = (state = initialState, action) => {
     [CLEAR]: () => ({ ...state, ...clear }),
     [SELECT]: () => ({ ...state, current: action.branch, ...clear }),
     [SET_ACTIVE]: () => ({ ...state, active: action.branch }),
+    [GIT.BRANCHES]: () => ({ ...state, branches: action.branchLocal.all }),
   }[action.type]
   return handler ? handler() : state
 }
@@ -43,6 +40,9 @@ export const actions = {
   clear: () => ({ type: CLEAR }),
   select: branch => ({ type: SELECT, branch }),
   setActive: branch => ({ type: SET_ACTIVE, branch }),
+  refresh: () => (dispatch) => {
+    dispatch(gitActions.gitBranches())
+  },
 }
 
 export const selectors = {

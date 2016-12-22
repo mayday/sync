@@ -19,6 +19,7 @@ export default connect(
     onClear: actions.clear,
     onSelect: actions.select,
     onSetActive: actions.setActive,
+    onRefresh: actions.refresh,
   },
 )(Bar)
 
