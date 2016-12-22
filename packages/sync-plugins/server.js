@@ -3,6 +3,7 @@ import _ from 'lodash'
 import { basename, resolve } from 'path'
 
 const pluginPaths = [
+  '../sync-plugin-analytics',
   '../sync-plugin-branches',
   '../sync-plugin-commits',
   '../sync-plugin-jump-to-project',

@@ -39,6 +39,8 @@ export const CHECKOUT_FAILURE = 'GIT/REPOS/CHECKOUT_FAILURE'
 export const BRANCHES = 'GIT/REPOS/BRANCHES'
 export const CHECKOUT_BRANCH = 'GIT/REPOS/CHECKOUT_BRANCH'
 
+export const USER_EMAIL = 'GIT/REPOS/USER_EMAIL'
+
 const files = (state = [], action) => {
   switch (action.type) {
     case STATUS:
@@ -161,6 +163,15 @@ export const actions = {
   }),
 
   gitCheckoutBranch: branch => ({ type: CHECKOUT_BRANCH, branch }),
+
+  gitConfigUserEmail: () => ({
+    [GIT_API]: {
+      method: 'raw',
+      args: [['config', 'user.email']],
+      types: [null, USER_EMAIL],
+      model: 'email',
+    },
+  }),
 }
 
 export const selectors = {

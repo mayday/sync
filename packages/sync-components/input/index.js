@@ -25,11 +25,11 @@ export class Input extends React.Component {
 
     const handleKeyUp = (e) => {
       if (e.keyCode === ENTER) {
-        this.props.onEnter && this.props.onEnter()
+        this.props.onEnter && this.props.onEnter(e)
       }
 
       if (e.keyCode === ESC) {
-        this.props.onEscape && this.props.onEscape()
+        this.props.onEscape && this.props.onEscape(e)
       }
 
       this.props.onKeyUp && this.props.onKeyUp(e)

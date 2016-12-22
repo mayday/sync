@@ -23,7 +23,7 @@ export default (opts = {}) => store => next => (action) => {
     git(gitPath)[method](...args)
       .then((res) => {
         SUCCESS && next({ type: SUCCESS, [model || method]: res, path: gitPath, ...passthrough })
-        resolve({ ...res, path: gitPath, ...passthrough })
+        resolve({ [model || method]: res, path: gitPath, ...passthrough })
       })
       .catch((errorText) => {
         const data = { errorText, path: gitPath, ...passthrough }

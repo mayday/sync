@@ -15,6 +15,7 @@ import Main from './Main'
 // const components = getComponents()
 const ProjectPlugin = require('../../sync-plugin-projects').default
 const JumpToProjectPlugin = require('../../sync-plugin-jump-to-project').default
+const AnalyticsPlugin = require('../../sync-plugin-analytics').default
 
 export class App extends React.Component { // eslint-disable-line
   componentDidMount() {
@@ -68,6 +69,7 @@ export class App extends React.Component { // eslint-disable-line
     })
     return (
       <div style={ styles.app }>
+        <AnalyticsPlugin />
         <JumpToProjectPlugin />
         <div style={ styles.header }>
           <Header />
