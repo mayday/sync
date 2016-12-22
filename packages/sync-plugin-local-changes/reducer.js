@@ -66,6 +66,7 @@ export const actions = {
   refresh: () => (dispatch) => {
     dispatch(git.gitDiff())
   },
+  discardChanges: path => ({ type: 'DISCARD_CHANGES', path }),
 }
 
 export const selectors = {

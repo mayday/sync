@@ -6,7 +6,7 @@ import { Scroll } from 'sync-components'
 import { File } from './file'
 import { Diff } from './diff'
 
-export const Files = ({ files, selectedFile, onSelect, onToggleStaged }) => {
+export const Files = ({ files, selectedFile, onSelect, onToggleStaged, onDiscardChanges }) => {
   const styles = reactCSS({
     'default': {
       changes: {
@@ -39,6 +39,7 @@ export const Files = ({ files, selectedFile, onSelect, onToggleStaged }) => {
               active={ file.path === selectedFile.path }
               onSelect={ onSelect }
               onToggleStaged={ onToggleStaged }
+              onDiscardChanges={ onDiscardChanges }
             />
           )) }
         </Scroll>

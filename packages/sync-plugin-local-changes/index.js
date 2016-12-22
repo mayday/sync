@@ -24,6 +24,7 @@ export default connect(
     onEditMessage: actions.editMessage,
     onCommit: actions.commit,
     onRefresh: actions.refresh,
+    onDiscardChanges: actions.discardChanges,
   },
 )(LocalChangesContainer)
 

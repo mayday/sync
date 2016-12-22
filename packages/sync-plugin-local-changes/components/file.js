@@ -1,10 +1,11 @@
 import React from 'react'
 import reactCSS, { handleHover } from 'reactcss'
+import { remote } from 'electron'
 
 import { CompactMedia, SmallIcon } from 'sync-components'
 
 export const File = handleHover(({ path, active, hover, staged, onSelect,
-  onToggleStaged }) => {
+  onToggleStaged, onDiscardChanges }) => {
   const styles = reactCSS({
     'default': {
       file: {
@@ -28,6 +29,19 @@ export const File = handleHover(({ path, active, hover, staged, onSelect,
 
   const handleClick = () => onSelect(path)
   const handleIconClick = () => onToggleStaged(path)
+  const handleDiscardChanges = () => onDiscardChanges(path)
+
+  const { Menu, MenuItem } = remote
+  const menu = new Menu()
+  menu.append(new MenuItem({
+    label: 'Discard Changes',
+    click: handleDiscardChanges,
+  }))
+
+  const handleMenu = (e) => {
+    e.preventDefault()
+    menu.popup(e.clientX, e.clientY)
+  }
 
   const icon = (
     <SmallIcon
@@ -38,7 +52,7 @@ export const File = handleHover(({ path, active, hover, staged, onSelect,
 
   return (
     <CompactMedia style={ styles.file } left={ icon }>
-      <span onClick={ handleClick }>{ path }</span>
+      <span onClick={ handleClick } onContextMenu={ handleMenu }>{ path }</span>
     </CompactMedia>
   )
 })
