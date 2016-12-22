@@ -13,6 +13,7 @@ export const LocalChanges = ({ files, selectedFile, onFileSelect,
     'default': {
       wrap: {
         display: 'flex',
+        position: 'relative',
         flexDirection: 'column',
         minWidth: 0,
         flex: 1,
@@ -28,6 +29,20 @@ export const LocalChanges = ({ files, selectedFile, onFileSelect,
         alignItems: 'center',
         marginRight: 5,
       },
+      emptyCover: {
+        background: 'rgba(50, 47, 53, 0.9)',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        color: '#666',
+        fontSize: 16,
+        position: 'absolute',
+        top: 0,
+        right: 0,
+        bottom: 0,
+        left: 0,
+        borderRadius: 4,
+      },
     },
   })
 
@@ -38,6 +53,9 @@ export const LocalChanges = ({ files, selectedFile, onFileSelect,
   return (
     <Card style={{ display: 'flex', flex: 1, minWidth: 0 }}>
       <div style={ styles.wrap }>
+        { files.length === 0 ? (
+          <div style={ styles.emptyCover }>No Local Changes</div>
+        ) : null }
         <Files
           files={ files }
           selectedFile={ selectedFile }
