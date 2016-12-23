@@ -5,7 +5,6 @@ import { actions as gitActions, types as GIT } from 'sync-store-git'
 export const TOGGLE_LIST = 'PLUGIN/BRANCHES/TOGGLE_LIST'
 export const SEARCH = 'PLUGIN/BRANCHES/SEARCH'
 export const CLEAR = 'PLUGIN/BRANCHES/CLEAR'
-export const SELECT = 'PLUGIN/BRANCHES/SELECT'
 export const SET_ACTIVE = 'PLUGIN/BRANCHES/SET_ACTIVE'
 
 const initialState = {
@@ -27,7 +26,8 @@ export const reducer = (state = initialState, action) => {
     [TOGGLE_LIST]: () => ({ ...state, ...clear, listVisibility: !state.listVisibility }),
     [SEARCH]: () => ({ ...state, search: action.search }),
     [CLEAR]: () => ({ ...state, ...clear }),
-    [SELECT]: () => ({ ...state, current: action.branch, ...clear }),
+    [GIT.CHECKOUT]: () => ({ ...state, current: action.args[0], ...clear }),
+    [GIT.ADD_BRANCH]: () => ({ ...state, current: action.branch, ...clear }),
     [SET_ACTIVE]: () => ({ ...state, active: action.branch }),
     [GIT.BRANCHES]: () => ({ ...state, branches: action.branchLocal.all }),
   }[action.type]
@@ -38,10 +38,15 @@ export const actions = {
   toggleListVisibility: () => ({ type: TOGGLE_LIST }),
   setSearch: search => ({ type: SEARCH, search }),
   clear: () => ({ type: CLEAR }),
-  select: branch => ({ type: SELECT, branch }),
+  select: branch => (dispatch) => {
+    dispatch(gitActions.gitCheckout([branch]))
+  },
   setActive: branch => ({ type: SET_ACTIVE, branch }),
   refresh: () => (dispatch) => {
     dispatch(gitActions.gitBranches())
+  },
+  add: branch => (dispatch) => {
+    dispatch(gitActions.gitAddBranch(branch))
   },
 }
 
@@ -52,7 +57,7 @@ export const selectors = {
     const search = selectors.getSearch(state)
     return [
       ..._.map(state.branches, name => ({ name, search })),
-      { name: search, right: 'Add Branch', search },
+      { name: search, right: 'Add Branch', type: 'add', search },
     ]
   },
   getFilteredBranches: state =>

@@ -39,6 +39,9 @@ export const CHECKOUT_FAILURE = 'GIT/REPOS/CHECKOUT_FAILURE'
 export const BRANCHES = 'GIT/REPOS/BRANCHES'
 export const CHECKOUT_BRANCH = 'GIT/REPOS/CHECKOUT_BRANCH'
 
+export const ADD_BRANCH = 'GIT/REPOS/ADD_BRANCH'
+export const ADD_BRANCH_FAILURE = 'GIT/REPOS/ADD_BRANCH_FAILURE'
+
 export const USER_EMAIL = 'GIT/REPOS/USER_EMAIL'
 
 const files = (state = [], action) => {
@@ -159,6 +162,15 @@ export const actions = {
     [GIT_API]: {
       method: 'branchLocal',
       types: [null, BRANCHES],
+    },
+  }),
+
+  gitAddBranch: branch => ({
+    [GIT_API]: {
+      method: 'checkoutLocalBranch',
+      args: [branch],
+      passthrough: { branch },
+      types: [null, ADD_BRANCH, ADD_BRANCH_FAILURE],
     },
   }),
 

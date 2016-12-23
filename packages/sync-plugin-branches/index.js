@@ -20,6 +20,7 @@ export default connect(
     onSelect: actions.select,
     onSetActive: actions.setActive,
     onRefresh: actions.refresh,
+    onAdd: actions.add,
   },
 )(Bar)
 

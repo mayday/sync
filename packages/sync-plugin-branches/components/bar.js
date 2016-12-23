@@ -25,7 +25,7 @@ export class Bar extends React.Component {
   }
   render() {
     const { name, current, branches, onToggleList, onSearch, listVisible,
-      search, onClear, onSelect, active, onSetActive } = this.props
+      search, onClear, onSelect, active, onSetActive, onAdd } = this.props
 
     const styles = reactCSS({
       'default': {
@@ -53,9 +53,11 @@ export class Bar extends React.Component {
     const UP = 38
     const DOWN = 40
 
-    const handleEnter = () => onSelect(active)
+    const activeBranch = _.find(branches, { name: active })
+    const isNew = activeBranch && activeBranch.type === 'add'
+    const handleEnter = () => (isNew ? onAdd(active) : onSelect(active))
     const handleKeyDown = (e) => {
-      const index = _.findIndex(this.props.branches, { name: this.props.active })
+      const index = _.findIndex(branches, { name: active })
       if (e.keyCode === UP) {
         const prev = branches[index - 1]
         if (prev) {
