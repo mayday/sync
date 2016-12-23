@@ -19,7 +19,8 @@ const file = (state = {}, action) => {
     [GIT.DIFF]: () => ({
       ...state,
       repo: action.path,
-      path: action.file.to,
+      // overwrite for deleted files
+      path: action.file.to !== '/dev/null' ? action.file.to : action.file.from,
       chunks: action.file.chunks,
       staged: state.staged || true,
     }),
