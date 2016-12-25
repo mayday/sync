@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import { store } from 'sync-store-selectors'
 import { actions as gitActions } from 'sync-store-git'
 import { actions as uiActions } from 'sync-store-ui'
-import { Icon } from 'sync-components'
+import { Icon, Tooltip } from 'sync-components'
 
 // import { getComponents } from 'sync-plugins'
 
@@ -72,14 +72,23 @@ export const Header = () => {
       <div style={ styles.right }>
         <BranchesPlugin />
         <div style={ styles.actions }>
-          <Icon path={ localChangesIcon } />
-          { localChangesName }
+
+          <Tooltip label={ localChangesName } hoverColor="#bbb">
+            <Icon path={ localChangesIcon } />
+          </Tooltip>
+
           <div style={ styles.spacer } />
-          <Icon path={ commitsIcon } />
-          { commitsName }
+
+          <Tooltip label={ commitsName } hoverColor="#bbb">
+            <Icon path={ commitsIcon } />
+          </Tooltip>
+
           <div style={ styles.spacer } />
-          <Icon name="sync" />
-          Sync
+
+          <Tooltip label="Sync" hoverColor="#bbb">
+            <Icon name="sync" />
+          </Tooltip>
+
         </div>
       </div>
       <div style={ styles.divider } />
