@@ -25,5 +25,14 @@ app.get('*', (request, response) => {
 
 app.listen(PORT, 'localhost', (err) => {
   if (err) { console.error(err); return }
-  console.log(`Listening at http://localhost:${ PORT }`)
+
+  console.log('  ||||||  ||    ||  ||    ||  ||||||  ')
+  console.log('  ||       ||  ||   |||   ||  ||      ')
+  console.log('  ||||||     ||     || || ||  ||      ')
+  console.log('      ||     ||     ||   |||  ||      ')
+  console.log('  ||||||     ||     ||    ||  ||||||  ')
+  console.log('                                      ')
+  console.log('                                      ')
+
+  // console.log(`Listening at http://localhost:${ PORT }`)
 })

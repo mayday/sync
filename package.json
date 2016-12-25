@@ -10,7 +10,8 @@
     "changelog": "lerna-changelog",
     "server": "cd packages/sync-scripts && npm start",
     "electron": "cd packages/sync-electron && npm start",
-    "start": "concurrently --kill-others \"npm run server\" \"npm run electron\"",
+    "dev": "concurrently --kill-others \"npm run server\" \"npm run electron\" -n \"webpack,electron\" -p name",
+    "start": "npm run dev -s",
     "open-settings": "atom ~/Library/Application\\ Support/Sync/settings.js",
     "clean": "find . -name 'node_modules' -exec rm -rf '{}' +"
   },
