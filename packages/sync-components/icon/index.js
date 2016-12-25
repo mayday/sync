@@ -3,7 +3,7 @@ import reactCSS from 'reactcss'
 
 import icons, { missing } from './icons'
 
-export const Icon = ({ name, size = 24, onClick }) => {
+export const Icon = ({ name, size = 24, path, onClick }) => {
   const styles = reactCSS({
     'default': {
       svg: {
@@ -19,7 +19,7 @@ export const Icon = ({ name, size = 24, onClick }) => {
 
   return (
     <svg style={ styles.svg } viewBox="0 0 24 24" onClick={ onClick }>
-      <path style={ styles.path } d={ icons[name] || missing } />
+      <path style={ styles.path } d={ path || icons[name] || missing } />
     </svg>
   )
 }

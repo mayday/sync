@@ -5,12 +5,13 @@ import { connect } from 'react-redux'
 import { store } from 'sync-store-selectors'
 import { actions as gitActions } from 'sync-store-git'
 import { actions as uiActions } from 'sync-store-ui'
+import { Icon } from 'sync-components'
+
 // import { getComponents } from 'sync-plugins'
 
-// import { icon as commitsIcon } from 'sync-plugin-commits'
-// import { icon as localChangesIcon } from 'sync-plugin-local-changes'
+import { headerIcon as commitsIcon, name as commitsName } from '../../sync-plugin-commits'
+import { headerIcon as localChangesIcon, name as localChangesName } from '../../sync-plugin-local-changes'
 
-import { Icon } from 'sync-components'
 import TrafficLights from './TrafficLights'
 
 // const components = getComponents()
@@ -63,11 +64,6 @@ export const Header = () => {
   // const nameSplit = path && path.split('/')
   // const name = nameSplit && nameSplit[nameSplit.length - 1]
 
-  // { localChangesIcon }
-  // <div style={ styles.spacer } />
-  // { commitsIcon }
-  // <div style={ styles.spacer } />
-
   return (
     <div style={ styles.header }>
       <div style={ styles.left }>
@@ -76,7 +72,14 @@ export const Header = () => {
       <div style={ styles.right }>
         <BranchesPlugin />
         <div style={ styles.actions }>
+          <Icon path={ localChangesIcon } />
+          { localChangesName }
+          <div style={ styles.spacer } />
+          <Icon path={ commitsIcon } />
+          { commitsName }
+          <div style={ styles.spacer } />
           <Icon name="sync" />
+          Sync
         </div>
       </div>
       <div style={ styles.divider } />
