@@ -44,40 +44,42 @@ export const ADD_BRANCH_FAILURE = 'GIT/REPOS/ADD_BRANCH_FAILURE'
 
 export const USER_EMAIL = 'GIT/REPOS/USER_EMAIL'
 
-const files = (state = [], action) => {
-  switch (action.type) {
-    case STATUS:
-      return _.map(action.status.files, (file) => {
-        return { ...file, tracked: true }
-      })
-    default: return state
-  }
-}
+export const DIFF_FILES = 'GIT/REPOS/DIFF_FILES'
 
-const repo = (state, action) => {
-  switch (action.type) {
-    case STATUS:
-      return { ...state, ...action.status, files: files([], action), path: action.path }
-    case DIFF:
-      return { ...state, diff: action.diff, path: action.path }
-    case DIFF_SUMMARY:
-      return { ...state, diffSummary: action.diffSummary, path: action.path }
-    case BRANCHES:
-      return { ...state, branches: action.branchLocal.all }
-    default: return state
-  }
-}
+// const files = (state = [], action) => {
+//   switch (action.type) {
+//     case STATUS:
+//       return _.map(action.status.files, (file) => {
+//         return { ...file, tracked: true }
+//       })
+//     default: return state
+//   }
+// }
+//
+// const repo = (state, action) => {
+//   switch (action.type) {
+//     case STATUS:
+//       return { ...state, ...action.status, files: files([], action), path: action.path }
+//     case DIFF:
+//       return { ...state, diff: action.diff, path: action.path }
+//     case DIFF_SUMMARY:
+//       return { ...state, diffSummary: action.diffSummary, path: action.path }
+//     case BRANCHES:
+//       return { ...state, branches: action.branchLocal.all }
+//     default: return state
+//   }
+// }
 
 export default function repos(state = {}, action) {
   switch (action.type) {
-    case STATUS:
-      return { ...state, [action.path]: repo(state[action.path], action) }
-    case DIFF:
-      return { ...state, [action.path]: repo(state[action.path], action) }
-    case DIFF_SUMMARY:
-      return { ...state, [action.path]: repo(state[action.path], action) }
-    case BRANCHES:
-      return { ...state, [action.path]: repo(state[action.path], action) }
+    // case STATUS:
+    //   return { ...state, [action.path]: repo(state[action.path], action) }
+    // case DIFF:
+    //   return { ...state, [action.path]: repo(state[action.path], action) }
+    // case DIFF_SUMMARY:
+    //   return { ...state, [action.path]: repo(state[action.path], action) }
+    // case BRANCHES:
+    //   return { ...state, [action.path]: repo(state[action.path], action) }
     default: return state
   }
 }
@@ -114,6 +116,13 @@ export const actions = {
       method: 'diff',
       // args: [['--cached']],
       types: [DIFF_REQUEST, DIFF, DIFF_FAILURE],
+    },
+  }),
+  getDiffFiles: () => ({
+    [GIT_API]: {
+      method: 'raw',
+      args: [['status', '-u', '--porcelain']],
+      types: [null, DIFF_FILES],
     },
   }),
   gitDiffSummary: () => ({

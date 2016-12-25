@@ -24,6 +24,13 @@ const file = (state = {}, action) => {
       chunks: action.file.chunks,
       staged: state.staged || true,
     }),
+    [GIT.DIFF_FILES]: () => ({
+      ...state,
+      repo: action.path,
+      path: action.file,
+      chunks: [],
+      staged: state.staged || true,
+    }),
     [TOGGLE_ALL_FILES_STAGED]: () => ({
       ...state,
       staged: action.staged,
@@ -56,6 +63,20 @@ export const reducer = (state = initialState, action) => {
 
       return { ...state, files, selected }
     },
+    [GIT.DIFF_FILES]: () => {
+      const changes = action.raw.split('\n')
+
+      const files = _.reduce(changes, (all, change) => {
+        if (change.indexOf('?? ') > -1) {
+          const f = change.replace('?? ', '')
+          // eslint-disable-next-line no-param-reassign
+          all[f] = file(all[file], { ...action, file: f })
+        }
+        return all
+      }, state.files)
+
+      return { ...state, files }
+    },
     [GIT.COMMIT]: () => ({
       ...state,
       files: _.omit(state.files, action.files),
@@ -86,6 +107,7 @@ export const actions = {
   },
   refresh: () => (dispatch) => {
     dispatch(git.gitDiff())
+      .then(() => dispatch(git.getDiffFiles()))
   },
   discardChanges: path => (dispatch) => {
     dispatch(git.gitCheckout([path]))
