@@ -1,4 +1,5 @@
 import React from 'react'
+// import _ from 'lodash'
 import reactCSS from 'reactcss'
 
 import { connect } from 'react-redux'
@@ -7,7 +8,7 @@ import { actions as settingsActions } from 'sync-store-settings'
 import { actions as uiActions } from 'sync-store-ui'
 import { store } from 'sync-store-selectors'
 import { registerEvents } from 'sync-window'
-// import { getComponents } from 'sync-plugins'
+// import { getUIByContext } from 'sync-plugins'
 
 import Header from './Header'
 import Main from './Main'
@@ -67,8 +68,14 @@ export class App extends React.Component { // eslint-disable-line
         },
       },
     })
+
+    // const rootPlugins = getUIByContext('body')
+
     return (
       <div style={ styles.app }>
+        { /* _.map(rootPlugins, (plugin, i) => (
+          <plugin.component key={ i } />
+        )) */ }
         <AnalyticsPlugin />
         <JumpToProjectPlugin />
         <div style={ styles.header }>

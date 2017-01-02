@@ -4,14 +4,21 @@ import { actions } from './reducer'
 
 import { Search } from './components/search'
 
-export default connect(
+const Container = connect(
   state => ({
     visible: store.getVisibility(state),
   }), {
     toggleVisibility: actions.toggleVisibility,
   },
-)(Search)
+)
+
+export default Container(Search)
 
 export { reducer, actions, selectors } from './reducer'
 
 export keymap from './keymap'
+
+export const ui = [{
+  context: 'body',
+  component: Container(Search),
+}]
