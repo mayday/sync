@@ -26,13 +26,12 @@ app.get('*', (request, response) => {
 app.listen(PORT, 'localhost', (err) => {
   if (err) { console.error(err); return }
 
-  console.log('  ||||||  ||    ||  ||    ||  ||||||  ')
-  console.log('  ||       ||  ||   |||   ||  ||      ')
-  console.log('  ||||||     ||     || || ||  ||      ')
-  console.log('      ||     ||     ||   |||  ||      ')
-  console.log('  ||||||     ||     ||    ||  ||||||  ')
-  console.log('                                      ')
-  console.log('                                      ')
+  console.log('         _/_/_/  _/      _/  _/      _/    _/_/_/   ')
+  console.log('      _/          _/  _/    _/_/    _/  _/          ')
+  console.log('       _/_/        _/      _/  _/  _/  _/           ')
+  console.log('          _/      _/      _/    _/_/  _/            ')
+  console.log('   _/_/_/        _/      _/      _/    _/_/_/       ')
+  console.log('                                                    ')
 
   // console.log(`Listening at http://localhost:${ PORT }`)
 })
