@@ -3,13 +3,13 @@ import _ from 'lodash'
 import { basename, resolve } from 'path'
 
 const pluginPaths = [
-  '../sync-plugin-analytics',
-  '../sync-plugin-branches',
-  '../sync-plugin-commits',
-  '../sync-plugin-jump-to-project',
-  '../sync-plugin-location',
-  '../sync-plugin-local-changes',
-  '../sync-plugin-projects',
+  '../sync-analytics',
+  '../sync-branches',
+  '../sync-commits',
+  '../sync-jump-to-project',
+  '../sync-location',
+  '../sync-local-changes',
+  '../sync-projects',
 ]
 
 const requirePackage = (path) => {

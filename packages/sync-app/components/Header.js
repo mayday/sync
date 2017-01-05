@@ -7,13 +7,13 @@ import { Icon, Tooltip } from 'sync-components'
 
 // import { getComponents } from 'sync-plugins'
 
-import { headerIcon as commitsIcon, name as commitsName } from '../../sync-plugin-commits'
-import { headerIcon as localChangesIcon, name as localChangesName } from '../../sync-plugin-local-changes'
+import { headerIcon as commitsIcon, name as commitsName } from '../../sync-commits'
+import { headerIcon as localChangesIcon, name as localChangesName } from '../../sync-local-changes'
 
 import TrafficLights from './TrafficLights'
 
 // const components = getComponents()
-const BranchesPlugin = require('../../sync-plugin-branches').default
+const BranchesPlugin = require('../../sync-branches').default
 
 export const Header = () => {
   const styles = reactCSS({

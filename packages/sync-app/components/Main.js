@@ -5,7 +5,7 @@ import reactCSS from 'reactcss'
 import { Scroll } from 'sync-components'
 
 // const components = getComponents()
-const LocalChangesPlugin = require('../../sync-plugin-local-changes').default
+const LocalChangesPlugin = require('../../sync-local-changes').default
 
 export const Main = () => {
   const styles = reactCSS({

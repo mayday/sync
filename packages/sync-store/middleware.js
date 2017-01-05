@@ -6,7 +6,7 @@ import createGit from 'redux-git-middleware'
 import thunk from 'redux-thunk'
 
 // HAX
-const AnalyticsMiddleware = require('../sync-plugin-analytics').middleware
+const AnalyticsMiddleware = require('../sync-analytics').middleware
 
 const logger = createLogger({ level: 'info', collapsed: true })
 const git = createGit({ path: 'ui.activeRepo' })
