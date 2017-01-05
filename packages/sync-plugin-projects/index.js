@@ -1,6 +1,5 @@
 import { connect } from 'react-redux'
 import { store } from 'sync-store-selectors'
-import { actions as uiActions } from 'sync-store-ui'
 import { actions } from './reducer'
 
 import { Projects } from './components/projects'
@@ -8,11 +7,11 @@ import { Projects } from './components/projects'
 export default connect(
   state => ({
     groups: store.getProjectsByCategory(state),
-    activeRepo: store.getActiveRepo(state),
+    activeRepo: '/Users/case/Github/sync',
   }), {
     onStar: actions.star,
     onRemove: actions.remove,
-    onSelect: uiActions.setActiveRepo,
+    // onSelect: uiActions.setActiveRepo,
   },
 )(Projects)
 

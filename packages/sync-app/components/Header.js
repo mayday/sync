@@ -2,9 +2,7 @@ import React from 'react'
 import reactCSS from 'reactcss'
 
 import { connect } from 'react-redux'
-import { store } from 'sync-store-selectors'
 import { actions as gitActions } from 'sync-store-git'
-import { actions as uiActions } from 'sync-store-ui'
 import { Icon, Tooltip } from 'sync-components'
 
 // import { getComponents } from 'sync-plugins'
@@ -97,9 +95,6 @@ export const Header = () => {
 }
 
 export default connect(
-  state => ({
-    ...store.getCurrentRepo(state),
-    menuVisible: store.getBranchMenuVisibility(state),
-  }),
-  { ...gitActions, ...uiActions },
+  () => ({}),
+  gitActions,
 )(Header)

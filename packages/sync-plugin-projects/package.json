@@ -15,7 +15,6 @@
     "reactcss": "^1.1.1",
     "redux": "^3.6.0",
     "sync-components": "^0.1.4",
-    "sync-store-selectors": "^0.1.3",
-    "sync-store-ui": "^0.1.1"
+    "sync-store-selectors": "^0.1.3"
   }
 }
