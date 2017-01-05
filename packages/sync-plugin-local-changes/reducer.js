@@ -64,7 +64,7 @@ export const reducer = (state = initialState, action) => {
       return { ...state, files, selected }
     },
     [GIT.DIFF_FILES]: () => {
-      const changes = action.raw.split('\n')
+      const changes = action.raw && action.raw.split('\n')
 
       const files = _.reduce(changes, (all, change) => {
         if (change.indexOf('?? ') > -1) {
