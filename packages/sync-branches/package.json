@@ -1,5 +1,5 @@
 {
-  "name": "sync-components",
+  "name": "sync-branches",
   "version": "0.1.5",
   "description": "",
   "main": "index.js",
@@ -10,10 +10,13 @@
   "license": "MIT",
   "dependencies": {
     "lodash": "^4.17.2",
-    "git-diff-parser": "^0.1.1",
-    "parse-diff": "^0.4.0",
     "react": "^15.4.1",
+    "react-redux": "^4.4.6",
     "react-search-input": "^0.10.3",
-    "reactcss": "^1.1.1"
+    "reactcss": "^1.1.1",
+    "redux": "^3.6.0",
+    "sync-components": "^0.1.5",
+    "sync-store-git": "^0.1.4",
+    "sync-store-selectors": "^0.1.4"
   }
 }

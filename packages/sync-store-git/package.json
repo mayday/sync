@@ -1,6 +1,6 @@
 {
   "name": "sync-store-git",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -11,7 +11,7 @@
   "dependencies": {
     "lodash": "^4.17.2",
     "redux": "^3.6.0",
-    "redux-git-middleware": "^0.1.1",
+    "redux-git-middleware": "^0.1.2",
     "redux-selector": "^0.2.0",
     "simple-git": "^1.63.0"
   }
