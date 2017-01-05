@@ -18,7 +18,6 @@ const packages = [
   'sync-store',
   'sync-store-git',
   'sync-store-selectors',
-  'sync-store-settings',
   'sync-store-ui',
   'sync-theme-ui-dark',
   'sync-window',

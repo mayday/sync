@@ -2,11 +2,6 @@ import React from 'react'
 // import _ from 'lodash'
 import reactCSS from 'reactcss'
 
-import { connect } from 'react-redux'
-import { actions as gitActions } from 'sync-store-git'
-import { actions as settingsActions } from 'sync-store-settings'
-import { actions as uiActions } from 'sync-store-ui'
-import { store } from 'sync-store-selectors'
 import { registerEvents } from 'sync-window'
 // import { getUIByContext } from 'sync-plugins'
 
@@ -20,7 +15,6 @@ const AnalyticsPlugin = require('../../sync-plugin-analytics').default
 
 export class App extends React.Component { // eslint-disable-line
   componentDidMount() {
-    this.props.gitReposStatus(this.props.repos)
     registerEvents(window, this.props.store)
   }
   render() {
@@ -96,10 +90,4 @@ export class App extends React.Component { // eslint-disable-line
   }
 }
 
-export default connect(
-  state => ({
-    repos: store.getRepos(state),
-    activeRepo: store.getActiveRepo(state),
-  }),
-  { ...gitActions, ...settingsActions, ...uiActions },
-)(App)
+export default App

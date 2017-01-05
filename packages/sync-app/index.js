@@ -5,7 +5,7 @@ import { configureStore } from 'sync-store'
 // import { getSettings } from 'sync-electron'
 import App from './components/App'
 
-const store = configureStore({ settings: {} })
+const store = configureStore()
 
 render(
   <Provider store={ store }>
