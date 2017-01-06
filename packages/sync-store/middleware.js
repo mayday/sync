@@ -9,7 +9,7 @@ import thunk from 'redux-thunk'
 const AnalyticsMiddleware = require('../sync-analytics').middleware
 
 const logger = createLogger({ level: 'info', collapsed: true })
-const git = createGit({ path: 'ui.activeRepo' })
+const git = createGit({ path: 'plugins["sync-layout"].activeRepoPath' })
 
 export default applyMiddleware(
   thunk,

@@ -18,6 +18,8 @@ export const List = ({ commits }) => {
     },
   })
 
+  console.log(commits.length)
+
   return (
     <div style={ styles.list }>
       { _.map(commits, (commit, i) => (
