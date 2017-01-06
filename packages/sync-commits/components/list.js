@@ -10,6 +10,7 @@ export const List = ({ commits }) => {
     'default': {
       list: {
         marginBottom: 15,
+        flex: 1,
       },
       commit: {
         marginBottom: 1,

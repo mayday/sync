@@ -5,7 +5,8 @@ import reactCSS from 'reactcss'
 import { Scroll } from 'sync-components'
 
 // const components = getComponents()
-const LocalChangesPlugin = require('../../sync-local-changes').default
+// const LocalChangesPlugin = require('../../sync-local-changes').default
+const CommitsPlugin = require('../../sync-commits').default
 
 export const Main = () => {
   const styles = reactCSS({
@@ -19,18 +20,13 @@ export const Main = () => {
         display: 'flex',
         minWidth: 0,
       },
-      changes: {
-        marginBottom: 15,
-        maxHeight: '78vh',
-        display: 'flex',
-      },
     },
   })
 
   return (
     <Scroll scrollToBottom style={{ display: 'flex' }}>
       <div style={ styles.main }>
-        <LocalChangesPlugin />
+        <CommitsPlugin />
       </div>
     </Scroll>
   )
