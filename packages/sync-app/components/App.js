@@ -65,6 +65,8 @@ export class App extends React.Component { // eslint-disable-line
 
     // const rootPlugins = getUIByContext('body')
 
+    const handleActionBarChange = name => this.props.changeActiveUI('actionBar', name)
+
     return (
       <div style={ styles.app }>
         { /* _.map(rootPlugins, (plugin, i) => (
@@ -73,7 +75,7 @@ export class App extends React.Component { // eslint-disable-line
         <AnalyticsPlugin />
         <JumpToProjectPlugin />
         <div style={ styles.header }>
-          <Header />
+          <Header onActionBarChange={ handleActionBarChange } />
         </div>
         <div style={ styles.sidebar }>
           <div style={ styles.headerSpacing }>
@@ -82,7 +84,7 @@ export class App extends React.Component { // eslint-disable-line
         </div>
         <div style={ styles.main }>
           <div style={ styles.headerSpacing }>
-            <Main />
+            <Main active={ this.props.activeUI.actionBar } />
           </div>
         </div>
       </div>

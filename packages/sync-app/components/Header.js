@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-bind */
 import React from 'react'
 import reactCSS from 'reactcss'
 
@@ -15,7 +16,7 @@ import TrafficLights from './TrafficLights'
 // const components = getComponents()
 const BranchesPlugin = require('../../sync-branches').default
 
-export const Header = () => {
+export const Header = ({ onActionBarChange }) => {
   const styles = reactCSS({
     'default': {
       header: {
@@ -72,13 +73,19 @@ export const Header = () => {
         <div style={ styles.actions }>
 
           <Tooltip label={ localChangesName } hoverColor="#bbb">
-            <Icon path={ localChangesIcon } />
+            <Icon
+              path={ localChangesIcon }
+              onClick={ onActionBarChange.bind(null, 'sync-local-changes') }
+            />
           </Tooltip>
 
           <div style={ styles.spacer } />
 
           <Tooltip label={ commitsName } hoverColor="#bbb">
-            <Icon path={ commitsIcon } />
+            <Icon
+              path={ commitsIcon }
+              onClick={ onActionBarChange.bind(null, 'sync-commits') }
+            />
           </Tooltip>
 
           <div style={ styles.spacer } />

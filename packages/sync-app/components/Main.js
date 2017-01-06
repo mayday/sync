@@ -5,10 +5,10 @@ import reactCSS from 'reactcss'
 import { Scroll } from 'sync-components'
 
 // const components = getComponents()
-// const LocalChangesPlugin = require('../../sync-local-changes').default
+const LocalChangesPlugin = require('../../sync-local-changes').default
 const CommitsPlugin = require('../../sync-commits').default
 
-export const Main = () => {
+export const Main = ({ active }) => {
   const styles = reactCSS({
     'default': {
       main: {
@@ -23,10 +23,16 @@ export const Main = () => {
     },
   })
 
+  // TODO: Make this a loop, not hard coded
+  const Component = {
+    'sync-local-changes': LocalChangesPlugin,
+    'sync-commits': CommitsPlugin,
+  }[active]
+
   return (
     <Scroll scrollToBottom style={{ display: 'flex' }}>
       <div style={ styles.main }>
-        <CommitsPlugin />
+        <Component />
       </div>
     </Scroll>
   )
