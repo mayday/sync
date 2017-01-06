@@ -12,6 +12,7 @@ import Main from './Main'
 const ProjectPlugin = require('../../sync-projects').default
 const JumpToProjectPlugin = require('../../sync-jump-to-project').default
 const AnalyticsPlugin = require('../../sync-analytics').default
+const NotificationsPlugin = require('../../sync-notifications').ui[0].component
 
 export class App extends React.Component { // eslint-disable-line
   componentDidMount() {
@@ -74,6 +75,7 @@ export class App extends React.Component { // eslint-disable-line
         )) */ }
         <AnalyticsPlugin />
         <JumpToProjectPlugin />
+        <NotificationsPlugin />
         <div style={ styles.header }>
           <Header
             onActionBarChange={ handleActionBarChange }

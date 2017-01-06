@@ -5,11 +5,12 @@ import { basename, resolve } from 'path'
 const pluginPaths = [
   '../sync-analytics',
   '../sync-branches',
+  '../sync-commit-location',
   '../sync-commits',
   '../sync-jump-to-project',
   '../sync-layout',
-  '../sync-commit-location',
   '../sync-local-changes',
+  '../sync-notifications',
   '../sync-projects',
 ]
 

@@ -7,6 +7,7 @@ import thunk from 'redux-thunk'
 
 // HAX
 const AnalyticsMiddleware = require('../sync-analytics').middleware
+const NotificationsMiddleware = require('../sync-notifications').middleware
 
 const logger = createLogger({ level: 'info', collapsed: true })
 const git = createGit({ path: 'plugins["sync-layout"].activeRepoPath' })
@@ -16,6 +17,7 @@ export default applyMiddleware(
   git,
   // ...getMiddlewares(),
   // HAX
+  NotificationsMiddleware,
   AnalyticsMiddleware,
   logger,
 )
