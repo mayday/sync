@@ -1,4 +1,4 @@
-/* eslint-disable no-param-reassign */
+/* eslint-disable no-param-reassign, no-console */
 import _ from 'lodash'
 import { basename, resolve } from 'path'
 
@@ -13,16 +13,17 @@ const pluginPaths = [
 ]
 
 const requirePackage = (path) => {
+  const name = basename(path)
   try {
     // eslint-disable-next-line global-require, import/no-dynamic-require
     const pkg = require(path)
     if (pkg) {
-      pkg.packageName = basename(path)
+      pkg.packageName = name
     }
     return pkg
   } catch (err) {
-    console.log('NODE: ERROR LOADING PACKAGE', basename(path)) // eslint-disable-line no-console
-    console.error(err) // eslint-disable-line no-console
+    console.log('NODE: ERROR LOADING PACKAGE', name)
+    console.error(err)
     return false
   }
 }
@@ -38,18 +39,3 @@ const loadPackages = (paths) => {
 }
 
 export const plugins = loadPackages(pluginPaths)
-
-const withKeys = key => _.reduce(plugins, (combineReducer, plugin) => {
-  if (plugin[key]) {
-    combineReducer[plugin.packageName] = plugin[key]
-  }
-  return combineReducer
-}, {})
-
-const inArray = key => _(plugins).map(key).compact().value()
-
-export const getReducers = () => withKeys('reducer')
-export const getSelectors = () => withKeys('selectors')
-export const getMiddlewares = () => inArray('middleware')
-export const getKeymaps = () => withKeys('keymap')
-export const getComponents = () => withKeys('default')
