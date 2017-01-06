@@ -7,6 +7,7 @@ const pluginPaths = [
   '../sync-branches',
   '../sync-commits',
   '../sync-jump-to-project',
+  '../sync-layout',
   '../sync-location',
   '../sync-local-changes',
   '../sync-projects',

@@ -1,1 +1,2 @@
-export default 'SYNC LAYOUT'
+
+export { reducer, actions, selectors } from './reducer'

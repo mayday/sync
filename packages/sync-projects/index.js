@@ -7,7 +7,7 @@ import { Projects } from './components/projects'
 export default connect(
   state => ({
     groups: store.getProjectsByCategory(state),
-    activeRepo: '/Users/case/Github/sync',
+    activeRepo: store.getActiveRepoPath(state),
   }), {
     onStar: actions.star,
     onRemove: actions.remove,

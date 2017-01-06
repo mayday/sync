@@ -14,7 +14,7 @@ class LocalChangesContainer extends React.Component {
 
 export default connect(
   state => ({
-    files: store.getChangedFilesByRepo(state, '/Users/case/Github/sync'),
+    files: store.getChangedFilesByRepo(state, store.getActiveRepoPath(state)),
     selectedFile: store.getSelectedFile(state),
     message: store.getMessage(state),
   }), {
