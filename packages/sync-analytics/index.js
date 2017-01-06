@@ -38,8 +38,8 @@ export const middleware = () => next => (action) => {
   if (action.type.indexOf('_FAILURE') > -1) {
     mixpanel.track('error', {
       distinct_id: email,
-      errorText: action.errorText,
-      action,
+      errorText: action.errorText.message,
+      action: JSON.stringify(action, null, 2),
     })
   }
 
