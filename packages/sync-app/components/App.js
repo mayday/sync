@@ -75,7 +75,10 @@ export class App extends React.Component { // eslint-disable-line
         <AnalyticsPlugin />
         <JumpToProjectPlugin />
         <div style={ styles.header }>
-          <Header onActionBarChange={ handleActionBarChange } />
+          <Header
+            onActionBarChange={ handleActionBarChange }
+            active={ this.props.activeUI.actionBar }
+          />
         </div>
         <div style={ styles.sidebar }>
           <div style={ styles.headerSpacing }>

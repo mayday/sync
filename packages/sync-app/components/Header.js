@@ -16,7 +16,7 @@ import TrafficLights from './TrafficLights'
 // const components = getComponents()
 const BranchesPlugin = require('../../sync-branches').default
 
-export const Header = ({ onActionBarChange }) => {
+export const Header = ({ active, onActionBarChange }) => {
   const styles = reactCSS({
     'default': {
       header: {
@@ -57,6 +57,9 @@ export const Header = ({ onActionBarChange }) => {
       spacer: {
         width: 20,
       },
+      active: {
+        color: '#bbb',
+      },
     },
   })
 
@@ -72,21 +75,25 @@ export const Header = ({ onActionBarChange }) => {
         <BranchesPlugin />
         <div style={ styles.actions }>
 
-          <Tooltip label={ localChangesName } hoverColor="#bbb">
-            <Icon
-              path={ localChangesIcon }
-              onClick={ onActionBarChange.bind(null, 'sync-local-changes') }
-            />
-          </Tooltip>
+          <div style={ active === 'sync-local-changes' ? styles.active : {} }>
+            <Tooltip label={ localChangesName } hoverColor="#bbb">
+              <Icon
+                path={ localChangesIcon }
+                onClick={ onActionBarChange.bind(null, 'sync-local-changes') }
+              />
+            </Tooltip>
+          </div>
 
           <div style={ styles.spacer } />
 
-          <Tooltip label={ commitsName } hoverColor="#bbb">
-            <Icon
-              path={ commitsIcon }
-              onClick={ onActionBarChange.bind(null, 'sync-commits') }
-            />
-          </Tooltip>
+          <div style={ active === 'sync-commits' ? styles.active : {} }>
+            <Tooltip label={ commitsName } hoverColor="#bbb">
+              <Icon
+                path={ commitsIcon }
+                onClick={ onActionBarChange.bind(null, 'sync-commits') }
+              />
+            </Tooltip>
+          </div>
 
           <div style={ styles.spacer } />
 
