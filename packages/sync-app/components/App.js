@@ -1,9 +1,9 @@
 import React from 'react'
-// import _ from 'lodash'
+import _ from 'lodash'
+import Mousetrap from 'mousetrap'
 import reactCSS from 'reactcss'
 
-import { registerEvents } from 'sync-window'
-// import { getUIByContext } from 'sync-plugins'
+import { getKeymaps, getWindowOnFocus } from 'sync-plugins'
 
 import Header from './Header'
 import Main from './Main'
@@ -16,7 +16,27 @@ const NotificationsPlugin = require('../../sync-notifications').ui[0].component
 
 export class App extends React.Component { // eslint-disable-line
   componentDidMount() {
-    registerEvents(window, this.props.store)
+    const { getState, dispatch } = this.props.store
+
+    window.onblur = () => {}
+    window.onfocus = () => {
+      const state = getState() // eslint-disable-line
+
+      _.each(getWindowOnFocus, (onFocus) => {
+        onFocus(dispatch)
+      })
+    }
+
+    const keymaps = getKeymaps()
+
+    _.each(keymaps, (combos) => {
+      _.each(combos, (action, combo) => {
+        Mousetrap.bind(combo, () => {
+          const state = getState()
+          dispatch(action(dispatch, state))
+        })
+      })
+    })
   }
   render() {
     const styles = reactCSS({

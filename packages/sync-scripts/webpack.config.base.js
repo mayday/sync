@@ -19,7 +19,6 @@ const packages = [
   'sync-store-git',
   'sync-store-selectors',
   'sync-theme-ui-dark',
-  'sync-window',
 ]
 
 const exclude = new RegExp(`node_modules/(?!${ packages.join('|') })`)
